@@ -3,8 +3,8 @@
 
 /* Set up some CSS variables to theme the application. */
 :root {
-  --matr-navbar-bg: #ECECEC;
-  --matr-navbar-bg-rgb: 236, 236, 236;
+  --matr-navbar-bg: #1C4633;
+  --matr-navbar-bg-rgb: 28, 70, 51;
 }
 
 /* Change bootstrap variable values.
@@ -25,4 +25,12 @@ body {
   color: var(--bs-dark);
   padding-top: 10px;
   padding-bottom: 20px;
+}
+
+#topMenu, footer {
+  background-color: rgb(42, 78, 41);
+}
+
+.navbar, #login-dropdown, footer {
+  color: white;
 }

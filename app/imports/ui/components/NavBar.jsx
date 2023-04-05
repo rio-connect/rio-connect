@@ -18,23 +18,23 @@ const NavBar = () => {
           <Row className="text-center">
             <Col>
               <Navbar.Brand as={NavLink} to="/" className="text-white">
-                <h2>RIO Connect</h2>
+                <h1>RIO CONNECT</h1>
               </Navbar.Brand>
             </Col>
           </Row>
           <Row className="justify-content-center">
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Toggle id="toggle-button" aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Col>
                 <Nav className="justify-content-center">
                   <Nav.Item>
-                    <Nav.Link className="pe-5 text-white">Home</Nav.Link>
+                    <Nav.Link className="pe-5 text-white">HOME</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link className="pe-5 text-white">Browse Clubs</Nav.Link>
+                    <Nav.Link className="pe-5 text-white">BROWSE CLUBS</Nav.Link>
                   </Nav.Item>
                   {currentUser === '' ? (
-                    <NavDropdown id="login-dropdown" title="Login">
+                    <NavDropdown id="login-dropdown" title="LOGIN">
                       <NavDropdown.Item id="login-dropdown-sign-in" as={NavLink} to="/signin">
                         <PersonFill />
                         Sign

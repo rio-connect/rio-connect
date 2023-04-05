@@ -1,5 +1,5 @@
 /* Use Open Sans as the default sans serif font. */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700|Source+Code+Pro:300,400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Monda:300,400,500,700|Source+Code+Pro:300,400,500,700");
 
 /* Set up some CSS variables to theme the application. */
 :root {
@@ -27,10 +27,23 @@ body {
   padding-bottom: 20px;
 }
 
-#topMenu, footer {
-  background-color: rgb(42, 78, 41);
+.navbar, #login-dropdown, footer {
+  font-family: 'Monda', sans-serif;
+  color: white;
 }
 
-.navbar, #login-dropdown, footer {
+/* Change the toggle button's highlight color to white */
+#toggle-button {
+  border: none;
   color: white;
+}
+
+/* Change the toggle icon color to white */
+#toggle-button .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+/* Change the toggle icon's border color to white */
+#toggle-button.navbar-toggler {
+  border-color: rgb(255, 255, 255);
 }

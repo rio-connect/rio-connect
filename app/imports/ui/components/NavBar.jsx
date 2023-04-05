@@ -20,9 +20,9 @@ const NavBar = () => {
               <Navbar.Brand as={NavLink} to="/" className="text-white">
                 <Row className="justify-content-center">
                   <Col xs={1} className="pe-2">
-                    <img width="90px" src="images/rio-connect-logo.png" alt="RIO Connect logo." />
+                    <img width="75px" src="images/rio-connect-logo.png" alt="RIO Connect logo." />
                   </Col>
-                  <Col xs={3} className="py-3">
+                  <Col xs={3} className="py-2">
                     <h1>RIO CONNECT</h1>
                   </Col>
                 </Row>

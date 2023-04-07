@@ -17,6 +17,7 @@ body {
 /* Set the alert background on the signin and signup pages. */
 #signin-page .alert-light, #signup-page .alert-light {
   --bs-alert-bg: var(--matr-navbar-bg);
+  --bs-alert-color: white;
 }
 
 /* Define custom styles */
@@ -47,3 +48,4 @@ body {
 #toggle-button.navbar-toggler {
   border-color: rgb(255, 255, 255);
 }
+

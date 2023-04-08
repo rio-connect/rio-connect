@@ -1,7 +1,7 @@
 import React from 'react';
 import swal from 'sweetalert';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, BoolField, SubmitField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -12,7 +12,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 const bridge = new SimpleSchema2Bridge(Stuffs.schema);
 
 /* Renders the EditStuff page for editing a single document. */
-const EditStuff = () => {
+const Interests = () => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const { _id } = useParams();
   // console.log('EditStuff', _id);
@@ -42,16 +42,15 @@ const EditStuff = () => {
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
-          <Col className="text-center"><h2>Edit Stuff</h2></Col>
+          <Col className="text-center"><h2>Select Your Interests!</h2></Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
             <Card>
               <Card.Body>
-                <TextField name="name" />
-                <NumField name="quantity" decimal={null} />
-                <SelectField name="condition" />
+                <BoolField name="name" />
+                <BoolField name="quantity" />
+                <BoolField name="condition" />
                 <SubmitField value="Submit" />
                 <ErrorsField />
-                <HiddenField name="owner" />
               </Card.Body>
             </Card>
           </AutoForm>
@@ -61,4 +60,4 @@ const EditStuff = () => {
   ) : <LoadingSpinner />;
 };
 
-export default EditStuff;
+export default Interests;

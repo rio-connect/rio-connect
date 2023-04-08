@@ -21,7 +21,7 @@ body {
 }
 
 /* Define custom styles */
-.gray-background {
+.green-background {
   background-color: var(--matr-navbar-bg);
   color: var(--bs-dark);
   padding-top: 10px;

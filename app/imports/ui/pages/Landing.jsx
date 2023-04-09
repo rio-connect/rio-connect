@@ -6,8 +6,8 @@ const Landing = () => (
 
   <Container className="pt-5 d-flex justify-content-center">
     <Row>
-      <div className="justify-content-center align-content-center">
-        <Image className="py-5 rounded mx-auto d-block" id="centerImage" src="images/manoa-students.jpeg" alt="UH Manoa students." width="90%" />
+      <div>
+        <Image className="py-5 mx-auto d-block rounded" id="centerImage" src="images/manoa-students.jpeg" alt="UH Manoa students." width="90%" />
       </div>
       <div>
 
@@ -27,9 +27,9 @@ const Landing = () => (
           So what are you waiting for? Download ClubConnect today and start discovering all the amazing clubs and organizations that your university has to offer!
         </p>
       </div>
-      <a href="/signup">
+      <a href="/signup" id="get-started">
         <div className="d-grid gap-2 py-5">
-          <Button variant="outline-primary" size="lg">Get Started</Button>
+          <Button variant="outline-primary" size="lg"> Get Started </Button>
         </div>
       </a>
     </Row>

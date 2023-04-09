@@ -12,7 +12,7 @@ const AddClub = () => (
         <Card>
           <Card.Body>
             <TextField name="name" />
-            <NumField name="quantity" decimal={null} />
+            <NumField name="quantity" />
             <SelectField name="condition" />
             <SubmitField value="Submit" />
             <ErrorsField />

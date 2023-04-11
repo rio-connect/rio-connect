@@ -11,11 +11,14 @@ const AddClub = () => (
         <Col className="text-center"><h2>Create a New Club</h2></Col>
         <Card>
           <Card.Body>
+            {/*
             <TextField name="name" />
             <NumField name="quantity" />
             <SelectField name="condition" />
             <SubmitField value="Submit" />
             <ErrorsField />
+            */}
+
           </Card.Body>
         </Card>
       </Col>

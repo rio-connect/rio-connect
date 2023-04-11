@@ -38,6 +38,7 @@
       "owner": "John Smith",
       "ownerMail": "john@foo.com",
       "members": ["john@foo.com", "emma@foo.com"],
+      "certified": true,
       "image": "club1imageurl"
     },
     { "name": "Club2",
@@ -46,6 +47,7 @@
       "owner": "Kai Kahue",
       "ownerMail": "kai@foo.com",
       "members": ["kai@foo.com", "john@foo.com"],
+      "certified": false,
       "image": "club2imageurl"
     }
   ],

@@ -17,8 +17,8 @@ class ClubsCollection {
       description: String,
       owner: String,
       ownerMail: String,
-      members: Array,
-      'members.$': String,
+      members: [String],
+      certified: Boolean,
       image: String,
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.

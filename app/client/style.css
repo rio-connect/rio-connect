@@ -21,7 +21,7 @@ body {
 }
 
 /* Define custom styles */
-.gray-background {
+.green-background {
   background-color: var(--matr-navbar-bg);
   color: var(--bs-dark);
   padding-top: 10px;
@@ -47,5 +47,9 @@ body {
 /* Change the toggle icon's border color to white */
 #toggle-button.navbar-toggler {
   border-color: rgb(255, 255, 255);
+}
+
+#get-started {
+  text-decoration: none;
 }
 

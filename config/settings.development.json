@@ -5,8 +5,49 @@
   },
 
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
-    { "email": "john@foo.com", "password": "changeme" }
+    { "email": "admin@foo.com",
+      "password": "changeme",
+      "role": "admin",
+      "name": "Admin",
+      "phoneNo": "(808) 555-5555"
+    },
+    { "email": "john@foo.com",
+      "password": "changeme",
+      "role": "user",
+      "name": "John Smith",
+      "phoneNo": "(808) 555-5555"
+    },
+    { "email": "kai@foo.com",
+      "password": "changeme",
+      "role": "user",
+      "name": "Kai Kahue",
+      "phoneNo": "(808) 123-4567"
+    },
+    { "email": "emma@foo.com",
+      "password": "changeme",
+      "role": "user",
+      "name": "Emma Lee",
+      "phoneNo": "(808) 123-4567"
+    }
+  ],
+
+  "defaultClubs": [
+    { "name": "Club1",
+      "type": "Academic/Professional",
+      "description": "Description for Club 1.",
+      "owner": "John Smith",
+      "ownerMail": "john@foo.com",
+      "members": ["john@foo.com", "emma@foo.com"],
+      "image": "club1imageurl"
+    },
+    { "name": "Club2",
+      "type": "Sports/Leisure",
+      "description": "Description for Club 2.",
+      "owner": "Kai Kahue",
+      "ownerMail": "kai@foo.com",
+      "members": ["kai@foo.com", "john@foo.com"],
+      "image": "club2imageurl"
+    }
   ],
 
   "defaultData": [

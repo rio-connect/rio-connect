@@ -18,7 +18,7 @@ const AddClub = () => (
             </Card.Body>
             </Card>
             */}
-      <Image src="../add-club-mockup.png" />
+      <Image src="images/add-club-mockup.png" />
     </Row>
   </Container>
 );

@@ -14,7 +14,7 @@ const NavBar = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Container className="justify-content-center mx-auto py-4">
-        <Container >
+        <Container>
           <Row className="text-center pb-4">
             <Col>
               <Navbar.Brand as={NavLink} to="/" className="text-white">

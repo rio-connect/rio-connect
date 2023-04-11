@@ -13,24 +13,17 @@ const NavBar = () => {
 
   return (
     <Navbar bg="light" expand="lg">
-      <Container className="justify-content-center py-4">
-        <Container>
-          <Row className="text-center">
+      <Container className="justify-content-center mx-auto py-4">
+        <Container >
+          <Row className="text-center pb-4">
             <Col>
               <Navbar.Brand as={NavLink} to="/" className="text-white">
-                <Row className="justify-content-center">
-                  <Col xs={1} className="pe-0">
-                    <img width="75px" src="images/rio-connect-logo.png" alt="RIO Connect logo." />
-                  </Col>
-                  <Col xs={3} className="ps-0 py-2">
-                    <h1>RIO CONNECT</h1>
-                  </Col>
-                </Row>
+                <img width="400px" src="images/rio-connect-logo-navbar.png" alt="RIO Connect logo." />
               </Navbar.Brand>
             </Col>
           </Row>
           <Row className="justify-content-center">
-            <Navbar.Toggle id="toggle-button" aria-controls="basic-navbar-nav" />
+            <Navbar.Toggle id="toggle-button" aria-controls="basic-navbar-nav" className="mb-1" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Col>
                 <Nav className="justify-content-center">

@@ -5,6 +5,8 @@
 :root {
   --matr-navbar-bg: #1C4633;
   --matr-navbar-bg-rgb: 28, 70, 51;
+  --matr-form-bg: #f2f3f2;
+  --matr-form-bg-rgb: 242, 243, 242;
 }
 
 /* Change bootstrap variable values.
@@ -23,6 +25,13 @@ body {
 /* Define custom styles */
 .green-background {
   background-color: var(--matr-navbar-bg);
+  color: var(--bs-dark);
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.gray-background {
+  background-color: var(--matr-form-bg);
   color: var(--bs-dark);
   padding-top: 10px;
   padding-bottom: 20px;

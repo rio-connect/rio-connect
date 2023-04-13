@@ -5,7 +5,6 @@ import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import { Stuffs } from '../../api/stuff/Stuff';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -34,6 +33,7 @@ const UserContactInfo = () => {
   const submit = (data, formRef) => {
     const { firstName, lastName, email, phoneNumber } = data;
     const owner = Meteor.user().username;
+    /*
     Stuffs.collection.insert(
       { firstName, lastName, email, phoneNumber, owner },
       (error) => {
@@ -44,7 +44,7 @@ const UserContactInfo = () => {
           formRef.reset();
         }
       },
-    );
+    ); */
   };
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms

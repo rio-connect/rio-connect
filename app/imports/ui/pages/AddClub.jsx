@@ -17,7 +17,7 @@ const AddClub = () => (
             </Card>
             */}
     <Container className="py-3">
-      <Card id="add-club-page">
+      <Card>
         <Card.Header className="d-flex justify-content-center"><h1>Club Name</h1></Card.Header>
         <Row>
           <Col>

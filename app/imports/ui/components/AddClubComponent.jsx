@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, LongTextField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Clubs } from '../../api/club/Club';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
@@ -44,20 +44,22 @@ const AddClubComponent = () => {
   return (
     <Container className="py-3 gray-background">
       <Row className="justify-content-center">
-        <Col xs={5}>
+        <Col>
           <Col className="text-center"><h2>Create a Club</h2></Col>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <Card>
               <Card.Body>
                 <Row>
-                  <Col><TextField name="name" /></Col>
-                  <Col><TextField name="type" /></Col>
+                  <Col>
+                    <TextField name="name" />
+                    <SelectField
+                      name="type"
+                    />
+                    <TextField name="owner" />
+                    <TextField name="ownerMail" />
+                    <TextField name="image" />
+                  </Col>
                 </Row>
-                <Row>
-                  <Col><TextField name="owner" /></Col>
-                </Row>
-                <TextField name="ownerMail" />
-                <TextField name="image" />
                 <LongTextField name="description" />
                 <SubmitField value="Submit" />
                 <ErrorsField />

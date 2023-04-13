@@ -1,4 +1,4 @@
-import { Meteor } from 'meteor/meteor';
+  import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Clubs } from '../../api/club/Club';
 

@@ -5,6 +5,7 @@ import UserContactInfo from '../components/UserContactInfo';
 import UserClubList from '../components/UserClubList';
 import UserEditClub from '../components/UserEditClub';
 import ClubOwners from '../components/ClubOwners';
+import ClubMembers from '../components/ClubMembers';
 
 // Create a schema to specify the structure of the data to appear in the form.
 /* Renders the AddStuff page for adding a document. */
@@ -20,7 +21,7 @@ const EditClubPage = () => (
       <EditClub />
     </Row>
     <Row className="profile-heading justify-content-center pt-4 pb-2">
-      Administrators(s)
+      Administrator(s)
     </Row>
     <Row>
       <ClubOwners />
@@ -29,7 +30,7 @@ const EditClubPage = () => (
       Members
     </Row>
     <Row>
-      TODO: Add ClubMembers component.
+      <ClubMembers />
     </Row>
   </Container>
 );

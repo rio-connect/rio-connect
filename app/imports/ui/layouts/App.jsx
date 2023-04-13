@@ -20,6 +20,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import AddClub from '../pages/AddClub';
 import ClubCardTestPage from '../pages/ClubCardTestPage';
 import UserPage from '../pages/UserPage';
+import EditClubPage from '../pages/EditClubPage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
           <Route path="/addclub" element={<AddClub />} />
+          <Route path="/editclub" element={<EditClubPage />} />
           <Route path="/clubcardtest" element={<ClubCardTestPage />} />
           <Route path="/user" element={<UserPage />} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />

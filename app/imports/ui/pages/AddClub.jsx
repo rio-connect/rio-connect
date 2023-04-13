@@ -21,7 +21,7 @@ const AddClub = () => (
         <Card.Header className="d-flex justify-content-center"><h1>Club Name</h1></Card.Header>
         <Row>
           <Col>
-            <Image src="images/meteor-logo.png" className="img-thumbnail m-4 p-4" />
+            <Image src="images/rio-connect-logo.png" className="img-thumbnail m-4 p-4" />
           </Col>
           <Col>
             <Row>
@@ -44,6 +44,10 @@ const AddClub = () => (
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label><h2>Contact Email: </h2></Form.Label>
                   <Form.Control type="text" placeholder="Enter contact's email" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label><h2>Club Image: </h2></Form.Label>
+                  <Form.Control type="text" placeholder="Enter image source here" />
                 </Form.Group>
               </Form>
             </Row>

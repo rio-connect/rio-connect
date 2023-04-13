@@ -92,3 +92,7 @@ body {
   --bs-btn-hover-bg: #4D7FDC !important;
   --bs-btn-hover-border-color: #4D7FDC !important;
 }
+
+#club-card {
+  background-color: #F1F2F1;
+}

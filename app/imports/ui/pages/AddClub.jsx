@@ -5,9 +5,11 @@ import { Col, Container, Image, Row, Card, Form, Button } from 'react-bootstrap'
 /* Renders the AddStuff page for adding a document. */
 const AddClub = () => (
   <Container className="py-3">
+    <p>reference image</p>
+    <Image src="images/add-club-mockup.png" alt="mockup reference"/>
     <Container className="py-3">
       <Card id="add-club-page">
-        <Card.Header className="d-flex justify-content-center"><h1>Club Name</h1></Card.Header>
+        <Card.Header className="d-flex justify-content-center"><h1>Create a Club</h1></Card.Header>
         <Row>
           <Col>
             <Image src="images/rio-connect-logo.png" className="img-thumbnail m-4 p-4" />

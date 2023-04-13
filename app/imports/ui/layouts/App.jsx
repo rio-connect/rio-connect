@@ -18,7 +18,6 @@ import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
 import LoadingSpinner from '../components/LoadingSpinner';
 import AddClub from '../pages/AddClub';
-import UserClubList from '../components/UserClubList';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -33,7 +32,7 @@ const App = () => {
       <div className="d-flex flex-column min-vh-100">
         <NavBar />
         <Routes>
-          <Route exact path="/" element={<UserClubList />} />
+          <Route exact path="/" element={<Landing />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />

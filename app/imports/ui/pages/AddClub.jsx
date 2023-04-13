@@ -1,9 +1,9 @@
 import React from 'react';
-import EditClub from '../components/EditClub';
+import AddClubComponent from '../components/AddClubComponent';
 
 // Create a schema to specify the structure of the data to appear in the form.
 /* Renders the AddStuff page for adding a document. */
 const AddClub = () => (
-  <EditClub />
+  <AddClubComponent />
 );
 export default AddClub;

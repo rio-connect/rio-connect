@@ -52,16 +52,22 @@ const AddClubComponent = () => {
                 <Row>
                   <Col>
                     <TextField name="name" />
+                  </Col>
+                  <Col>
                     <SelectField
                       name="type"
                     />
-                    <TextField name="owner" />
-                    <TextField name="ownerMail" />
-                    <TextField name="image" />
                   </Col>
+                  <Row>
+                    <Col><TextField name="owner"/></Col>
+                    <Col><TextField name="ownerMail"/></Col>
+                  </Row>
+                  <TextField name="image" />
                 </Row>
-                <LongTextField name="description" />
-                <SubmitField value="Submit" />
+                  <LongTextField name="description"/>
+                <Row className="justify-content-center">
+                  <SubmitField value="Submit"/>
+                </Row>
                 <ErrorsField />
               </Card.Body>
             </Card>

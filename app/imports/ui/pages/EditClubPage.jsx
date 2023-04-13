@@ -21,7 +21,7 @@ const EditClubPage = () => (
       <EditClub />
     </Row>
     <Row className="profile-heading justify-content-center pt-4 pb-2">
-      Administrators(s)
+      Administrator(s)
     </Row>
     <Row>
       <ClubOwners />

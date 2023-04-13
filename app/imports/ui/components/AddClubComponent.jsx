@@ -21,7 +21,7 @@ const formSchema = new SimpleSchema({
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-const EditClub2 = () => {
+const AddClubComponent = () => {
   // On submit, insert the data.
   const submit = (data, formRef) => {
     const { name, type, description, ownerMail, image } = data;
@@ -45,7 +45,7 @@ const EditClub2 = () => {
     <Container className="py-3 gray-background">
       <Row className="justify-content-center">
         <Col xs={5}>
-          <Col className="text-center"><h2>Add Stuff</h2></Col>
+          <Col className="text-center"><h2>Create a Club</h2></Col>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <Card>
               <Card.Body>
@@ -70,4 +70,4 @@ const EditClub2 = () => {
   );
 };
 
-export default EditClub2;
+export default AddClubComponent;

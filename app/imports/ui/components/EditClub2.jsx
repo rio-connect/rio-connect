@@ -4,8 +4,7 @@ import { Card, Col, Container, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
-import { Textarea } from 'react-bootstrap-icons';
+import { AutoForm, ErrorsField, LongTextField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Clubs } from '../../api/club/Club';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
@@ -16,14 +15,13 @@ const formSchema = new SimpleSchema({
   description: String,
   owner: String,
   ownerMail: String,
-  members: Array,
-  'members.$': String,
   image: String,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 const EditClub2 = () => {
+  // On submit, insert the data.
   const submit = (data, formRef) => {
     const { name, type, description, owner, ownerMail, image } = data;
     const members = Meteor.user().username;
@@ -40,22 +38,26 @@ const EditClub2 = () => {
     );
   };
 
+  // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   const fRef = null;
   return (
-    <Container className="py-3">
+    <Container className="py-3 gray-background">
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center"><h2>Add Stuff</h2></Col>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <Card>
               <Card.Body>
-                <TextField name="name" />
-                <SelectField name="type" />
-                <TextField name="description" />
-                <TextField name="owner" />
+                <Row>
+                  <Col><TextField name="name" /></Col>
+                  <Col><SelectField name="type" /></Col>
+                </Row>
+                <Row>
+                  <Col><TextField name="owner" /></Col>
+                </Row>
                 <TextField name="ownerMail" />
                 <TextField name="image" />
-                <Textarea name="description" />
+                <LongTextField name="description" />
                 <SubmitField value="Submit" />
                 <ErrorsField />
               </Card.Body>

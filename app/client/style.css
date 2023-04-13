@@ -51,7 +51,7 @@ body {
 }
 
 /* Gray color block for the landing page */
-.gray-background {
+.gray-color-block {
   background-color: #F2F2F2;
   font-family: "Open Sans", sans-serif;
   font-size: 18px;
@@ -59,7 +59,7 @@ body {
 }
 
 /* Image color block for the landing page */
-.image-background {
+.image-color-block {
   background: url('images/manoa-students-dark.jpeg') no-repeat center center;
   background-size: cover;
   font-family: "Open Sans", sans-serif;
@@ -69,7 +69,7 @@ body {
 }
 
 /* White color block for the landing page */
-.white-background {
+.white-color-block {
   background-color: white;
   font-family: "Open Sans", sans-serif;
   font-size: 18px;

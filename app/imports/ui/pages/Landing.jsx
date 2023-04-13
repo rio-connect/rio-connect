@@ -5,7 +5,7 @@ import { Container, Button } from 'react-bootstrap';
 const Landing = () => (
 
   <Container fluid className="px-0">
-    <Container fluid className="white-background">
+    <Container fluid className="white-color-block">
       <Container className="pt-5 px-5">
         <h1 className="text-center pb-5">Welcome to Rio-Connect!</h1>
         <p>
@@ -30,7 +30,7 @@ const Landing = () => (
       </Container>
     </Container>
 
-    <Container fluid className="image-background">
+    <Container fluid className="image-color-block">
       <Container className="pt-5 px-5">
         <h1 className="text-center pb-5">Browse clubs and get connected!</h1>
         <p>
@@ -52,7 +52,7 @@ const Landing = () => (
       </Container>
     </Container>
 
-    <Container fluid className="gray-background">
+    <Container fluid className="gray-color-block">
       <Container className="pt-5 px-5">
         <h1 className="text-center pb-5">Start your own club!</h1>
         <p>
@@ -77,7 +77,7 @@ const Landing = () => (
       </Container>
     </Container>
 
-    <Container fluid className="white-background">
+    <Container fluid className="white-color-block">
       <Container className="pt-5 px-5">
         <h1 className="text-center pb-5">Testimonials</h1>
       </Container>

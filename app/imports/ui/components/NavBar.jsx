@@ -31,6 +31,9 @@ const NavBar = () => {
                     <Nav.Link className="pe-5 text-white" href="/">HOME</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
+                    <Nav.Link className="pe-5 text-white" href="/user">USER PAGE</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
                     <Nav.Link className="pe-5 text-white" href="/clubs">BROWSE CLUBS</Nav.Link>
                   </Nav.Item>
                   {currentUser === '' ? (

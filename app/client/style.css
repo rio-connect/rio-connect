@@ -106,3 +106,13 @@ body {
 .remove-link {
   color: red;
 }
+
+/* Background image for the Browse Clubs page */
+#browseSection {
+  background: url('images/manoa-students-dark.jpeg') no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  font-family: "Open Sans", sans-serif;
+  color: white;
+}

@@ -45,7 +45,7 @@ const Landing = () => (
           Click the button below to start browsing now!
         </p>
         <Container id="get-started" className="mt-4 py-5 px-0">
-          <a href="*" className="d-grid gap-2 text-decoration-none text-white">
+          <a href="browseclubs" className="d-grid gap-2 text-decoration-none text-white">
             <Button variant="primary" size="lg">Browse Clubs</Button>
           </a>
         </Container>

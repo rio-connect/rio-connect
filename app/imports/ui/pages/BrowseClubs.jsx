@@ -11,7 +11,7 @@ const BrowseClubs = () => (
       <ClubFilter />
     </Container>
     <Container id="get-started" className="mt-4 py-5 px-0">
-      <a href="*" className="d-grid text-decoration-none text-white">
+      <a href="addclub" className="d-grid text-decoration-none text-white">
         <Button className="py-4" variant="primary" size="lg">Create a Club!</Button>
       </a>
     </Container>

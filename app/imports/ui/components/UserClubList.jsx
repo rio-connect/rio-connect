@@ -14,7 +14,9 @@ const UserClubList = () => (
       </ListGroup>
     </Row>
     <Row className="ps-3 pe-3 pt-3">
-      <Button>Browse Clubs</Button>
+      <a href="browseclubs" className="d-grid gap-2 text-decoration-none text-white">
+        <Button variant="primary" size="md">Browse Clubs</Button>
+      </a>
     </Row>
   </Container>
 

@@ -31,10 +31,7 @@ const NavBar = () => {
                     <Nav.Link className="pe-5 text-white" href="/">HOME</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link className="pe-5 text-white" href="/">BROWSE CLUBS</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link className="pe-5 text-white" href="/interests">Interests</Nav.Link>
+                    <Nav.Link className="pe-5 text-white" href="/clubs">BROWSE CLUBS</Nav.Link>
                   </Nav.Item>
                   {currentUser === '' ? (
                     <NavDropdown id="login-dropdown" title="LOGIN">
@@ -51,7 +48,7 @@ const NavBar = () => {
                     </NavDropdown>
                   ) : (
                     <NavDropdown id="navbar-current-user" title={currentUser}>
-                      <NavDropdown.Item id="navbar-profile" as={NavLink} to="#">
+                      <NavDropdown.Item id="navbar-profile" as={NavLink} to="/profile">
                         <BoxArrowRight />
                         {' '}
                         Profile

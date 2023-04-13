@@ -1,8 +1,44 @@
 import React from 'react';
 import { Button, Card, Col, Container, Form, Image, Row } from 'react-bootstrap';
+import SimpleSchema from 'simpl-schema';
+import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import { Stuffs } from '../../api/stuff/Stuff';
+import swal from 'sweetalert';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const EditClub = () => (
+
+const formSchema = new SimpleSchema({
+  name: String,
+  type: String,
+  description: String,
+  owner: String,
+  ownerMail: String,
+  members: Array,
+  'members.$': String,
+  image: String,
+});
+
+const bridge = new SimpleSchema2Bridge(formSchema);
+
+const EditClub = () => {
+  const submit = (data, formRef) => {
+  const { name, type, description, owner, ownerMail, image } = data;
+  const members = Meteor.user().username;
+  Clubs.collection.insert(
+    { name, type, description, owner, ownerMail, members, image },
+    (error) => {
+      if (error) {
+        swal('Error', error.message, 'error');
+      } else {
+        swal('Success', 'Club added successfully', 'success');
+        formRef.reset();
+      }
+    },
+  );
+};
+
+let fRef = null;
+return (
   <Container className="py-3">
     <Card id="edit-club" className="gray-background">
       <Card.Header className="d-flex justify-content-center py-3"><h1>Your Club</h1></Card.Header>
@@ -51,6 +87,8 @@ const EditClub = () => (
       </Row>
     </Card>
   </Container>
+
 );
+};
 
 export default EditClub;

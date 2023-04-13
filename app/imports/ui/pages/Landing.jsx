@@ -72,7 +72,7 @@ const Landing = () => (
           Click the button below to create a club now!
         </p>
         <Container id="get-started" className="mt-4 py-5 px-0">
-          <a href="*" className="d-grid gap-2 text-decoration-none text-white">
+          <a href="/addclub" className="d-grid gap-2 text-decoration-none text-white">
             <Button variant="primary" size="lg">Create a Club</Button>
           </a>
         </Container>

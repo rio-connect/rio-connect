@@ -5,19 +5,8 @@ import { Col, Container, Image, Row, Card, Form, Button } from 'react-bootstrap'
 /* Renders the AddStuff page for adding a document. */
 const AddClub = () => (
   <Container className="py-3">
-    {/*
-            <Card>
-            <Card.Body>
-            <TextField name="name" />
-            <NumField name="quantity" />
-            <SelectField name="condition" />
-            <SubmitField value="Submit" />
-            <ErrorsField />
-            </Card.Body>
-            </Card>
-            */}
     <Container className="py-3">
-      <Card>
+      <Card id="add-club-page">
         <Card.Header className="d-flex justify-content-center"><h1>Club Name</h1></Card.Header>
         <Row>
           <Col>

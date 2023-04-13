@@ -61,9 +61,11 @@ const Landing = () => (
         <br />
         <p>
           By default, clubs created on RIO Connect are not recognized by the University of Hawaiʻi Board of Regents, however, club owners can&nbsp;
-          <a className="text-black" href="https://manoa.hawaii.edu/studentlife/involvement/registered-independent-organizations/application-and-forms/">apply for RIO</a>
-          once your club find enough members through RIO Connect and meet the requirements.
-          <a className="text-black" href="https://manoa.hawaii.edu/studentlife/involvement/registered-independent-organizations/forming-an-rio/">Learn more</a>.
+          <a className="text-black" href="https://manoa.hawaii.edu/studentlife/involvement/registered-independent-organizations/application-and-forms/">apply for RIO
+          </a>&nbsp;
+          once you find enough members through RIO Connect and meet requirements.&nbsp;
+          <a className="text-black" href="https://manoa.hawaii.edu/studentlife/involvement/registered-independent-organizations/forming-an-rio/">Learn more
+          </a>.
         </p>
         <br />
         <p>

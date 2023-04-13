@@ -28,10 +28,10 @@ const NavBar = () => {
               <Col>
                 <Nav className="justify-content-center">
                   <Nav.Item>
-                    <Nav.Link className="pe-5 text-white">HOME</Nav.Link>
+                    <Nav.Link className="pe-5 text-white" href="/">HOME</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link className="pe-5 text-white">BROWSE CLUBS</Nav.Link>
+                    <Nav.Link className="pe-5 text-white" href="/clubs">BROWSE CLUBS</Nav.Link>
                   </Nav.Item>
                   {currentUser === '' ? (
                     <NavDropdown id="login-dropdown" title="LOGIN">
@@ -48,6 +48,11 @@ const NavBar = () => {
                     </NavDropdown>
                   ) : (
                     <NavDropdown id="navbar-current-user" title={currentUser}>
+                      <NavDropdown.Item id="navbar-profile" as={NavLink} to="/profile">
+                        <BoxArrowRight />
+                        {' '}
+                        Profile
+                      </NavDropdown.Item>
                       <NavDropdown.Item id="navbar-sign-out" as={NavLink} to="/signout">
                         <BoxArrowRight />
                         {' '}

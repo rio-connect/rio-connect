@@ -5,6 +5,8 @@
 :root {
   --matr-navbar-bg: #1C4633;
   --matr-navbar-bg-rgb: 28, 70, 51;
+  --matr-form-bg: #f2f3f2;
+  --matr-form-bg-rgb: 242, 243, 242;
 }
 
 /* Change bootstrap variable values.
@@ -28,15 +30,22 @@ body {
   padding-bottom: 20px;
 }
 
-/* Set navbar and footer font to Monda and color to white */
-.navbar, #login-dropdown, #navbar-current-user, footer {
+.gray-background {
+  background-color: var(--matr-form-bg);
+  color: var(--bs-dark);
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+/* Set navbar and footer font to Monda */
+.navbar, #login-dropdown, footer {
   font-family: 'Monda', sans-serif;
   color: white;
 }
 
-/* Change the toggle button's border and highlight color to white */
+/* Change the toggle button's highlight color to white */
 #toggle-button {
-  border: 2px solid white;
+  border: none;
   color: white;
 }
 
@@ -50,36 +59,7 @@ body {
   border-color: rgb(255, 255, 255);
 }
 
-/* Gray color block for the landing page */
-.gray-color-block {
-  background-color: #F2F2F2;
-  font-family: "Open Sans", sans-serif;
-  font-size: 18px;
-  min-height: 500px;
+#get-started {
+  text-decoration: none;
 }
 
-/* Image color block for the landing page */
-.image-color-block {
-  background: url('images/manoa-students-dark.jpeg') no-repeat center center;
-  background-size: cover;
-  font-family: "Open Sans", sans-serif;
-  font-size:18px;
-  color: white;
-  min-height: 500px;
-}
-
-/* White color block for the landing page */
-.white-color-block {
-  background-color: white;
-  font-family: "Open Sans", sans-serif;
-  font-size: 18px;
-  min-height: 500px;
-}
-
-/* Customize the primary color for the buttons in the landing page */
-#get-started .btn-primary {
-  --bs-btn-bg: #5F9AEB !important;
-  --bs-btn-border-color: #5F9AEB !important;
-  --bs-btn-hover-bg: #4D7FDC !important;
-  --bs-btn-hover-border-color: #4D7FDC !important;
-}

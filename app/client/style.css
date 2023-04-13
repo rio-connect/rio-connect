@@ -28,15 +28,15 @@ body {
   padding-bottom: 20px;
 }
 
-/* Set navbar and footer font to Monda */
-.navbar, #login-dropdown, footer {
+/* Set navbar and footer font to Monda and color to white */
+.navbar, #login-dropdown, #navbar-current-user, footer {
   font-family: 'Monda', sans-serif;
   color: white;
 }
 
-/* Change the toggle button's highlight color to white */
+/* Change the toggle button's border and highlight color to white */
 #toggle-button {
-  border: none;
+  border: 2px solid white;
   color: white;
 }
 
@@ -50,7 +50,36 @@ body {
   border-color: rgb(255, 255, 255);
 }
 
-#get-started {
-  text-decoration: none;
+/* Gray color block for the landing page */
+.gray-background {
+  background-color: #F2F2F2;
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  min-height: 500px;
 }
 
+/* Image color block for the landing page */
+.image-background {
+  background: url('images/manoa-students-dark.jpeg') no-repeat center center;
+  background-size: cover;
+  font-family: "Open Sans", sans-serif;
+  font-size:18px;
+  color: white;
+  min-height: 500px;
+}
+
+/* White color block for the landing page */
+.white-background {
+  background-color: white;
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  min-height: 500px;
+}
+
+/* Customize the primary color for the buttons in the landing page */
+#get-started .btn-primary {
+  --bs-btn-bg: #5F9AEB !important;
+  --bs-btn-border-color: #5F9AEB !important;
+  --bs-btn-hover-bg: #4D7FDC !important;
+  --bs-btn-hover-border-color: #4D7FDC !important;
+}

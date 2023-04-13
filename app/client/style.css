@@ -97,3 +97,12 @@ body {
   font-size: 3rem;
   font-weight: bold;
 }
+
+.user-name-heading {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.remove-link {
+  color: red;
+}

@@ -1,10 +1,11 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
+// import { Meteor } from 'meteor/meteor';
 import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, LongTextField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Clubs } from '../../api/club/Club';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
@@ -23,10 +24,10 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 const EditClub2 = () => {
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { name, type, description, owner, ownerMail, image } = data;
-    const members = Meteor.user().username;
+    const { name, type, description, ownerMail, image } = data;
+    const owner = Meteor.user().username;
     Clubs.collection.insert(
-      { name, type, description, owner, ownerMail, members, image },
+      { name, type, description, owner, ownerMail, image },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -39,7 +40,7 @@ const EditClub2 = () => {
   };
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
-  const fRef = null;
+  let fRef = null;
   return (
     <Container className="py-3 gray-background">
       <Row className="justify-content-center">
@@ -50,7 +51,7 @@ const EditClub2 = () => {
               <Card.Body>
                 <Row>
                   <Col><TextField name="name" /></Col>
-                  <Col><SelectField name="type" /></Col>
+                  <Col><TextField name="type" /></Col>
                 </Row>
                 <Row>
                   <Col><TextField name="owner" /></Col>

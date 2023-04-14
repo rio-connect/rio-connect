@@ -24,10 +24,10 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 const AddClubComponent = () => {
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { name, type, description, ownerMail, image, owner } = data;
-    const admins = Meteor.user().username;
+    const { name, type, description, ownerMail, image } = data;
+    const owner = Meteor.user().username;
     Clubs.collection.insert(
-      { name, type, description, owner, ownerMail, image, admins },
+      { name, type, description, owner, ownerMail, image },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');

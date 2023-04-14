@@ -34,7 +34,7 @@ Meteor.publish(Clubs.userPublicationName, function () {
 });
 
 // Admin-level publication.
-// If logged in and with admin role, then publish all clubs from all users. Otherwise publish nothing.
+// If logged in and with admin role, then publish all clubs. Otherwise publish nothing.
 Meteor.publish(Clubs.adminPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return Clubs.collection.find();
@@ -53,7 +53,7 @@ Meteor.publish(Profiles.userPublicationName, function () {
 });
 
 // Admin-level publication.
-// If logged in and with admin role, then publish all clubs from all users. Otherwise publish nothing.
+// If logged in and with admin role, then publish all profiles. Otherwise publish nothing.
 Meteor.publish(Profiles.adminPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return Profiles.collection.find();

@@ -2,7 +2,7 @@ import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 
 /**
- * The ClubsCollection. It encapsulates state and variable values for stuff.
+ * The ClubsCollection. It encapsulates state and variable values for clubs.
  */
 class ClubsCollection {
   constructor() {

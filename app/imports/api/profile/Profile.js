@@ -2,24 +2,19 @@ import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 
 /**
- * The ClubsCollection. It encapsulates state and variable values for clubs.
+ * The ProfilesCollection. It encapsulates state and variable values for profiles.
  */
-class ClubsCollection {
+class ProfilesCollection {
   constructor() {
     // The name of this collection.
-    this.name = 'ClubsCollection';
+    this.name = 'ProfilesCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
+      email: String,
       name: String,
-      type: String,
-      description: String,
-      owner: String,
-      ownerMail: String,
-      members: Array,
-      'members.$': String,
-      image: String,
+      phoneNo: String,
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
@@ -30,7 +25,7 @@ class ClubsCollection {
 }
 
 /**
- * The singleton instance of the ClubsCollection.
- * @type {ClubsCollection}
+ * The singleton instance of the ProfilesCollection.
+ * @type {ProfilesCollection}
  */
-export const Clubs = new ClubsCollection();
+export const Profiles = new ProfilesCollection();

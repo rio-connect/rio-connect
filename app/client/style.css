@@ -43,6 +43,22 @@ body {
   color: white;
 }
 
+.profile-heading {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.user-name-heading {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.remove-link {
+  color: red;
+}
+
+/******************************** Navigation bar *******************************/
+
 /* Change the toggle button's border and highlight color to white */
 #toggle-button {
   border: 2px solid white;
@@ -58,6 +74,11 @@ body {
 #toggle-button.navbar-toggler {
   border-color: rgb(255, 255, 255);
 }
+
+/*******************************************************************************/
+
+
+/********************************* Landing page ********************************/
 
 /* Gray color block for the landing page */
 .gray-color-block {
@@ -93,26 +114,64 @@ body {
   --bs-btn-hover-border-color: #4D7FDC !important;
 }
 
-.profile-heading {
-  font-size: 3rem;
-  font-weight: bold;
-}
+/*******************************************************************************/
 
-.user-name-heading {
-  font-size: 1rem;
-  font-weight: bold;
-}
 
-.remove-link {
-  color: red;
-}
+/****************************** Browse Clubs page ******************************/
 
 /* Background image for the Browse Clubs page */
 #browseSection {
   background: url('images/manoa-students-dark.jpeg') no-repeat center center;
   background-size: cover;
-  height: 100vh;
+  padding-top: 40px;
+  min-height: 100vh;
   width: 100vw;
   font-family: "Open Sans", sans-serif;
   color: white;
 }
+
+#searchBar:focus {
+  box-shadow: none !important;
+}
+
+#searchBtn {
+  background-color: white;
+}
+
+#filterContainer {
+  max-width: 738px;
+}
+
+.selectField {
+  padding-left: 20px;
+}
+
+#selectInterests label {
+  width: 190px;
+}
+
+@media(max-width: 991px){
+  #filterContainer {
+    max-width: 510px;
+  }
+  .selectField {
+    padding-left: 26px;
+  }
+}
+
+@media(max-width: 767px){
+  #browseSection {
+    min-height: calc(100vh * 1.2);
+  }
+  .selectField {
+    padding-left: 0px;
+    width: 234px;
+  }
+}
+
+#createClubBtn {
+  width: 300px;
+  border-color: #212529 !important;
+}
+
+/*******************************************************************************/

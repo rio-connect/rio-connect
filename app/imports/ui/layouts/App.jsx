@@ -22,9 +22,6 @@ import ClubCardTestPage from '../pages/ClubCardTestPage';
 import UserPage from '../pages/UserPage';
 import EditClubPage from '../pages/EditClubPage';
 import BrowseClubs from '../pages/BrowseClubs';
-import ListProfilesAdmin from '../pages/ListProfilesAdmin';
-import ListClubsAdmin from '../pages/ListClubsAdmin';
-import ListClubs from '../pages/ListClubs';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -53,9 +50,6 @@ const App = () => {
           <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
-          <Route path="/adminprofiles" element={<AdminProtectedRoute ready={ready}><ListProfilesAdmin /></AdminProtectedRoute>} />
-          <Route path="/adminclubs" element={<AdminProtectedRoute ready={ready}><ListClubsAdmin /></AdminProtectedRoute>} />
-          <Route path="/listclubs" element={<ProtectedRoute><ListClubs /></ProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

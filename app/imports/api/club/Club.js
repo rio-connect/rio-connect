@@ -13,11 +13,18 @@ class ClubsCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       name: String,
-      type: String,
+      type: {
+        type: String,
+        allowedValues: ['Academic/Professional', 'Sports/Leisure',
+          'Service', 'Fraternity/Sorority', 'Religious/Spiritual',
+          'Political', 'Leisure/Recreational', 'Student_Affairs',
+          'Honorary_Society', 'Ethnic/Cultural'],
+      },
       description: String,
       owner: String,
       ownerMail: String,
       members: Array,
+      admins: String,
       'members.$': String,
       image: String,
     });

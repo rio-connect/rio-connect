@@ -14,7 +14,7 @@ const BrowseClubs = () => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     // Get access to Contacts documents.
-    const subscription = Meteor.subscribe(Clubs.userPublicationName);
+    const subscription = Meteor.subscribe(Clubs.publicPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Contacts documents

@@ -174,4 +174,27 @@ body {
   border-color: #212529 !important;
 }
 
+@media(max-width: 580px) {
+  .browseClubCards {
+    width: 450px !important;
+    margin-left: 5px;
+    padding-right: 0px !important;
+  }
+  #browseResultsOuter {
+    width: 450px;
+  }
+  #numClubs {
+    padding-left: 20px;
+  }
+}
+
+@media(min-width: 1400px) {
+  .browseClubCards {
+    width: 671px !important;
+  }
+  #browseResultsOuter {
+    width: 1400px;
+  }
+}
+
 /*******************************************************************************/

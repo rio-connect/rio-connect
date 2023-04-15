@@ -7,16 +7,20 @@ import UserClubList from '../components/UserClubList';
 import UserEditClub from '../components/UserEditClub';
 import { Profiles } from '../../api/profile/Profile';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { Clubs } from '../../api/club/Club';
 
 // Create a schema to specify the structure of the data to appear in the form.
 /* Renders the AddStuff page for adding a document. */
 const ClubCardTestPage = () => {
-  const { profiles, ready } = useTracker(() => {
+  const { profiles, clubs, ready } = useTracker(() => {
     const subscription = Meteor.subscribe(Profiles.userPublicationName);
-    const rdy = subscription.ready();
+    const subscription2 = Meteor.subscribe(Clubs.userPublicationName);
+    const rdy = subscription.ready() && subscription2.ready();
     const profile = Profiles.collection.find({}).fetch();
+    const club = Clubs.collection.find({}).fetch();
     return {
       profiles: profile[0],
+      clubs: club,
       ready: rdy,
     };
   }, []);
@@ -32,7 +36,7 @@ const ClubCardTestPage = () => {
         Clubs
       </Row>
       <Row>
-        <UserClubList />
+        <UserClubList clubs={clubs} />
       </Row>
       <Row className="profile-heading justify-content-center pt-4 pb-2">
         Edit Club

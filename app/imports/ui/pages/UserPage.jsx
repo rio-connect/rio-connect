@@ -13,9 +13,16 @@ import { Clubs } from '../../api/club/Club';
 // Create a schema to specify the structure of the data to appear in the form.
 /* Renders the AddStuff page for adding a document. */
 const ClubCardTestPage = () => {
+  const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
+
   const { profiles, clubs, ready } = useTracker(() => {
     const subscription = Meteor.subscribe(Profiles.userPublicationName);
-    const subscription2 = Meteor.subscribe(Clubs.userPublicationName);
+    let subscription2 = [];
+    if (isAdmin) {
+      subscription2 = Meteor.subscribe(Clubs.adminPublicationName);
+    } else {
+      subscription2 = Meteor.subscribe(Clubs.userPublicationName);
+    }
     const rdy = subscription.ready() && subscription2.ready();
     const profile = Profiles.collection.find({}).fetch();
     const club = Clubs.collection.find({}).fetch();
@@ -25,8 +32,6 @@ const ClubCardTestPage = () => {
       ready: rdy,
     };
   }, []);
-
-  const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
 
   return (ready ? (
     <Container>

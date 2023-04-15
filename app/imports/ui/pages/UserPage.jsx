@@ -54,7 +54,7 @@ const ClubCardTestPage = () => {
               Edit Club
             </Row>
             <Row>
-              <UserEditClub />
+              <UserEditClub clubs={clubs}/>
             </Row>
           </>
         )

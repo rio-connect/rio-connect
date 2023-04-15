@@ -45,7 +45,7 @@ const EditClub = () => (
           <Form.Label placeholder="Lorem ipsum"><h2>Club Purpose: </h2></Form.Label>
           <Form.Control as="textarea" rows={5} />
         </Form.Group>
-        <div className="d-grid gap-2 py-5">
+        <div className="text-center gap-2 py-5">
           <Button variant="primary" size="lg"> Save </Button>
         </div>
       </Row>

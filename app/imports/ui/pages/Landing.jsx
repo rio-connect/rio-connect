@@ -22,11 +22,11 @@ const Landing = () => (
         <p>
           So what are you waiting for? Download ClubConnect today and start discovering all the amazing clubs and organizations that your university has to offer!
         </p>
-        <Container id="get-started" className="mt-4 py-5 px-0">
-          <a href="/signup" className="d-grid gap-2 text-decoration-none text-white">
-            <Button variant="primary" size="lg">Get Started</Button>
-          </a>
-        </Container>
+      </Container>
+      <Container fluid id="get-started" className="text-center mt-4 py-5 px-0">
+        <a href="/signup" className=" gap-2 text-decoration-none text-white">
+          <Button variant="primary" size="lg">Get Started</Button>
+        </a>
       </Container>
     </Container>
 
@@ -44,8 +44,8 @@ const Landing = () => (
         <p>
           Click the button below to start browsing now!
         </p>
-        <Container id="get-started" className="mt-4 py-5 px-0">
-          <a href="browseclubs" className="d-grid gap-2 text-decoration-none text-white">
+        <Container id="get-started" className="text-center mt-4 py-5 px-0">
+          <a href="browseclubs" className="gap-2 text-decoration-none text-white">
             <Button variant="primary" size="lg">Browse Clubs</Button>
           </a>
         </Container>
@@ -71,8 +71,8 @@ const Landing = () => (
         <p>
           Click the button below to create a club now!
         </p>
-        <Container id="get-started" className="mt-4 py-5 px-0">
-          <a href="/addclub" className="d-grid gap-2 text-decoration-none text-white">
+        <Container id="get-started" className="text-center mt-4 py-5 px-0">
+          <a href="/addclub" className="gap-2 text-decoration-none text-white">
             <Button variant="primary" size="lg">Create a Club</Button>
           </a>
         </Container>

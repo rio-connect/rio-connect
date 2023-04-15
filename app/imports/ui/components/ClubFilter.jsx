@@ -49,7 +49,7 @@ const ClubFilter = () => {
           <Col sm={10} md={8} lg={6} className="mx-auto">
             <InputGroup size="lg">
               <Form.Control id="searchBar" type="text" className="rounded-left-1 border-0 fs-6" placeholder="Search clubs..." />
-              <Button id="searchBtn" variant="light" type="button" className="search border-0"><Search /></Button>
+              <Button id="searchBtn" size="large" variant="primary" className="search border-0"><Search /></Button>
             </InputGroup>
           </Col>
         </Row>
@@ -69,7 +69,7 @@ const ClubFilter = () => {
               transform={transform}
             />
           </Container>
-          <SubmitField className="d-grid my-4" value="Apply" />
+          <SubmitField className="text-center my-4" value="Apply" />
         </Container>
       </AutoForm>
     </Container>

@@ -67,7 +67,7 @@ const AddClubComponent = () => {
                 <LongTextField name="description" />
                 <LongTextField name="members" />
                 <ErrorsField />
-                <Row className="justify-content-center">
+                <Row className="text-center">
                   <SubmitField value="Submit" />
                 </Row>
               </Card.Body>

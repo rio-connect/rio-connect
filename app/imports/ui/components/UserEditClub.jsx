@@ -20,8 +20,8 @@ const UserEditClub = () => (
         </Row>
       </Row>
       <Row className="justify-content-center pt-3">
-        <a href="editclub" className="d-grid gap-2 text-decoration-none text-white">
-          <Button variant="primary" size="md">Edit Clubs</Button>
+        <a href="editclub" className="text-center gap-2 text-decoration-none text-white">
+          <Button variant="primary" size="lg">Edit Clubs</Button>
         </a>
       </Row>
     </Container>

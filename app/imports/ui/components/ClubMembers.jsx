@@ -26,9 +26,9 @@ const ClubMembers = () => (
       <Row>
         <input />
       </Row>
-      <Row className="pt-3">
-        <Button>Add</Button>
-      </Row>
+      <Container className="text-center pt-3">
+        <Button size="lg">Add</Button>
+      </Container>
     </Container>
   </Container>
 );

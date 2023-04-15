@@ -1,7 +1,8 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
+import { Roles } from 'meteor/alanning:roles';
 import UserContactInfo from '../components/UserContactInfo';
 import UserClubList from '../components/UserClubList';
 import UserEditClub from '../components/UserEditClub';
@@ -24,6 +25,9 @@ const ClubCardTestPage = () => {
       ready: rdy,
     };
   }, []);
+
+  const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
+
   return (ready ? (
     <Container>
       <Row className="profile-heading justify-content-center pt-4 pb-2">
@@ -38,12 +42,18 @@ const ClubCardTestPage = () => {
       <Row>
         <UserClubList clubs={clubs} />
       </Row>
-      <Row className="profile-heading justify-content-center pt-4 pb-2">
-        Edit Club
-      </Row>
-      <Row>
-        <UserEditClub />
-      </Row>
+      {
+        isAdmin && (
+          <>
+            <Row className="profile-heading justify-content-center pt-4 pb-2">
+              Edit Club
+            </Row>
+            <Row>
+              <UserEditClub />
+            </Row>
+          </>
+        )
+      }
     </Container>
   ) : <LoadingSpinner />);
 };

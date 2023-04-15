@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Meteor } from 'meteor/meteor';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
@@ -16,6 +15,8 @@ const formSchema = new SimpleSchema({
   description: String,
   owner: String,
   ownerMail: String,
+  members: Array,
+  'members.$': String,
   image: String,
 });
 
@@ -24,10 +25,10 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 const AddClubComponent = () => {
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { name, type, description, ownerMail, image } = data;
+    const { name, type, description, ownerMail, image, members } = data;
     const owner = Meteor.user().username;
     Clubs.collection.insert(
-      { name, type, description, owner, ownerMail, image },
+      { name, type, description, owner, ownerMail, image, members },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -64,10 +65,11 @@ const AddClubComponent = () => {
                   <TextField name="image" />
                 </Row>
                 <LongTextField name="description" />
+                <LongTextField name="members" />
+                <ErrorsField />
                 <Row className="justify-content-center">
                   <SubmitField value="Submit" />
                 </Row>
-                <ErrorsField />
               </Card.Body>
             </Card>
           </AutoForm>

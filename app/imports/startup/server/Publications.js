@@ -23,6 +23,12 @@ Meteor.publish(Stuffs.adminPublicationName, function () {
   return this.ready();
 });
 
+// Public publication.
+// If not logged in, then only publish info about clubs that is publicly available (no members list).
+Meteor.publish(Clubs.publicPublicationName, function () {
+  return Clubs.collection.find({}, { members: 0 });
+});
+
 // User-level publication.
 // If logged in, then publish clubs this user is a member of. Otherwise publish nothing.
 Meteor.publish(Clubs.userPublicationName, function () {

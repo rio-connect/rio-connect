@@ -1,38 +1,17 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, SubmitField, SelectField, TextField } from 'uniforms-bootstrap5';
+import { Col, Container, Row, InputGroup, Form, Button } from 'react-bootstrap';
+import { AutoForm, SubmitField, SelectField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
+import { Search } from 'react-bootstrap-icons';
 
 const InterestsValues = {
-  interests: ['Academic/Professional', 'Ethic/Cultural', 'Fraternity/Sorority', 'Honorary Society'],
+  interests: ['Academic/Professional', 'Ethic/Cultural', 'Fraternity/Sorority', 'Honorary Society', 'Leisure/Recreational', 'Political', 'Religious/Spiritual', 'Service', 'Sports/Leisure', 'Student Affairs'],
 };
 
-// const InterestsValues = {
-//   interests: ['Academic/Professional', 'Ethic/Cultural', 'Fraternity/Sorority', 'Honorary Society', 'Leisure/Recreational', 'Political', 'Religious/Spiritual', 'Service', 'Sports/Leisure', 'Student Affairs'],
-// };
-
 const formSchema = new SimpleSchema({
-  firstName: {
-    type: String,
-    label: 'First Name',
-  },
-  lastName: {
-    type: String,
-    label: 'Last Name',
-  },
-  email: String,
-  phoneNumber: {
-    type: String,
-    required: false,
-    label: 'Phone Number (optional)',
-  },
-  search: {
-    type: String,
-    label: '',
-  },
   interests: { label: '', type: Array, optional: true },
   'interests.$': { type: String, allowedValues: InterestsValues.interests },
 });
@@ -65,51 +44,32 @@ const ClubFilter = () => {
 
   return (
     <Container>
-      <AutoForm className="mt-4" ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-        <TextField name="search" className="mx-5 pb-5" placeholder="Search club..." />
-        <Container className="py-3 gray-background">
+      <AutoForm className="mt-4 mx-5" ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
+        <Row className="mx-0 mb-5  pb-5">
+          <Col sm={10} md={8} lg={6} className="mx-auto">
+            <InputGroup size="lg">
+              <Form.Control id="searchBar" type="text" className="rounded-left-1 border-0 fs-6" placeholder="Search clubs..." />
+              <Button id="searchBtn" variant="light" type="button" className="search border-0"><Search /></Button>
+            </InputGroup>
+          </Col>
+        </Row>
+        <Container id="filterContainer" className="py-3 gray-background">
           <h3>Filter</h3>
           <hr />
           <h5>Your interests:</h5>
-
-          <Row className="justify-content-center">
-            <Col xs={3}>
-              <SelectField
-                name="interests"
-                showInlineError
-                help=""
-                multiple
-                checkboxes
-                inline
-                transform={transform}
-              />
-            </Col>
-            <Col xs={3}>
-              <SelectField
-                name="interests"
-                showInlineError
-                help=""
-                multiple
-                checkboxes
-                inline
-                transform={transform}
-              />
-            </Col>
-            <Col xs={3}>
-              <SelectField
-                name="interests"
-                showInlineError
-                help=""
-                multiple
-                checkboxes
-                inline
-                transform={transform}
-              />
-            </Col>
-          </Row>
+          <Container id="selectInterests" className="px-0">
+            <SelectField
+              className="selectField mx-auto"
+              name="interests"
+              showInlineError
+              help=""
+              multiple
+              checkboxes
+              inline
+              transform={transform}
+            />
+          </Container>
           <SubmitField className="d-grid my-4" value="Apply" />
-          <ErrorsField />
-
         </Container>
       </AutoForm>
     </Container>

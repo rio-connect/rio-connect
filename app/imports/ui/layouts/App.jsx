@@ -22,6 +22,7 @@ import ClubCardTestPage from '../pages/ClubCardTestPage';
 import UserPage from '../pages/UserPage';
 import EditClubPage from '../pages/EditClubPage';
 import BrowseClubs from '../pages/BrowseClubs';
+import EditClub2 from '../pages/EditClub2';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -42,7 +43,9 @@ const App = () => {
           <Route path="/signout" element={<SignOut />} />
           <Route path="/addclub" element={<AddClub />} />
           <Route path="/editclub" element={<EditClubPage />} />
+          <Route path="/editstuff" element={<EditStuff />} />
           <Route path="/browseclubs" element={<BrowseClubs />} />
+          <Route path="/editclub2/:_id" element={<EditClub2 />} />
           <Route path="/clubcardtest" element={<ClubCardTestPage />} />
           <Route path="/user" element={<UserPage />} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />

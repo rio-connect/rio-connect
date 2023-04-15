@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Col, Container, Image, Row } from 'react-bootstrap';
 import CardHeader from 'react-bootstrap/CardHeader';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
@@ -31,6 +32,7 @@ const ClubCard = ({ club }) => (
         <h2>Club Purpose</h2>
         <p>{club.description}</p>
       </Row>
+      <Link to={`/edit/${club._id}`}>Edit</Link>
     </Card>
   </Container>
 );
@@ -44,6 +46,7 @@ ClubCard.propTypes = {
     ownerMail: PropTypes.string,
     members: PropTypes.string,
     image: PropTypes.string,
+    _id: PropTypes.string,
   }).isRequired,
 };
 

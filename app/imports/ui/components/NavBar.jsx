@@ -31,9 +31,6 @@ const NavBar = () => {
                     <Nav.Link className="pe-5 text-white" href="/">HOME</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link className="pe-5 text-white" href="/user">USER PAGE</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
                     <Nav.Link className="pe-5 text-white" href="/browseclubs">BROWSE CLUBS</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
@@ -57,8 +54,8 @@ const NavBar = () => {
                     </NavDropdown>
                   ) : (
                     <NavDropdown id="navbar-current-user" title={currentUser}>
-                      <NavDropdown.Item id="navbar-profile" as={NavLink} to="/profile">
-                        <BoxArrowRight />
+                      <NavDropdown.Item id="navbar-profile" as={NavLink} to="/user">
+                        <PersonFill />
                         {' '}
                         Profile
                       </NavDropdown.Item>

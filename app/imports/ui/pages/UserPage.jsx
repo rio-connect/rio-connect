@@ -25,13 +25,9 @@ const UserPage = () => {
 
     const profile = Profiles.collection.find({}).fetch();
     const club = Clubs.collection.find({}).fetch();
-    let editableClub = [];
-
-    if (rdy) {
-      editableClub = isAdmin
-        ? Clubs.collection.find({}).fetch()
-        : Clubs.collection.find({ ownerMail: profile[0]?.email }).fetch();
-    }
+    const editableClub = isAdmin
+      ? Clubs.collection.find({}).fetch()
+      : Clubs.collection.find({ ownerMail: profile[0]?.email }).fetch();
 
     return {
       profiles: profile[0],

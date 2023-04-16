@@ -15,23 +15,33 @@ import { Clubs } from '../../api/club/Club';
 const UserPage = () => {
   const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
 
-  const { profiles, clubs, ready } = useTracker(() => {
-    const subscription = Meteor.subscribe(Profiles.userPublicationName);
-    let subscription2 = [];
-    if (isAdmin) {
-      subscription2 = Meteor.subscribe(Clubs.adminPublicationName);
-    } else {
-      subscription2 = Meteor.subscribe(Clubs.userPublicationName);
-    }
-    const rdy = subscription.ready() && subscription2.ready();
+  const { profiles, clubs, ready, editableClubs } = useTracker(() => {
+    const profileSubscription = Meteor.subscribe(Profiles.userPublicationName);
+    const clubSubscription = isAdmin
+      ? Meteor.subscribe(Clubs.adminPublicationName)
+      : Meteor.subscribe(Clubs.userPublicationName);
+
+    const rdy = profileSubscription.ready() && clubSubscription.ready();
+
     const profile = Profiles.collection.find({}).fetch();
     const club = Clubs.collection.find({}).fetch();
+    let editableClub = [];
+
+    if (rdy) {
+      editableClub = isAdmin
+        ? Clubs.collection.find({}).fetch()
+        : Clubs.collection.find({ ownerMail: profile[0]?.email }).fetch();
+    }
+
     return {
       profiles: profile[0],
       clubs: club,
+      editableClubs: editableClub,
       ready: rdy,
     };
   }, []);
+
+  const canEdit = isAdmin || (editableClubs && editableClubs.length > 0);
 
   return (ready ? (
     <Container>
@@ -48,13 +58,13 @@ const UserPage = () => {
         <UserClubList clubs={clubs} />
       </Row>
       {
-        isAdmin && (
+        canEdit && (
           <>
             <Row className="profile-heading justify-content-center pt-4 pb-2">
               Edit Club
             </Row>
             <Row>
-              <UserEditClub clubs={clubs} />
+              <UserEditClub clubs={editableClubs} />
             </Row>
           </>
         )

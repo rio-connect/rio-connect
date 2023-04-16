@@ -12,7 +12,7 @@ import { Clubs } from '../../api/club/Club';
 
 // Create a schema to specify the structure of the data to appear in the form.
 /* Renders the AddStuff page for adding a document. */
-const ClubCardTestPage = () => {
+const UserPage = () => {
   const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
 
   const { profiles, clubs, ready } = useTracker(() => {
@@ -54,7 +54,7 @@ const ClubCardTestPage = () => {
               Edit Club
             </Row>
             <Row>
-              <UserEditClub clubs={clubs}/>
+              <UserEditClub clubs={clubs} />
             </Row>
           </>
         )
@@ -63,4 +63,4 @@ const ClubCardTestPage = () => {
   ) : <LoadingSpinner />);
 };
 
-export default ClubCardTestPage;
+export default UserPage;

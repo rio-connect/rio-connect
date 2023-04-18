@@ -7,11 +7,8 @@ import UserCard from './UserCard';
 const ClubMembers = () => (
   <Container className="py-3 gray-background">
     <Container className="ps-3 pe-3">
-      <Row className="pb-2">
-        Club Members
-      </Row>
       <Row>
-        <ListGroup className="list-group-horizontal">
+        <ListGroup className="justify-content-center list-group-horizontal">
           <UserCard />
           <UserCard />
           <UserCard />
@@ -20,12 +17,9 @@ const ClubMembers = () => (
           <UserCard />
         </ListGroup>
       </Row>
-      <Row className="pt-2 pb-2">
-        Add Member
-      </Row>
-      <Row>
-        <input />
-      </Row>
+      <Container className="pt-2 pb-2 text-center">
+        Add Member: <input />
+      </Container>
       <Container className="text-center pt-3">
         <Button size="lg">Add</Button>
       </Container>

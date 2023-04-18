@@ -197,4 +197,10 @@ body {
   }
 }
 
+.list-group{
+  min-width: 2000;
+  overflow:scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
 /*******************************************************************************/

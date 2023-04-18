@@ -1,8 +1,6 @@
 import React from 'react';
 import { Col, Container, Row, InputGroup, Form, Button } from 'react-bootstrap';
 import { AutoForm, SubmitField, SelectField } from 'uniforms-bootstrap5';
-import swal from 'sweetalert';
-import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Search } from 'react-bootstrap-icons';
@@ -23,20 +21,8 @@ const ClubFilter = () => {
   const transform = (label) => ` ${label}`;
 
   // On submit, insert the data.
-  const submit = (data, formRef) => {
-    const { firstName, lastName, email, phoneNumber } = data;
-    const owner = Meteor.user().username;
-    /* Stuffs.collection.insert(
-      { firstName, lastName, email, phoneNumber, owner },
-      (error) => {
-        if (error) {
-          swal('Error', error.message, 'error');
-        } else {
-          swal('Success', 'Item added successfully', 'success');
-          formRef.reset();
-        }
-      },
-    ); */
+  const submit = () => {
+
   };
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
@@ -49,7 +35,7 @@ const ClubFilter = () => {
           <Col sm={10} md={8} lg={6} className="mx-auto">
             <InputGroup size="lg">
               <Form.Control id="searchBar" type="text" className="rounded-left-1 border-0 fs-6" placeholder="Search clubs..." />
-              <Button id="searchBtn" size="large" variant="primary" className="search border-0"><Search /></Button>
+              <Button id="searchBtn" variant="light" type="button" className="search border-0"><Search /></Button>
             </InputGroup>
           </Col>
         </Row>

@@ -3,8 +3,8 @@ import { Card, Container, Image } from 'react-bootstrap';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const UserCard = () => (
-  <Card>
-    <Container className="d-flex flex-column justify-content-center align-items-center">
+  <Card className="flex-wrap">
+    <Container className="d-flex flex-column justify-content-md-center align-items-center">
       <Image src="images/generic-user.png" width="100px" className="pt-3" />
       <p />
       <span className="user-name-heading">Firstname Lastname</span>

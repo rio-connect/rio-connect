@@ -1,6 +1,7 @@
 import React from 'react';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Card, Col, Container, Row } from 'react-bootstrap';
@@ -18,7 +19,12 @@ const EditClub = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { doc, ready } = useTracker(() => {
   // Get access to Stuff documents.
-    const subscription = Meteor.subscribe(Clubs.adminPublicationName);
+    let subscription = null;
+    if (Roles.userIsInRole(Meteor.userId(), 'admin')) {
+      subscription = Meteor.subscribe(Clubs.adminPublicationName);
+    } else {
+      subscription = Meteor.subscribe(Clubs.userPublicationName);
+    }
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the document

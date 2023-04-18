@@ -1,9 +1,12 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import { Card, Col, Container, Image, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import CardHeader from 'react-bootstrap/CardHeader';
 import PropTypes from 'prop-types';
 
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+/** Renders a single club card. */
 const ClubCard = ({ club }) => (
   <Container className="py-3">
     <Card>
@@ -31,6 +34,11 @@ const ClubCard = ({ club }) => (
         <h2>Club Purpose</h2>
         <p>{club.description}</p>
       </Row>
+      {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+        <Row className="px-4">
+          <Link to={`/edit/${club._id}`}>Edit club</Link>
+        </Row>
+      ) : ''}
     </Card>
   </Container>
 );
@@ -44,6 +52,7 @@ ClubCard.propTypes = {
     ownerMail: PropTypes.string,
     members: PropTypes.string,
     image: PropTypes.string,
+    _id: PropTypes.string,
   }).isRequired,
 };
 

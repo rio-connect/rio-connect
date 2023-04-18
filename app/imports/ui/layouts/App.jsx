@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-/* import { useTracker } from 'meteor/react-meteor-data'; */
+// import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Footer from '../components/Footer';
@@ -38,7 +38,7 @@ const App = () => (
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signout" element={<SignOut />} />
         <Route path="/addclub" element={<AddClub />} />
-        <Route path="/editclub" element={<EditClubPage />} />
+        <Route path="/edit/:_id" element={<ProtectedRoute><EditClubPage /></ProtectedRoute>} />
         <Route path="/browseclubs" element={<BrowseClubs />} />
         <Route path="/clubcardtest" element={<ClubCardTestPage />} />
         <Route path="/user" element={<UserPage />} />

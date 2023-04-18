@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
+import { Stuffs } from '../../api/stuff/Stuff';
 
 const InterestsValues = {
   interests: ['Academic/Professional', 'Ethic/Cultural', 'Fraternity/Sorority', 'Honorary Society'],
@@ -47,7 +48,7 @@ const ClubFilter = () => {
   const submit = (data, formRef) => {
     const { firstName, lastName, email, phoneNumber } = data;
     const owner = Meteor.user().username;
-    /* Stuffs.collection.insert(
+    Stuffs.collection.insert(
       { firstName, lastName, email, phoneNumber, owner },
       (error) => {
         if (error) {
@@ -57,7 +58,7 @@ const ClubFilter = () => {
           formRef.reset();
         }
       },
-    ); */
+    );
   };
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { Card, Col, Container, Row } from 'react-bootstrap';
+import { AutoForm, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -9,33 +9,26 @@ import { Stuffs } from '../../api/stuff/Stuff';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  firstName: {
+  name: String,
+  quantity: Number,
+  condition: {
     type: String,
-    label: 'First Name',
-  },
-  lastName: {
-    type: String,
-    label: 'Last Name',
-  },
-  email: String,
-  phoneNumber: {
-    type: String,
-    required: false,
-    label: 'Phone Number (optional)',
+    allowedValues: ['excellent', 'good', 'fair', 'poor'],
+    defaultValue: 'good',
   },
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /* Renders the AddStuff page for adding a document. */
-const UserContactInfo = () => {
+const AddStuff = () => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { firstName, lastName, email, phoneNumber } = data;
+    const { name, quantity, condition } = data;
     const owner = Meteor.user().username;
     Stuffs.collection.insert(
-      { firstName, lastName, email, phoneNumber, owner },
+      { name, quantity, condition, owner },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -50,25 +43,25 @@ const UserContactInfo = () => {
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
   return (
-    <Container className="py-3 gray-background">
+    <Container className="py-3">
       <Row className="justify-content-center">
-        <Col xs={3} className="d-flex align-items-center">
-          <img src="images/generic-user.png" width="100%" alt="Your user profile" />
-        </Col>
-        <Col xs={4}>
+        <Col xs={5}>
+          <Col className="text-center"><h2>Add Stuff</h2></Col>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-            <TextField name="firstName" />
-            <TextField name="lastName" />
-            <TextField name="email" />
-            <TextField name="phoneNumber" />
-            <SubmitField value="Update Profile" />
-            <ErrorsField />
+            <Card>
+              <Card.Body>
+                <TextField name="name" />
+                <NumField name="quantity" decimal={null} />
+                <SelectField name="condition" />
+                <SubmitField value="Submit" />
+                <ErrorsField />
+              </Card.Body>
+            </Card>
           </AutoForm>
         </Col>
       </Row>
     </Container>
-
   );
 };
 
-export default UserContactInfo;
+export default AddStuff;

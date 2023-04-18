@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+/* import PropTypes from 'prop-types'; */
 import { Col, Image, Row, Card } from 'react-bootstrap';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const UserClubCard = ({ club }) => (
+const UserClubCard = () => (
   <Card className="h-100">
     <Card.Body>
       <Row>
@@ -11,12 +11,11 @@ const UserClubCard = ({ club }) => (
           <Image src="/images/generic-user.png" width="100" />
         </Col>
         <Col>
-          <Card.Title>{club.name}</Card.Title>
+          <Card.Title>Club Name</Card.Title>
           <Card.Text>
-            {club.description}
-            <br />
-            <br />
-            <a href={`mailto:${club.ownerMail}`}>Contact Club Leadership</a>
+            This is the description of the club, so that the user has more information on which club this is.
+            <p />
+            <a href="#">Contact Club Leadership</a>
           </Card.Text>
         </Col>
       </Row>
@@ -24,6 +23,7 @@ const UserClubCard = ({ club }) => (
   </Card>
 );
 
+/* For eventual use in creating a responsive version.
 // Require a document to be passed to this component.
 UserClubCard.propTypes = {
   club: PropTypes.shape({
@@ -34,5 +34,6 @@ UserClubCard.propTypes = {
     _id: PropTypes.string,
   }).isRequired,
 };
+*/
 
 export default UserClubCard;

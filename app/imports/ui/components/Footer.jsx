@@ -6,7 +6,7 @@ const Footer = () => (
   <footer className="mt-auto py-3 bg-light">
     <Container>
       <Col className="text-center">
-        RIO Connect
+        Department of Information and Computer Sciences
         {' '}
         <br />
         University of Hawaii
@@ -14,8 +14,9 @@ const Footer = () => (
         Honolulu, HI 96822
         {' '}
         <br />
-        <a className="text-white" href="https://rio-connect.github.io/">
-          Project Home Page
+        <a href="http://ics-software-engineering.github.io/meteor-application-template-react">
+          Template Home
+          Page
         </a>
       </Col>
     </Container>

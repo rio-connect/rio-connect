@@ -5,13 +5,19 @@ import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import PropTypes from 'prop-types';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  name: String,
+  firstName: {
+    type: String,
+    label: 'First Name',
+  },
+  lastName: {
+    type: String,
+    label: 'Last Name',
+  },
   email: String,
-  phoneNo: {
+  phoneNumber: {
     type: String,
     required: false,
     label: 'Phone Number (optional)',
@@ -21,7 +27,7 @@ const formSchema = new SimpleSchema({
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /* Renders the AddStuff page for adding a document. */
-const UserContactInfo = ({ profile }) => {
+const UserContactInfo = () => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
@@ -51,25 +57,18 @@ const UserContactInfo = ({ profile }) => {
         </Col>
         <Col xs={4}>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-            <TextField name="name" value={profile.name} />
-            <TextField name="email" value={profile.email} />
-            <TextField name="phoneNo" value={profile.phoneNo} />
+            <TextField name="firstName" />
+            <TextField name="lastName" />
+            <TextField name="email" />
+            <TextField name="phoneNumber" />
             <SubmitField value="Update Profile" />
             <ErrorsField />
           </AutoForm>
         </Col>
       </Row>
     </Container>
-  );
-};
 
-UserContactInfo.propTypes = {
-  profile: PropTypes.shape({
-    email: PropTypes.string,
-    name: PropTypes.string,
-    phoneNo: PropTypes.string,
-    _id: PropTypes.string,
-  }).isRequired,
+  );
 };
 
 export default UserContactInfo;

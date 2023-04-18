@@ -1,8 +1,8 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
-import swal from 'sweetalert';
-import { Meteor } from 'meteor/meteor';
+// import swal from 'sweetalert';
+// import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import PropTypes from 'prop-types';
@@ -24,21 +24,21 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 const UserContactInfo = ({ profile }) => {
 
   // On submit, insert the data.
-  const submit = (data, formRef) => {
-    const { firstName, lastName, email, phoneNumber } = data;
-    const owner = Meteor.user().username;
-    /*
-    Stuffs.collection.insert(
-      { firstName, lastName, email, phoneNumber, owner },
-      (error) => {
-        if (error) {
-          swal('Error', error.message, 'error');
-        } else {
-          swal('Success', 'Item added successfully', 'success');
-          formRef.reset();
-        }
-      },
-    ); */
+  const submit = () => {
+    // const submit = (data, formRef) => {
+    // const { firstName, lastName, email, phoneNumber } = data;
+    // const owner = Meteor.user().username;
+    // Stuffs.collection.insert(
+    //   { firstName, lastName, email, phoneNumber, owner },
+    //   (error) => {
+    //     if (error) {
+    //       swal('Error', error.message, 'error');
+    //     } else {
+    //       swal('Success', 'Item added successfully', 'success');
+    //       formRef.reset();
+    //     }
+    //   },
+    // );
   };
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms

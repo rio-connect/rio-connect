@@ -2,7 +2,7 @@ import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 
 /**
- * The ClubsCollection. It encapsulates state and variable values for stuff.
+ * The ClubsCollection. It encapsulates state and variable values for clubs.
  */
 class ClubsCollection {
   constructor() {
@@ -26,6 +26,7 @@ class ClubsCollection {
     // Define names for publications and subscriptions
     this.userPublicationName = `${this.name}.publication.user`;
     this.adminPublicationName = `${this.name}.publication.admin`;
+    this.publicPublicationName = `${this.name}.publication.public`;
   }
 }
 

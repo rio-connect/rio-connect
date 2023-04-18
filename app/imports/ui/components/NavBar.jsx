@@ -18,7 +18,7 @@ const NavBar = () => {
           <Row className="text-center pb-4">
             <Col>
               <Navbar.Brand as={NavLink} to="/" className="text-white">
-                <img width="400px" src="images/rio-connect-logo-navbar.png" alt="RIO Connect logo." />
+                <img width="400px" src="images/rio-connect-logo-navbar.png" alt="RIO Connect" />
               </Navbar.Brand>
             </Col>
           </Row>
@@ -29,9 +29,6 @@ const NavBar = () => {
                 <Nav className="justify-content-center">
                   <Nav.Item>
                     <Nav.Link className="pe-5 text-white" href="/">HOME</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link className="pe-5 text-white" href="/user">USER PAGE</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
                     <Nav.Link className="pe-5 text-white" href="/browseclubs">BROWSE CLUBS</Nav.Link>
@@ -57,8 +54,8 @@ const NavBar = () => {
                     </NavDropdown>
                   ) : (
                     <NavDropdown id="navbar-current-user" title={currentUser}>
-                      <NavDropdown.Item id="navbar-profile" as={NavLink} to="/profile">
-                        <BoxArrowRight />
+                      <NavDropdown.Item id="navbar-profile" as={NavLink} to="/user">
+                        <PersonFill />
                         {' '}
                         Profile
                       </NavDropdown.Item>

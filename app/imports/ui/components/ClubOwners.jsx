@@ -7,29 +7,29 @@ import UserCard from './UserCard';
 const ClubOwners = () => (
   <Container className="py-3 gray-background">
     <Container className="ps-3 pe-3">
-      <Row className="pb-2">
-        Club Owner(s)
+      <Row className="pb-2 d-grid justify-content-lg-center">
+        Club Owner(s):
       </Row>
       <Row>
-        <ListGroup className="list-group-horizontal">
+        <ListGroup className="list-group-horizontal justify-content-center">
           <UserCard />
           <UserCard />
         </ListGroup>
       </Row>
-      <Row className="pt-2 pb-2">
+      <Row className="pt-2 pb-2 justify-content-center">
         Add Owner
       </Row>
-      <Row>
-        <Form.Select>
+      <Container className="w-25">
+        <Form.Select className="text-center">
           <option>User 1</option>
           <option>User 2</option>
           <option>User 3</option>
           <option>User 4</option>
         </Form.Select>
-      </Row>
-      <Row className="pt-3">
-        <Button>Add</Button>
-      </Row>
+      </Container>
+      <Container className="text-center pt-3 ">
+        <Button size="lg" variant="primary">Add</Button>
+      </Container>
     </Container>
   </Container>
 );

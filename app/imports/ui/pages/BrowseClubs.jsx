@@ -8,6 +8,7 @@ import ClubCard from '../components/ClubCard';
 import { Clubs } from '../../api/club/Club';
 import LoadingSpinner from '../components/LoadingSpinner';
 
+// A comment
 const BrowseClubs = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, clubs } = useTracker(() => {

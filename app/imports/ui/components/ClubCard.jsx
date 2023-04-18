@@ -42,7 +42,7 @@ ClubCard.propTypes = {
     description: PropTypes.string,
     owner: PropTypes.string,
     ownerMail: PropTypes.string,
-    members: PropTypes.string,
+    members: PropTypes.arrayOf(PropTypes.string),
     image: PropTypes.string,
   }).isRequired,
 };

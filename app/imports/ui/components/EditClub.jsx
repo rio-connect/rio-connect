@@ -9,6 +9,7 @@ import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField, HiddenFie
 import { useParams } from 'react-router';
 import LoadingSpinner from './LoadingSpinner';
 import { Clubs } from '../../api/club/Club';
+import { Profiles } from '../../api/profile/Profile';
 
 const bridge = new SimpleSchema2Bridge(Clubs.schema);
 
@@ -17,20 +18,23 @@ const EditClub = () => {
   const { _id } = useParams();
   // console.log('EditStuff', _id);
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const { doc, ready } = useTracker(() => {
+  const { doc1, doc2, ready } = useTracker(() => {
   // Get access to Stuff documents.
-    let subscription = null;
+    let subscription1 = null;
     if (Roles.userIsInRole(Meteor.userId(), 'admin')) {
-      subscription = Meteor.subscribe(Clubs.adminPublicationName);
+      subscription1 = Meteor.subscribe(Clubs.adminPublicationName);
     } else {
-      subscription = Meteor.subscribe(Clubs.userPublicationName);
+      subscription1 = Meteor.subscribe(Clubs.userPublicationName);
     }
+    const subscription2 = Meteor.subscribe(Profiles.adminPublicationName);
     // Determine if the subscription is ready
-    const rdy = subscription.ready();
+    const rdy = subscription1.ready() && subscription2.ready();
     // Get the document
-    const document = Clubs.collection.findOne(_id);
+    const document1 = Clubs.collection.findOne(_id);
+    const document2 = Profiles.Collection.find();
     return {
-      doc: document,
+      doc1: document1,
+      doc2: document2,
       ready: rdy,
     };
   }, [_id]);
@@ -47,7 +51,7 @@ const EditClub = () => {
       <Row className="justify-content-center">
         <Col xs={10}>
           <Col className="text-center"><h2>Edit Contact</h2></Col>
-          <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
+          <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc1}>
             <Card>
               <Card.Body>
                 <Row>

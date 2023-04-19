@@ -23,7 +23,6 @@ const BrowseClubs = () => {
   let selectedInterests = [];
   const { ready } = useTracker(() => {
     const subscription = Meteor.subscribe(Clubs.publicPublicationName);
-    // const clubDoc = Clubs.collection.find({ type: { $in: selectedInterests } }).fetch();
     return {
       ready: subscription.ready(),
     };

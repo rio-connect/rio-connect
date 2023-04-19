@@ -169,7 +169,7 @@ body {
   }
 }
 
-#createClubBtn {
+#createClubBtn, #createClubLink {
   width: 300px;
   border-color: #212529 !important;
 }
@@ -195,6 +195,12 @@ body {
   #browseResultsOuter {
     width: 1400px;
   }
+}
+
+.list-group{
+  min-width: 2000;
+  overflow:scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 /*******************************************************************************/

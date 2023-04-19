@@ -18,7 +18,7 @@ const EditClub = () => {
   // console.log('EditStuff', _id);
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { doc, ready } = useTracker(() => {
-  // Get access to Stuff documents.
+    // Get access to Stuff documents.
     let subscription = null;
     if (Roles.userIsInRole(Meteor.userId(), 'admin')) {
       subscription = Meteor.subscribe(Clubs.adminPublicationName);

@@ -4,7 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, HiddenField, LongTextField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Clubs } from '../../api/club/Club';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
@@ -65,7 +65,7 @@ const AddClubComponent = () => {
                   <TextField name="image" />
                 </Row>
                 <LongTextField name="description" />
-                <LongTextField name="members" />
+                <HiddenField name="members" />
                 <ErrorsField />
                 <Row className="text-center">
                   <SubmitField value="Submit" />

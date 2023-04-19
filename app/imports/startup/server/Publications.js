@@ -5,6 +5,7 @@ import { Profiles } from '../../api/profile/Profile';
 import { Interests } from '../../api/interests/Interests';
 import { ProfilesInterests } from '../../api/profile/ProfileInterests';
 import { ClubInterests } from '../../api/club/ClubInterests';
+import { ProfileClubs } from '../../api/profile/ProfileClubs';
 
 // Define a publication to publish all interests
 Meteor.publish(Interests.userPublicationName, () => Interests.collection.find());
@@ -14,6 +15,9 @@ Meteor.publish(ProfilesInterests.userPublicationName, () => ProfilesInterests.co
 
 // Define a publication to publish Club Interests/type
 Meteor.publish(ClubInterests.userPublicationName, () => ClubInterests.collection.find());
+
+// Define a publication to publish profiles/clubs
+Meteor.publish(ProfileClubs.userPublicationName, () => ProfileClubs.collection.find());
 
 // Public publication.
 // If not logged in, then only publish info about clubs that is publicly available (no members list).

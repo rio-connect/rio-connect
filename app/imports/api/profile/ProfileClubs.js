@@ -7,7 +7,7 @@ import SimpleSchema from 'simpl-schema';
 class ProfileClubsCollection {
   constructor() {
     // The name of this collection.
-    this.name = 'ProfileInterestsCollection';
+    this.name = 'ProfileClubsCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.

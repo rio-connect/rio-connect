@@ -58,7 +58,7 @@ const BrowseClubs = () => {
               </Col>
             </Row>
             <Container id="filterContainer" className="py-3 gray-background">
-              <h3>Filter</h3>
+              <h4>Filter</h4>
               <hr />
               <h5>Your interests:</h5>
               <Container id="selectInterests" className="px-0">
@@ -73,7 +73,7 @@ const BrowseClubs = () => {
                   transform={transform}
                 />
               </Container>
-              <SubmitField className="text-center my-4" value="Apply" />
+              <SubmitField className="text-center my-2" value="Apply" />
             </Container>
           </AutoForm>
         </Container>

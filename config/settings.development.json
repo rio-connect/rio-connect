@@ -38,7 +38,7 @@
       "owner": "John Smith",
       "ownerMail": "john@foo.com",
       "members": ["john@foo.com", "emma@foo.com"],
-      "image": "club1imageurl"
+      "image": "images/generic-club.png"
     },
     { "name": "Club2",
       "type": "Sports/Leisure",
@@ -46,7 +46,47 @@
       "owner": "Kai Kahue",
       "ownerMail": "kai@foo.com",
       "members": ["kai@foo.com", "john@foo.com"],
-      "image": "club2imageurl"
+      "image": "images/generic-club.png"
+    },
+    { "name": "Academy of Creative Media Student Association",
+      "type": "Academic/Professional",
+      "description": "The purpose of our organization is to foster pride, unity and professionalism among students enrolled in the Academy of Creative Media program in UH Manoa.",
+      "owner": "Hwang Hao Marcus Goh",
+      "ownerMail": "gohhhm@hawaii.edu",
+      "members": ["gohhhm@hawaii.edu"],
+      "image": "images/generic-club.png"
+    },
+    { "name": "Accounting Club",
+      "type": "Academic/Professional",
+      "description": "In cooperation with the School of Accountancy, we provide additional perspectives and supplemental information concerning public, private, and governmental accounting. Our main goal is to promote the professional and personal development of our members through socials, community service, professional interactions, workshops, and office tours. We continue to rank high among the largest student organizations within the Shidler College of Business and welcome students from all academic disciplines.",
+      "owner": "Rana Mejes",
+      "ownerMail": "mejesrs@hawaii.edu",
+      "members": ["mejesrs@hawaii.edu"],
+      "image": "images/generic-club.png"
+    },
+    { "name": "Advocates for Public Interest Law",
+      "type": "Academic/Professional",
+      "description": "The purpose of the organization is to support and promote the commitment of the students, alumni of the William S. Richardson School of Law, and the legal community to serve the public interest and to encourage the practice of public interest law. The purpose of the organization shall be accomplished by educating students and the legal community about opportunities in public interest law and providing monetary grants to students and alumni to further justice by serving underrepresented persons addressing issues that affect the public interest. ",
+      "owner": "Lane Mullin",
+      "ownerMail": "lmullin@hawaii.edu",
+      "members": ["lmullin@hawaii.edu"],
+      "image": "images/generic-club.png"
+    },
+    { "name": "AIKIDO at UHM",
+      "type": "Sports/Leisure",
+      "description": "We practice Aikido.",
+      "owner": "Timothy Halliday",
+      "ownerMail": "halliday@hawaii.edu",
+      "members": ["halliday@hawaii.edu"],
+      "image": "images/generic-club.png"
+    },
+    { "name": "AlohaThon Dance Marathon",
+      "type": "Service",
+      "description": "AlohaThon is a nonprofit and part of the Children’s Miracle Network Organization. Children’s Miracle Network supports different Dance Marathons around U.S college campuses in order to raise money for their local Children’s Miracle Network Hospitals. Our local CMN hospital which serves the state of Hawaiʻi and the Pacific region, is Kapiʻolani Medical Center for Women and Children. All 100% of our funds raised are donated directed to Kapiʻolani and last year we raised over $20,000. In the previous years, money raised went towards building their new NICU. This year we are looking to expand our event in order to raise the most money that we can for Kapiʻolani.",
+      "owner": "Kate Rodriguez",
+      "ownerMail": "katerod9@hawaii.edu",
+      "members": ["katerod9@hawaii.edu"],
+      "image": "images/generic-club.png"
     }
   ],
 

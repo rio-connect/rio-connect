@@ -4,19 +4,19 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, HiddenField, LongTextField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, LongTextField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Clubs } from '../../api/club/Club';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-
+const allInterests = ['Academic/Professional', 'Ethic/Cultural', 'Fraternity/Sorority', 'Honorary Society', 'Leisure/Recreational', 'Political', 'Religious/Spiritual', 'Service', 'Sports/Leisure', 'Student Affairs'];
+// const allInterests = _.pluck(interests, 'type');
 const formSchema = new SimpleSchema({
   name: String,
-  type: String,
+  type: { label: '', type: Array, optional: true },
+  'type.$': { type: String, allowedValues: allInterests },
   description: String,
   owner: String,
   ownerMail: String,
-  members: Array,
-  'members.$': String,
   image: String,
 });
 
@@ -39,6 +39,8 @@ const AddClubComponent = () => {
       },
     );
   };
+  const transform = (label) => ` ${label}`;
+
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
   return (
@@ -54,19 +56,39 @@ const AddClubComponent = () => {
                     <TextField name="name" />
                   </Col>
                   <Col>
-                    <TextField
-                      name="type"
-                    />
+                    <TextField name="image" />
                   </Col>
                   <Row>
                     <Col><TextField name="owner" /></Col>
                     <Col><TextField name="ownerMail" /></Col>
                   </Row>
-                  <TextField name="image" />
                 </Row>
-                <LongTextField name="description" />
-                <HiddenField name="members" />
                 <ErrorsField />
+                <Row>
+                  <Col><h6>Club Type</h6>
+                    {/* <SelectField */}
+                    {/*  className="selectField mx-auto" */}
+                    {/*  name="type" */}
+                    {/*  showInlineError */}
+                    {/*  help="" */}
+                    {/*  multiple */}
+                    {/*  checkboxes */}
+                    {/*  inline */}
+                    {/*  transform={transform} */}
+                    {/* /> */}
+                    <SelectField
+                      className="selectField mx-auto"
+                      name="type"
+                      showInlineError
+                      placeholder="Club Type"
+                      multiple
+                      transform={transform}
+                    />
+                  </Col>
+                  <Col>
+                    <LongTextField name="description" />
+                  </Col>
+                </Row>
                 <Row className="text-center">
                   <SubmitField value="Submit" />
                 </Row>

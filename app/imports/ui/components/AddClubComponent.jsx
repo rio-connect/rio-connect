@@ -8,6 +8,7 @@ import { AutoForm, ErrorsField, LongTextField, SelectField, SubmitField, TextFie
 import { Clubs } from '../../api/club/Club';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+// const allInterests = _.pluck(Clubs.collection.find().fetch(), 'type');
 const allInterests = ['Academic/Professional', 'Ethic/Cultural', 'Fraternity/Sorority', 'Honorary Society', 'Leisure/Recreational', 'Political', 'Religious/Spiritual', 'Service', 'Sports/Leisure', 'Student Affairs'];
 // const allInterests = _.pluck(interests, 'type');
 const formSchema = new SimpleSchema({
@@ -47,35 +48,27 @@ const AddClubComponent = () => {
     <Container className="py-3 gray-background">
       <Row className="justify-content-center">
         <Col>
-          <Col className="text-center"><h2>Create a Club</h2></Col>
+          <Col className="text-center">
+            <h2>Create a Club</h2>
+          </Col>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <Card>
               <Card.Body>
                 <Row>
                   <Col>
-                    <TextField name="name" />
+                    <TextField showInlineError name="name" />
                   </Col>
                   <Col>
-                    <TextField name="image" />
+                    <TextField showInlineError name="image" />
                   </Col>
-                  <Row>
-                    <Col><TextField name="owner" /></Col>
-                    <Col><TextField name="ownerMail" /></Col>
-                  </Row>
                 </Row>
-                <ErrorsField />
+                <Row>
+                  <Col><TextField showInlineError name="owner" /></Col>
+                  <Col><TextField showInlineError name="ownerMail" /></Col>
+                </Row>
+
                 <Row>
                   <Col><h6>Club Type</h6>
-                    {/* <SelectField */}
-                    {/*  className="selectField mx-auto" */}
-                    {/*  name="type" */}
-                    {/*  showInlineError */}
-                    {/*  help="" */}
-                    {/*  multiple */}
-                    {/*  checkboxes */}
-                    {/*  inline */}
-                    {/*  transform={transform} */}
-                    {/* /> */}
                     <SelectField
                       className="selectField mx-auto"
                       name="type"
@@ -86,11 +79,14 @@ const AddClubComponent = () => {
                     />
                   </Col>
                   <Col>
-                    <LongTextField name="description" />
+                    <LongTextField showInlineError name="description" />
                   </Col>
                 </Row>
                 <Row className="text-center">
                   <SubmitField value="Submit" />
+                </Row>
+                <Row>
+                  <ErrorsField />
                 </Row>
               </Card.Body>
             </Card>

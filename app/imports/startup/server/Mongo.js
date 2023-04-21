@@ -13,6 +13,12 @@ const addClubs = (club) => {
 
 // Initialize the ClubsCollection if empty.
 if (Clubs.collection.find().count() === 0) {
+  if (Meteor.settings.loadDefaultClubs) {
+    const clubsFileName = 'defaultClubs.json';
+    console.log(`loading data from private/${clubsFileName}`);
+    const jsonData = JSON.parse(Assets.getText(clubsFileName));
+    jsonData.clubs.map(club => addClubs(club));
+  }
   if (Meteor.settings.defaultClubs) {
     console.log('Creating default clubs.');
     Meteor.settings.defaultClubs.forEach(club => addClubs(club));

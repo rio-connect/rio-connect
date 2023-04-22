@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Clubs } from '../../api/club/Club';
 import { Profiles } from '../../api/profile/Profile';
-import { Interests } from '../../api/interests/Interests';
+// import { Interests } from '../../api/interests/Interests';
 
 /* eslint-disable no-console */
 
@@ -12,10 +12,16 @@ const addClubs = (club) => {
 };
 
 // Initialize the ClubsCollection if empty.
+/**
+ * Disable eslint where it gives an error "'Assets' is undefined"
+ * 'Asset' is currently not possible to import as an ES6 module according to the doccumentation
+ * For more info on assets, see https://docs.meteor.com/api/assets.html
+ */
 if (Clubs.collection.find().count() === 0) {
   if (Meteor.settings.loadDefaultClubs) {
     const clubsFileName = 'defaultClubs.json';
     console.log(`loading data from private/${clubsFileName}`);
+    // eslint-disable-next-line no-undef
     const jsonData = JSON.parse(Assets.getText(clubsFileName));
     jsonData.clubs.map(club => addClubs(club));
   }

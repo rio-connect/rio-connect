@@ -1,9 +1,9 @@
 import React from 'react';
-import EditClub from '../components/EditClub';
 import { Container, Row } from 'react-bootstrap';
-import UserContactInfo from '../components/UserContactInfo';
-import UserClubList from '../components/UserClubList';
-import UserEditClub from '../components/UserEditClub';
+import EditClub from '../components/EditClub';
+// import UserContactInfo from '../components/UserContactInfo';
+// import UserClubList from '../components/UserClubList';
+// import UserEditClub from '../components/UserEditClub';
 import ClubOwners from '../components/ClubOwners';
 import ClubMembers from '../components/ClubMembers';
 

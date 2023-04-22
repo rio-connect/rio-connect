@@ -51,13 +51,13 @@ const BrowseClubs = () => {
             <Row className="mx-0 mb-5  pb-5">
               <Col sm={10} md={8} lg={6} className="mx-auto">
                 <InputGroup size="lg">
-                  <Form.Control id="searchBar" type="text" className="rounded-left-1 border-0 fs-6" placeholder="Search clubs..." />
+                  <Form.Control id="searchBar" type="text" className="rounded-left-1 border-0 fs-6" placeholder="Search clubs by name..." />
                   <Button id="searchBtn" variant="light" type="button" className="search border-0"><Search /></Button>
                 </InputGroup>
               </Col>
             </Row>
             <Container id="filterContainer" className="py-3 gray-background">
-              <h3>Filter</h3>
+              <h4>Filter</h4>
               <hr />
               <h5>Your interests:</h5>
               <Container id="selectInterests" className="px-0">
@@ -72,7 +72,7 @@ const BrowseClubs = () => {
                   transform={transform}
                 />
               </Container>
-              <SubmitField className="text-center my-4" value="Apply" />
+              <SubmitField className="text-center my-2" value="Apply" />
             </Container>
           </AutoForm>
         </Container>

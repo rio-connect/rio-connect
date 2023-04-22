@@ -53,7 +53,7 @@
       "owner": "John Smith",
       "ownerMail": "john@foo.com",
       "members": ["john@foo.com", "emma@foo.com"],
-      "image": "club1imageurl"
+      "image": "images/generic-club.png"
     },
     { "name": "Club2",
       "type": "Sports/Leisure",
@@ -61,7 +61,7 @@
       "owner": "Kai Kahue",
       "ownerMail": "kai@foo.com",
       "members": ["kai@foo.com", "john@foo.com"],
-      "image": "club2imageurl"
+      "image": "images/generic-club.png"
     }
   ]
 

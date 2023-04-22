@@ -63,6 +63,7 @@
       "members": ["kai@foo.com", "john@foo.com"],
       "image": "images/generic-club.png"
     }
-  ]
+  ],
 
+  "loadDefaultClubs" : true
 }

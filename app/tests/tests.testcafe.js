@@ -6,9 +6,10 @@ import { navBar } from './navbar.component';
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
-const regularUsercredentials = { username: 'emma@foo.com', password: 'changeme' };
+const regularUserCredentials = { username: 'emma@foo.com', password: 'changeme' };
 const clubOwnerCredentials = { username: 'john@foo.com', password: 'changeme' };
 const adminCredentials = { username: 'admin@foo.com', password: 'changeme' };
+const credentialsArray = [regularUserCredentials, clubOwnerCredentials, adminCredentials];
 
 fixture('rio-connect localhost test with default db')
   .page('http://localhost:3000');

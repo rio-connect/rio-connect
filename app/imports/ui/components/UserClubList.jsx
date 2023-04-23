@@ -13,7 +13,7 @@ const UserClubList = ({ clubs }) => (
       </ListGroup>
     </Row>
     <Row className="ps-3 pe-3 pt-3">
-      <a href="browseclubs" className="text-center gap-2 text-decoration-none text-white">
+      <a href="/browseclubs" className="text-center gap-2 text-decoration-none text-white">
         <Button variant="primary" size="lg">Browse Clubs</Button>
       </a>
     </Row>

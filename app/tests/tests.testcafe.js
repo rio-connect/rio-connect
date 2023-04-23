@@ -27,31 +27,14 @@ test('Test that signin and signout work', async (testController) => {
 });
 
 /** UserPage tests */
-test('Test that UserPage loads for all user types', async (testController) => {
-  /** Test for regular user */
-  await navBar.gotoSignInPage(testController);
-  await signinPage.signin(testController, regularUserCredentials.username, regularUserCredentials.password);
-  await navBar.isLoggedIn(testController, regularUserCredentials.username);
-  await navBar.gotoUserPage(testController);
-  await userPage.isDisplayed(testController);
-  await navBar.logout(testController);
-  await signoutPage.isDisplayed(testController);
-
-  /** Test for club owner */
-  await navBar.gotoSignInPage(testController);
-  await signinPage.signin(testController, clubOwnerCredentials.username, clubOwnerCredentials.password);
-  await navBar.isLoggedIn(testController, clubOwnerCredentials.username);
-  await navBar.gotoUserPage(testController);
-  await userPage.isDisplayed(testController);
-  await navBar.logout(testController);
-  await signoutPage.isDisplayed(testController);
-
-  /** Test for admin */
-  await navBar.gotoSignInPage(testController);
-  await signinPage.signin(testController, adminCredentials.username, adminCredentials.password);
-  await navBar.isLoggedIn(testController, adminCredentials.username);
-  await navBar.gotoUserPage(testController);
-  await userPage.isDisplayed(testController);
-  await navBar.logout(testController);
-  await signoutPage.isDisplayed(testController);
+credentialsArray.forEach(user => {
+  test(`Test that the UserPage loads for ${user.username}`, async (testController) => {
+    await navBar.gotoSignInPage(testController);
+    await signinPage.signin(testController, user.username, user.password);
+    await navBar.isLoggedIn(testController, user.username);
+    await navBar.gotoUserPage(testController);
+    await userPage.isDisplayed(testController);
+    await navBar.logout(testController);
+    await signoutPage.isDisplayed(testController);
+  });
 });

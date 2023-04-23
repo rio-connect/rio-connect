@@ -10,6 +10,7 @@ import { userPage } from './user.page';
 const regularUserCredentials = { username: 'emma@foo.com', password: 'changeme' };
 const clubOwnerCredentials = { username: 'john@foo.com', password: 'changeme' };
 const adminCredentials = { username: 'admin@foo.com', password: 'changeme' };
+const credentialsArray = [regularUserCredentials, clubOwnerCredentials, adminCredentials];
 
 fixture('rio-connect localhost test with default db')
   .page('http://localhost:3000');

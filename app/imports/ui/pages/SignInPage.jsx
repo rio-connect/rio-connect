@@ -10,7 +10,7 @@ import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstra
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
  * Authentication errors modify the component’s state to be displayed
  */
-const SignIn = () => {
+const SignInPage = () => {
   const [error, setError] = useState('');
   const [redirect, setRedirect] = useState(false);
   const schema = new SimpleSchema({
@@ -74,4 +74,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignInPage;

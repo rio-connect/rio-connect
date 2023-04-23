@@ -18,7 +18,7 @@ const formSchema = new SimpleSchema({
   'interests.$': { type: String, allowedValues: allInterests },
 });
 
-const BrowseClubs = () => {
+const BrowseClubsPage = () => {
   const [interests, setInterests] = useStickyState('interests', allInterests);
   let selectedInterests = [];
   const { ready } = useTracker(() => {
@@ -78,7 +78,7 @@ const BrowseClubs = () => {
         </Container>
       </Container>
       <Container className="mt-4 py-2 px-0">
-        <a id="createClubLink" href="addclub" className="d-grid rounded-pill text-decoration-none mx-auto">
+        <a id="createClubLink" href="AddClubPage" className="d-grid rounded-pill text-decoration-none mx-auto">
           <Button id="createClubBtn" className="border border-3 rounded-pill" variant="outline-dark" size="lg"><h4 className="pt-3"><PlusLg className="h1" />&nbsp;&nbsp;Create a Club!</h4></Button>
         </a>
         <h4 id="numClubs" className="mt-4 ms-0">{clubsCount} club(s) found:</h4>
@@ -98,4 +98,4 @@ const BrowseClubs = () => {
   ) : <LoadingSpinner />);
 };
 
-export default BrowseClubs;
+export default BrowseClubsPage;

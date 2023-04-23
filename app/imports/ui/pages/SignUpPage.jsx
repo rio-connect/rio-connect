@@ -8,9 +8,9 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
 
 /**
- * SignUp component is similar to signin component, but we create a new user instead.
+ * SignUpPage component is similar to signin component, but we create a new user instead.
  */
-const SignUp = ({ location }) => {
+const SignUpPage = ({ location }) => {
   const [error, setError] = useState('');
   const [redirectToReferer, setRedirectToRef] = useState(false);
 
@@ -20,7 +20,7 @@ const SignUp = ({ location }) => {
   });
   const bridge = new SimpleSchema2Bridge(schema);
 
-  /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
+  /* Handle SignUpPage submission. Create user account and a profile entry, then redirect to the home page. */
   const submit = (doc) => {
     const { email, password } = doc;
     Accounts.createUser({ email, username: email, password }, (err) => {
@@ -76,14 +76,14 @@ const SignUp = ({ location }) => {
 };
 
 /* Ensure that the React Router location object is available in case we need to redirect. */
-SignUp.propTypes = {
+SignUpPage.propTypes = {
   location: PropTypes.shape({
     state: PropTypes.string,
   }),
 };
 
-SignUp.defaultProps = {
+SignUpPage.defaultProps = {
   location: { state: '' },
 };
 
-export default SignUp;
+export default SignUpPage;

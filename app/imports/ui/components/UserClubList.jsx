@@ -6,7 +6,7 @@ import UserClubCard from './UserClubCard';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const UserClubList = ({ clubs }) => (
-  <Container className="py-3 gray-background">
+  <Container id="user-club-list" className="py-3 gray-background">
     <Row className="justify-content-center">
       <ListGroup className="ps-3 pe-3">
         {clubs.map((club) => <UserClubCard key={club._id} club={club} />)}

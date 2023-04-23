@@ -66,3 +66,18 @@ credentialsArray.forEach(user => {
     await signoutPage.isDisplayed(testController);
   });
 });
+
+credentialsArray.forEach(user => {
+  test(`Test that the UserPage displays correct information for ${user.username}`, async (testController) => {
+    await navBar.gotoSignInPage(testController);
+    await signinPage.signin(testController, user.username, user.password);
+    await navBar.isLoggedIn(testController, user.username);
+    await navBar.gotoUserPage(testController);
+    await userPage.isDisplayed(testController);
+    await userPage.correctProfileInformation(testController, user);
+    await userPage.correctClubMembershipInformation(testController, user);
+    await userPage.correctClubEditingInformation(testController, user);
+    await navBar.logout(testController);
+    await signoutPage.isDisplayed(testController);
+  });
+});

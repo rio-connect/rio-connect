@@ -36,16 +36,16 @@ const UserContactInfo = ({ profile }) => {
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   return (
-    <Container className="py-3 gray-background">
+    <Container id="user-contact-info" className="py-3 gray-background">
       <Row className="justify-content-center">
         <Col xs={3} className="d-flex align-items-center">
           <img src="images/generic-user.png" width="100%" alt="Your user profile" />
         </Col>
         <Col xs={4}>
           <AutoForm schema={bridge} onSubmit={data => submit(data)} model={profile}>
-            <TextField name="name" />
-            <TextField name="email" />
-            <TextField name="phoneNo" />
+            <TextField name="name" id="user-name" />
+            <TextField name="email" id="user-email" />
+            <TextField name="phoneNo" id="user-phone" />
             <SubmitField value="Update Profile" />
             <ErrorsField />
           </AutoForm>

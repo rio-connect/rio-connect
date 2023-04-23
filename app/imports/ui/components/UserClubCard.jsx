@@ -4,14 +4,14 @@ import { Col, Image, Row, Card } from 'react-bootstrap';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const UserClubCard = ({ club }) => (
-  <Card className="h-100">
+  <Card id="user-club-card" className="h-100">
     <Card.Body>
       <Row>
         <Col xs="auto">
           <Image src="/images/generic-club.png" width="100" />
         </Col>
         <Col>
-          <Card.Title>{club.name}</Card.Title>
+          <Card.Title id="user-club-card-name">{club.name}</Card.Title>
           <Card.Text>
             {club.description}
             <br />

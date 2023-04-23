@@ -40,7 +40,7 @@ const UserPage = () => {
   const canEdit = isAdmin || (editableClubs && editableClubs.length > 0);
 
   return (ready ? (
-    <Container>
+    <Container id="user-page">
       <Row className="profile-heading justify-content-center pt-4 pb-2">
         User Profile
       </Row>

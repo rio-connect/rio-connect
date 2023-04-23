@@ -7,7 +7,7 @@ import { userPage } from './user.page';
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
-const regularUsercredentials = { username: 'emma@foo.com', password: 'changeme' };
+const regularUserCredentials = { username: 'emma@foo.com', password: 'changeme' };
 const clubOwnerCredentials = { username: 'john@foo.com', password: 'changeme' };
 const adminCredentials = { username: 'admin@foo.com', password: 'changeme' };
 
@@ -30,8 +30,8 @@ test('Test that signin and signout work', async (testController) => {
 test('Test that UserPage loads for all user types', async (testController) => {
   /** Test for regular user */
   await navBar.gotoSignInPage(testController);
-  await signinPage.signin(testController, regularUsercredentials.username, regularUsercredentials.password);
-  await navBar.isLoggedIn(testController, regularUsercredentials.username);
+  await signinPage.signin(testController, regularUserCredentials.username, regularUserCredentials.password);
+  await navBar.isLoggedIn(testController, regularUserCredentials.username);
   await navBar.gotoUserPage(testController);
   await userPage.isDisplayed(testController);
   await navBar.logout(testController);

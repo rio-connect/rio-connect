@@ -4,7 +4,7 @@ import { Container, Button } from 'react-bootstrap';
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
 
-  <Container fluid className="px-0">
+  <Container id="landing-page" fluid className="px-0">
     <Container fluid className="white-color-block">
       <Container className="pt-5 px-5">
         <h1 className="text-center pb-5">Welcome to Rio-Connect!</h1>

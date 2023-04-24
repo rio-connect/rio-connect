@@ -51,24 +51,25 @@ const AddClubComponent = () => {
               <Card.Body>
                 <Row>
                   <Col>
-                    <TextField name="name" />
+                    <TextField id="add-form-name" name="name" />
                   </Col>
                   <Col>
                     <TextField
                       name="type"
+                      id="add-form-type"
                     />
                   </Col>
                   <Row>
-                    <Col><TextField name="owner" /></Col>
-                    <Col><TextField name="ownerMail" /></Col>
+                    <Col><TextField id="add-form-owner" name="owner" /></Col>
+                    <Col><TextField id="add-form-mail" name="ownerMail" /></Col>
                   </Row>
-                  <TextField name="image" />
+                  <TextField id="add-form-image" name="image" />
                 </Row>
-                <LongTextField name="description" />
+                <LongTextField id="add-form-description" name="description" />
                 <HiddenField name="members" />
                 <ErrorsField />
                 <Row className="text-center">
-                  <SubmitField value="Submit" />
+                  <SubmitField id="add-form-submit" value="Submit" />
                 </Row>
               </Card.Body>
             </Card>

@@ -36,7 +36,7 @@ const ClubCard = ({ club }) => (
       </Row>
       {(Meteor.userId() && (Roles.userIsInRole(Meteor.userId(), 'admin'))) || (Meteor.userId() && Meteor.user().username === club.ownerMail) ? (
         <Row className="px-4">
-          <Link to={`/edit/${club._id}`}>Edit club</Link>
+          <Link id="edit-club-link" to={`/edit/${club._id}`}>Edit club</Link>
         </Row>
       ) : ''}
     </Card>

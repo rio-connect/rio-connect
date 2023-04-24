@@ -2,6 +2,9 @@ import { landingPage } from './landing.page';
 import { signinPage } from './signin.page';
 import { signoutPage } from './signout.page';
 import { navBar } from './navbar.component';
+import { browsePage } from './browse.page';
+import { addPage } from './add.page';
+import { editPage } from './edit.page';
 
 /* global fixture:false, test:false */
 
@@ -51,4 +54,18 @@ test('Test that signin and signout work', async (testController) => {
   await navBar.isLoggedIn(testController, clubOwner.username);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
+});
+
+test('Test that add and edit clubs work', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, clubOwner.username, clubOwner.password);
+  await navBar.isLoggedIn(testController, clubOwner.username);
+  await navBar.gotoAddClubsPage(testController);
+  await addPage.add(testController);
+  await navBar.gotoBrowseClubsPage(testController);
+  await browsePage.isAdded(testController, 'Club1');
+  await browsePage.edit(testController);
+  await editPage.edit(testController);
+  await navBar.gotoBrowseClubsPage(testController);
+  await browsePage.isAdded(testController, 'Club3');
 });

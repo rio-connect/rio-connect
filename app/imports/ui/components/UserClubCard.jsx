@@ -10,7 +10,7 @@ const UserClubCard = ({ club }) => (
         <Col xs="auto">
           <Image src="/images/generic-club.png" width="100" />
         </Col>
-        <Col>
+        <Col id="club-card-name">
           <Card.Title>{club.name}</Card.Title>
           <Card.Text>
             {club.description}

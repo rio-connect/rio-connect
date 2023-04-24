@@ -77,28 +77,28 @@ const AddClubComponent = () => {
               <Card.Body>
                 <Row>
                   <Col>
-                    <TextField showInlineError name="name" />
+                    <TextField id="add-form-name" showInlineError name="name" />
                   </Col>
                   <Col>
-                    <TextField showInlineError name="image" />
+                    <TextField id="add-form-image" showInlineError name="image" />
                   </Col>
                 </Row>
                 <Row>
-                  <Col><TextField showInlineError name="owner" /></Col>
-                  <Col><TextField showInlineError name="ownerMail" /></Col>
+                  <Col><TextField showInlineError id="add-form-owner" name="owner" /></Col>
+                  <Col><TextField showInlineError id="add-form-mail" name="ownerMail" /></Col>
                 </Row>
                 <Row>
                   <Col>
                     <SelectField
+                      id="add-form-type"
                       name="type"
                       showInlineError
-                      checkboxes
                       placeholder="Club Type"
                       transform={transform}
                     />
                   </Col>
                   <Col>
-                    <LongTextField showInlineError name="description" />
+                    <LongTextField id="add-form-description" showInlineError name="description" />
                   </Col>
                 </Row>
                 <Row className="text-center">

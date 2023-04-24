@@ -7,8 +7,7 @@ class AddPage {
   }
 
   async isDisplayed(testController) {
-    // This is first test to be run. Wait 60 seconds to avoid timeouts with GitHub Actions.
-    await testController.wait(6000).expect(this.pageSelector.exists).ok();
+    await testController.expect(this.pageSelector.exists).ok();
   }
 
   async add(testController) {

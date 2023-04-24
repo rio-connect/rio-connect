@@ -59,7 +59,11 @@ class NavBar {
   }
 
   async gotoBrowseClubsPage(testController) {
-    await testController.click('#browseclub-page');
+    const visible = await Selector('#basic-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#browse-clubs-nav-link');
   }
 
 }

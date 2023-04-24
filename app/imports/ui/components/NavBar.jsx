@@ -31,7 +31,7 @@ const NavBar = () => {
                     <Nav.Link className="pe-5 text-white" href="/">HOME</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link id="browseclub-page" className="pe-5 text-white" href="/browseclubs">BROWSE CLUBS</Nav.Link>
+                    <Nav.Link id="browse-clubs-nav-link" className="pe-5 text-white" href="/browseclubs">BROWSE CLUBS</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
                     <Nav.Link id="addclub-page" className="pe-5 text-white" href="/addclub">ADD CLUB</Nav.Link>

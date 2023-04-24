@@ -48,12 +48,23 @@ test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
 });
 
-test('Test that signin and signout work', async (testController) => {
-  await navBar.gotoSignInPage(testController);
-  await signinPage.signin(testController, clubOwner.username, clubOwner.password);
-  await navBar.isLoggedIn(testController, clubOwner.username);
-  await navBar.logout(testController);
-  await signoutPage.isDisplayed(testController);
+credentialsArray.forEach((user) => {
+  test('Test that signin and signout work', async (testController) => {
+    await navBar.gotoSignInPage(testController);
+    await signinPage.signin(testController, user.username, user.password);
+    await navBar.isLoggedIn(testController, user.username);
+    await navBar.logout(testController);
+    await signoutPage.isDisplayed(testController);
+  });
+});
+
+test('Test the Browse Clubs page', async (testController) => {
+  // await navBar.ensureLogout(testController);
+  // await navBar.gotoSignInPage(testController);
+  // await signinPage.signin(testController, regularUser.username, regularUser.password);
+  await navBar.gotoBrowseClubsPage(testController);
+  await browsePage.isDisplayed(testController);
+  await browsePage.filter(testController);
 });
 
 test('Test that add and edit clubs work', async (testController) => {

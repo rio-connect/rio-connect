@@ -2,9 +2,9 @@ import React from 'react';
 import { Container, Button } from 'react-bootstrap';
 
 /* A simple static component to render some text for the landing page. */
-const Landing = () => (
+const LandingPage = () => (
 
-  <Container fluid className="px-0">
+  <Container id="landing-page" fluid className="px-0">
     <Container fluid className="white-color-block">
       <Container className="pt-5 px-5">
         <h1 className="text-center pb-5">Welcome to Rio-Connect!</h1>
@@ -24,7 +24,7 @@ const Landing = () => (
         </p>
       </Container>
       <Container fluid id="get-started" className="text-center mt-4 py-5 px-0">
-        <a href="/signup" className=" gap-2 text-decoration-none text-white">
+        <a href="/SignUpPage.jsx" className=" gap-2 text-decoration-none text-white">
           <Button variant="primary" size="lg">Get Started</Button>
         </a>
       </Container>
@@ -45,7 +45,7 @@ const Landing = () => (
           Click the button below to start browsing now!
         </p>
         <Container id="get-started" className="text-center mt-4 py-5 px-0">
-          <a href="browseclubs" className="gap-2 text-decoration-none text-white">
+          <a href="BrowseClubsPage" className="gap-2 text-decoration-none text-white">
             <Button variant="primary" size="lg">Browse Clubs</Button>
           </a>
         </Container>
@@ -72,20 +72,14 @@ const Landing = () => (
           Click the button below to create a club now!
         </p>
         <Container id="get-started" className="text-center mt-4 py-5 px-0">
-          <a href="/addclub" className="gap-2 text-decoration-none text-white">
+          <a href="/AddClubPage.jsx" className="gap-2 text-decoration-none text-white">
             <Button variant="primary" size="lg">Create a Club</Button>
           </a>
         </Container>
       </Container>
     </Container>
 
-    <Container fluid className="white-color-block">
-      <Container className="pt-5 px-5">
-        <h1 className="text-center pb-5">Testimonials</h1>
-      </Container>
-    </Container>
-
   </Container>
 );
 
-export default Landing;
+export default LandingPage;

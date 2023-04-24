@@ -1,9 +1,9 @@
-name: ci-meteor-application-template-react
+name: ci-rio-connect
 
 on:
   push:
     branches:
-      - main
+      - master
 
 defaults:
   run:
@@ -38,4 +38,4 @@ jobs:
         run: |
           meteor npm install
           meteor npm run lint
-#          meteor npm run testcafe-ci
+          meteor npm run testcafe-ci

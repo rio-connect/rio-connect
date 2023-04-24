@@ -18,7 +18,7 @@ const NavBar = () => {
           <Row className="text-center pb-4">
             <Col>
               <Navbar.Brand as={NavLink} to="/" className="text-white">
-                <img width="400px" src="images/rio-connect-logo-navbar.png" alt="RIO Connect logo." />
+                <img width="400px" src="images/rio-connect-logo-navbar.png" alt="RIO Connect" />
               </Navbar.Brand>
             </Col>
           </Row>
@@ -31,13 +31,10 @@ const NavBar = () => {
                     <Nav.Link className="pe-5 text-white" href="/">HOME</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link className="pe-5 text-white" href="/browseclubs">BROWSE CLUBS</Nav.Link>
+                    <Nav.Link id="browse-clubs-nav-link" className="pe-5 text-white" href="/browseclubs">BROWSE CLUBS</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link className="pe-5 text-white" href="/addclub">ADD CLUB</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link className="pe-5 text-white" href="/editclub">EDIT CLUB</Nav.Link>
+                    <Nav.Link id="addclub-page" className="pe-5 text-white" href="/addclub">ADD CLUB</Nav.Link>
                   </Nav.Item>
                   {currentUser === '' ? (
                     <NavDropdown id="login-dropdown" title="LOGIN">

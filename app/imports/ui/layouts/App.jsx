@@ -5,19 +5,19 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Footer from '../components/Footer';
-import Landing from '../pages/Landing';
-import NotFound from '../pages/NotFound';
-import SignUp from '../pages/SignUp';
-import SignOut from '../pages/SignOut';
+import LandingPage from '../pages/LandingPage';
+import NotFoundPage from '../pages/NotFoundPage';
+import SignUpPage from '../pages/SignUpPage';
+import SignOutPage from '../pages/SignOutPage';
 import NavBar from '../components/NavBar';
-import SignIn from '../pages/SignIn';
-import NotAuthorized from '../pages/NotAuthorized';
+import SignInPage from '../pages/SignInPage';
+import NotAuthorizedPage from '../pages/NotAuthorizedPage';
 import LoadingSpinner from '../components/LoadingSpinner';
-import AddClub from '../pages/AddClub';
+import AddClubPage from '../pages/AddClubPage';
 import ClubCardTestPage from '../pages/ClubCardTestPage';
 import UserPage from '../pages/UserPage';
 import EditClubPage from '../pages/EditClubPage';
-import BrowseClubs from '../pages/BrowseClubs';
+import BrowseClubsPage from '../pages/BrowseClubsPage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -33,18 +33,18 @@ const App = () => (
     <div className="d-flex flex-column min-vh-100">
       <NavBar />
       <Routes>
-        <Route exact path="/" element={<Landing />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/signout" element={<SignOut />} />
-        <Route path="/addclub" element={<AddClub />} />
+        <Route exact path="/" element={<LandingPage />} />
+        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/signout" element={<SignOutPage />} />
+        <Route path="/addclub" element={<AddClubPage />} />
         <Route path="/edit/:_id" element={<ProtectedRoute><EditClubPage /></ProtectedRoute>} />
-        <Route path="/browseclubs" element={<BrowseClubs />} />
+        <Route path="/browseclubs" element={<BrowseClubsPage />} />
         <Route path="/clubcardtest" element={<ClubCardTestPage />} />
         <Route path="/user" element={<UserPage />} />
-        <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
-        <Route path="/notauthorized" element={<NotAuthorized />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/home" element={<ProtectedRoute><LandingPage /></ProtectedRoute>} />
+        <Route path="/notauthorized" element={<NotAuthorizedPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </div>
@@ -84,7 +84,7 @@ ProtectedRoute.propTypes = {
 };
 
 ProtectedRoute.defaultProps = {
-  children: <Landing />,
+  children: <LandingPage />,
 };
 
 // Require a component and location to be passed to each AdminProtectedRoute.
@@ -95,7 +95,7 @@ AdminProtectedRoute.propTypes = {
 
 AdminProtectedRoute.defaultProps = {
   ready: false,
-  children: <Landing />,
+  children: <LandingPage />,
 };
 
 export default App;

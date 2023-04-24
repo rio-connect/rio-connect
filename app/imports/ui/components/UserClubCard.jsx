@@ -8,9 +8,9 @@ const UserClubCard = ({ club }) => (
     <Card.Body>
       <Row>
         <Col xs="auto">
-          <Image src="/images/generic-user.png" width="100" />
+          <Image src="/images/generic-club.png" width="100" />
         </Col>
-        <Col>
+        <Col id="club-card-name">
           <Card.Title>{club.name}</Card.Title>
           <Card.Text>
             {club.description}

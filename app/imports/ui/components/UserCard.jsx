@@ -9,7 +9,7 @@ const UserCard = () => (
       <p />
       <span className="user-name-heading">Firstname Lastname</span>
       <p />
-      <a href="#" className="remove-link text-center">Remove member</a>
+      <a href="*" className="remove-link text-center">Remove member</a>
     </Container>
   </Card>
 );

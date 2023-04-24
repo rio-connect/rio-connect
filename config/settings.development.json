@@ -5,27 +5,42 @@
   },
 
   "defaultAccounts": [
-    { "email": "admin@foo.com",
+    {
+      "email": "admin@foo.com",
       "password": "changeme",
-      "role": "admin",
+      "role": "admin"
+    },
+    {
+      "email": "john@foo.com",
+      "password": "changeme",
+      "role": "user"
+    },
+    {
+      "email": "kai@foo.com",
+      "password": "changeme",
+      "role": "user"
+    },
+    {
+      "email": "emma@foo.com",
+      "password": "changeme",
+      "role": "user"
+    }
+  ],
+
+  "defaultProfiles": [
+    { "email": "admin@foo.com",
       "name": "Admin",
       "phoneNo": "(808) 555-5555"
     },
     { "email": "john@foo.com",
-      "password": "changeme",
-      "role": "user",
       "name": "John Smith",
       "phoneNo": "(808) 555-5555"
     },
     { "email": "kai@foo.com",
-      "password": "changeme",
-      "role": "user",
       "name": "Kai Kahue",
       "phoneNo": "(808) 123-4567"
     },
     { "email": "emma@foo.com",
-      "password": "changeme",
-      "role": "user",
       "name": "Emma Lee",
       "phoneNo": "(808) 123-4567"
     }
@@ -48,12 +63,6 @@
       "members": ["kai@foo.com", "john@foo.com"],
       "image": "club2imageurl"
     }
-  ],
-
-  "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
   ]
+
 }

@@ -169,7 +169,7 @@ body {
   }
 }
 
-#createClubBtn, #createClubLink {
+#createClubBtn {
   width: 300px;
   border-color: #212529 !important;
 }

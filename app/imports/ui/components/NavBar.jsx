@@ -18,7 +18,7 @@ const NavBar = () => {
           <Row className="text-center pb-4">
             <Col>
               <Navbar.Brand as={NavLink} to="/" className="text-white">
-                <img width="400px" src="images/rio-connect-logo-navbar.png" alt="RIO Connect" />
+                <img width="400px" src="images/rio-connect-logo-navbar.png" alt="RIO Connect logo." />
               </Navbar.Brand>
             </Col>
           </Row>

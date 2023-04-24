@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Clubs } from '../../api/club/Club';
 import { Profiles } from '../../api/profile/Profile';
-import { Interests } from '../../api/interests/Interests';
 
 /* eslint-disable no-console */
 

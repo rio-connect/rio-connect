@@ -79,6 +79,12 @@ const Landing = () => (
       </Container>
     </Container>
 
+    <Container fluid className="white-color-block">
+      <Container className="pt-5 px-5">
+        <h1 className="text-center pb-5">Testimonials</h1>
+      </Container>
+    </Container>
+
   </Container>
 );
 

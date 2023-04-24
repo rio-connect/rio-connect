@@ -93,6 +93,7 @@ const AddClubComponent = () => {
                       id="add-form-type"
                       name="type"
                       showInlineError
+                      checkboxes
                       placeholder="Club Type"
                       transform={transform}
                     />
@@ -102,7 +103,7 @@ const AddClubComponent = () => {
                   </Col>
                 </Row>
                 <Row className="text-center">
-                  <SubmitField value="Submit" />
+                  <SubmitField id="add-form-submit" value="Submit" />
                 </Row>
                 <Row>
                   <ErrorsField />

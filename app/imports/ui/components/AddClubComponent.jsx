@@ -6,14 +6,13 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
 // import { _ } from 'meteor/underscore';
 import { useTracker } from 'meteor/react-meteor-data';
-import { AutoForm, ErrorsField, LongTextField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, HiddenField, LongTextField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import LoadingSpinner from './LoadingSpinner';
 import { Clubs } from '../../api/club/Club';
 import { ProfileClubs } from '../../api/profile/ProfileClubs';
 import { ProfilesInterests } from '../../api/profile/ProfileInterests';
 import { Profiles } from '../../api/profile/Profile';
 import { Interests } from '../../api/interests/Interests';
-import { addClubMethod } from '../../startup/both/Methods';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 // const allInterests = _.pluck(Clubs.collection.find().fetch(), 'type');
@@ -34,39 +33,41 @@ const makeSchema = () => new SimpleSchema({
   description: String,
   owner: String,
   ownerMail: String,
+  members: { type: Array, label: 'members', optional: true },
+  'members.$': { type: String, optional: true },
   image: String,
 });
 
-// const AddClubComponent = () => {
-//   // On submit, insert the data.
-//   const submit = (data, formRef) => {
-//     const { name, type, description, ownerMail, image, members } = data;
-//     const owner = Meteor.user().username;
-//     Clubs.collection.insert(
-//       { name, type, description, owner, ownerMail, image, members },
-//       (error) => {
-//         if (error) {
-//           swal('Error', error.message, 'error');
-//         } else {
-//           swal('Success', 'Club added successfully', 'success');
-//           formRef.reset();
-//         }
-//       },
-//     );
-//   };
-
 const AddClubComponent = () => {
-
-  /* On submit, insert the data. */
+  // On submit, insert the data.
   const submit = (data, formRef) => {
-    Meteor.call(addClubMethod, data, (error) => {
-      if (error) {
-        swal('Error', error.message, 'error');
-      } else {
-        swal('Success', 'Project added successfully', 'success').then(() => formRef.reset());
-      }
-    });
+    const { name, type, description, ownerMail, image, members } = data;
+    const owner = Meteor.user().username;
+    Clubs.collection.insert(
+      { name, type, description, owner, ownerMail, image },
+      (error) => {
+        if (error) {
+          swal('Error', error.message, 'error');
+        } else {
+          swal('Success', 'Club added successfully', 'success');
+          formRef.reset();
+        }
+      },
+    );
   };
+
+  // const AddClubComponent = () => {
+  //
+  //   /* On submit, insert the data. */
+  //   const submit = (data, formRef) => {
+  //     Meteor.call(addClubMethod, data, (error) => {
+  //       if (error) {
+  //         swal('Error', error.message, 'error');
+  //       } else {
+  //         swal('Success', 'Project added successfully', 'success').then(() => formRef.reset());
+  //       }
+  //     });
+  //   };
 
   const { ready } = useTracker(() => {
     // Ensure that minimongo is populated with all collections prior to running render().
@@ -111,26 +112,30 @@ const AddClubComponent = () => {
                 </Row>
 
                 <Row>
-                  <Col><h6>Club Type</h6>
-                    <SelectField
-                      className="selectField mx-auto"
-                      name="type"
-                      showInlineError
-                      placeholder="Club Type"
-                      multiple
-                      transform={transform}
-                    />
+                  <Col>
+                    <h6>Club Type</h6>
+                    {/* <SelectField */}
+                    {/*  className="selectField mx-auto" */}
+                    {/*  name="type" */}
+                    {/*  showInlineError */}
+                    {/*  placeholder="Club Type" */}
+                    {/*  multiple */}
+                    {/*  transform={transform} */}
+                    {/* /> */}
+                    <TextField name="type" showInlineError />
                   </Col>
                   <Col>
                     <LongTextField showInlineError name="description" />
                   </Col>
                 </Row>
                 <Row className="text-center">
+
                   <SubmitField value="Submit" />
                 </Row>
                 <Row>
                   <ErrorsField />
                 </Row>
+                <TextField name="members" />
               </Card.Body>
             </Card>
           </AutoForm>

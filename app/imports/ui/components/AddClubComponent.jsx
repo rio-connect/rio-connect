@@ -77,19 +77,20 @@ const AddClubComponent = () => {
               <Card.Body>
                 <Row>
                   <Col>
-                    <TextField showInlineError name="name" />
+                    <TextField id="add-club-name" showInlineError name="name" />
                   </Col>
                   <Col>
-                    <TextField showInlineError name="image" />
+                    <TextField id="add-club-image" showInlineError name="image" />
                   </Col>
                 </Row>
                 <Row>
-                  <Col><TextField showInlineError name="owner" /></Col>
-                  <Col><TextField showInlineError name="ownerMail" /></Col>
+                  <Col><TextField id="add-club-owner" showInlineError name="owner" /></Col>
+                  <Col><TextField id="add-club-ownerMail" showInlineError name="ownerMail" /></Col>
                 </Row>
                 <Row>
                   <Col>
                     <SelectField
+                      id="add-club-type"
                       name="type"
                       showInlineError
                       checkboxes
@@ -98,7 +99,7 @@ const AddClubComponent = () => {
                     />
                   </Col>
                   <Col>
-                    <LongTextField showInlineError name="description" />
+                    <LongTextField id="add-club-description" showInlineError name="description" />
                   </Col>
                 </Row>
                 <Row className="text-center">

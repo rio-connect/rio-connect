@@ -51,16 +51,16 @@ const EditClub = () => {
             <Card>
               <Card.Body>
                 <Row>
-                  <Col><TextField name="name" /></Col>
-                  <Col><TextField name="image" /></Col>
+                  <Col><TextField id="edit-form-name" name="name" /></Col>
+                  <Col><TextField id="edit-form-image" name="image" /></Col>
                 </Row>
                 <Row>
-                  <Col><TextField name="owner" /></Col>
-                  <Col><TextField name="ownerMail" /></Col>
+                  <Col><TextField id="edit-form-owner" name="owner" /></Col>
+                  <Col><TextField id="edit-form-mail" name="ownerMail" /></Col>
                 </Row>
-                <LongTextField name="description" />
-                <Row><TextField name="type" /></Row>
-                <SubmitField value="Submit" />
+                <LongTextField id="edit-form-description" name="description" />
+                <Row><TextField id="edit-form-type" name="type" /></Row>
+                <SubmitField id="edit-form-submit" value="Submit" />
                 <ErrorsField />
                 <HiddenField name="members" />
               </Card.Body>

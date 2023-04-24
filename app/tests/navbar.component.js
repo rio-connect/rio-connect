@@ -61,6 +61,20 @@ class NavBar {
       await testController.click('#navbar-profile');
     }
   }
+
+  /** Navigate to addClubPage */
+  async gotoAddClubsPage(testController) {
+    await testController.click('#addclub-page');
+  }
+
+  async gotoBrowseClubsPage(testController) {
+    const visible = await Selector('#basic-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#browse-clubs-nav-link');
+  }
+
 }
 
 export const navBar = new NavBar();

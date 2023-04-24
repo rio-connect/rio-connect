@@ -77,6 +77,7 @@ const AddClubComponent = () => {
               <Card.Body>
                 <Row>
                   <Col>
+
                     <TextField id="add-form-name" showInlineError name="name" />
                   </Col>
                   <Col>

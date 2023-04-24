@@ -6,7 +6,7 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
 // import { _ } from 'meteor/underscore';
 import { useTracker } from 'meteor/react-meteor-data';
-import { AutoForm, ErrorsField, HiddenField, LongTextField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, LongTextField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import LoadingSpinner from './LoadingSpinner';
 import { Clubs } from '../../api/club/Club';
 import { ProfileClubs } from '../../api/profile/ProfileClubs';
@@ -28,8 +28,9 @@ import { Interests } from '../../api/interests/Interests';
 // });
 const makeSchema = () => new SimpleSchema({
   name: String,
-  type: { label: 'Types', type: Array, optional: true },
-  'type.$': { type: String, allowedValues: ['Academic/Professional', 'Ethic/Cultural', 'Fraternity/Sorority', 'Honorary Society', 'Leisure/Recreational', 'Political', 'Religious/Spiritual', 'Service', 'Sports/Leisure', 'Student Affairs'] },
+  type: { label: 'Club Type', type: String, optional: true,
+    allowedValues: ['Academic/Professional', 'Ethic/Cultural', 'Fraternity/Sorority', 'Honorary Society', 'Leisure/Recreational', 'Political', 'Religious/Spiritual', 'Service', 'Sports/Leisure', 'Student Affairs'],
+  },
   description: String,
   owner: String,
   ownerMail: String,
@@ -41,10 +42,11 @@ const makeSchema = () => new SimpleSchema({
 const AddClubComponent = () => {
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { name, type, description, ownerMail, image, members } = data;
+    const { name, type, description, ownerMail, image } = data;
     const owner = Meteor.user().username;
+    const members = Meteor.user().username;
     Clubs.collection.insert(
-      { name, type, description, owner, ownerMail, image },
+      { name, type: type, description, owner, ownerMail, image, members: members },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -110,32 +112,26 @@ const AddClubComponent = () => {
                   <Col><TextField showInlineError name="owner" /></Col>
                   <Col><TextField showInlineError name="ownerMail" /></Col>
                 </Row>
-
                 <Row>
                   <Col>
-                    <h6>Club Type</h6>
-                    {/* <SelectField */}
-                    {/*  className="selectField mx-auto" */}
-                    {/*  name="type" */}
-                    {/*  showInlineError */}
-                    {/*  placeholder="Club Type" */}
-                    {/*  multiple */}
-                    {/*  transform={transform} */}
-                    {/* /> */}
-                    <TextField name="type" showInlineError />
+                    <SelectField
+                      name="type"
+                      showInlineError
+                      checkboxes
+                      placeholder="Club Type"
+                      transform={transform}
+                    />
                   </Col>
                   <Col>
                     <LongTextField showInlineError name="description" />
                   </Col>
                 </Row>
                 <Row className="text-center">
-
                   <SubmitField value="Submit" />
                 </Row>
                 <Row>
                   <ErrorsField />
                 </Row>
-                <TextField name="members" />
               </Card.Body>
             </Card>
           </AutoForm>

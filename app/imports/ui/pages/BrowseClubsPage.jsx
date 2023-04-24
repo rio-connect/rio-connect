@@ -43,7 +43,7 @@ const BrowseClubsPage = () => {
   const clubsCount = Clubs.collection.find({ type: { $in: interests } }).count();
   const transform = (label) => ` ${label}`;
   return (ready ? (
-    <Container fluid className="mx-auto px-0 ">
+    <Container id="browse-clubs-page" fluid className="mx-auto px-0 ">
       <Container fluid id="browseSection">
         <h1 className="text-center py-5">Find your club. Get connected.</h1>
         <Container>
@@ -72,7 +72,7 @@ const BrowseClubsPage = () => {
                   transform={transform}
                 />
               </Container>
-              <SubmitField className="text-center my-2" value="Apply" />
+              <SubmitField id="selectInterestsApply" className="text-center my-2" value="Apply" />
             </Container>
           </AutoForm>
         </Container>

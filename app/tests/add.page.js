@@ -23,6 +23,7 @@ class AddPage {
     await testController.click(typeSelector);
     // submit the form
     await testController.click('#add-form-submit');
+    await testController.click(Selector('.swal-button--confirm'));
   }
 }
 

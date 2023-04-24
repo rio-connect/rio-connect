@@ -12,13 +12,18 @@ class AddPage {
 
   async add(testController) {
     await this.isDisplayed(testController);
-    await testController.typeText('#add-form-name', 'Club3');
-    await testController.typeText('#add-form-type', 'Game');
+    // type in the text fields
+    await testController.typeText('#add-form-name', 'Test Club');
     await testController.typeText('#add-form-owner', 'John Smith');
-    await testController.typeText('#add-form-mail', 'john@foo.com');
     await testController.typeText('#add-form-image', 'images/generic-club.png');
+    await testController.typeText('#add-form-mail', 'john@foo.com');
     await testController.typeText('#add-form-description', 'Test');
+    // check a club type
+    const typeSelector = Selector(Selector('label').withText('Political'));
+    await testController.click(typeSelector);
+    // submit the form
     await testController.click('#add-form-submit');
+    await testController.click(Selector('.swal-button--confirm'));
   }
 }
 

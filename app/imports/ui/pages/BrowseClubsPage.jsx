@@ -4,8 +4,8 @@ import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, SelectField, SubmitField } from 'uniforms-bootstrap5';
-import { Container, Button, Row, Col, InputGroup, Form } from 'react-bootstrap';
-import { PlusLg, Search } from 'react-bootstrap-icons';
+import { Container, Button, Row, Col } from 'react-bootstrap';
+import { PlusLg } from 'react-bootstrap-icons';
 import { Clubs } from '../../api/club/Club';
 import ClubCard from '../components/ClubCard';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -48,14 +48,6 @@ const BrowseClubsPage = () => {
         <h1 className="text-center py-5">Find your club. Get connected.</h1>
         <Container>
           <AutoForm className="mt-4 mx-5" schema={bridge} onSubmit={data => submit(data)} model={{ selectedInterests }}>
-            <Row className="mx-0 mb-5  pb-5">
-              <Col sm={10} md={8} lg={6} className="mx-auto">
-                <InputGroup size="lg">
-                  <Form.Control id="searchBar" type="text" className="rounded-left-1 border-0 fs-6" placeholder="Search clubs by name..." />
-                  <Button id="searchBtn" variant="light" type="button" className="search border-0"><Search /></Button>
-                </InputGroup>
-              </Col>
-            </Row>
             <Container id="filterContainer" className="py-3 gray-background">
               <h4>Filter</h4>
               <hr />

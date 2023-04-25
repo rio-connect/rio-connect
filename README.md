@@ -1,3 +1,1 @@
-[![ci-rio-connect](https://github.com/rio-connect/rio-connect/actions/workflows/ci.yml/badge.svg)](https://github.com/rio-connect/rio-connect/actions/workflows/ci.yml)
-
-For details, please see https://rio-connect.github.io/
+We temporarily used this branch as the default branch  until we fixed a bug in the main branch that had issue creating the ProfilesCollection at startup. The main branch is now fixed and this branch has a locked branch protection rule, i.e., it is read-only. For more detail, see [issue-79](https://github.com/orgs/rio-connect/projects/2?pane=issue&itemId=26112765).

@@ -53,6 +53,15 @@ class NavBar {
     await testController.click('#login-dropdown-sign-up');
   }
 
+  /** */
+  async gotoUserPage(testController) {
+    const loggedInUser = await Selector('#navbar-current-user').exists;
+    if (loggedInUser) {
+      await testController.click('#navbar-current-user');
+      await testController.click('#navbar-profile');
+    }
+  }
+
   /** Navigate to addClubPage */
   async gotoAddClubsPage(testController) {
     await testController.click('#addclub-page');

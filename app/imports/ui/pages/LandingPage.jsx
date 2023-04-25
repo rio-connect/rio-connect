@@ -24,7 +24,7 @@ const LandingPage = () => (
         </p>
       </Container>
       <Container fluid id="get-started" className="text-center mt-4 py-5 px-0">
-        <a href="/SignUpPage.jsx" className=" gap-2 text-decoration-none text-white">
+        <a href="/signup" className=" gap-2 text-decoration-none text-white">
           <Button variant="primary" size="lg">Get Started</Button>
         </a>
       </Container>
@@ -45,7 +45,7 @@ const LandingPage = () => (
           Click the button below to start browsing now!
         </p>
         <Container id="get-started" className="text-center mt-4 py-5 px-0">
-          <a href="BrowseClubsPage" className="gap-2 text-decoration-none text-white">
+          <a href="browseclubs" className="gap-2 text-decoration-none text-white">
             <Button variant="primary" size="lg">Browse Clubs</Button>
           </a>
         </Container>
@@ -72,7 +72,7 @@ const LandingPage = () => (
           Click the button below to create a club now!
         </p>
         <Container id="get-started" className="text-center mt-4 py-5 px-0">
-          <a href="/AddClubPage.jsx" className="gap-2 text-decoration-none text-white">
+          <a href="/addclub" className="gap-2 text-decoration-none text-white">
             <Button variant="primary" size="lg">Create a Club</Button>
           </a>
         </Container>

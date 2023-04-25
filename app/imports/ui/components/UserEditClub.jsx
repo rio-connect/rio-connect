@@ -10,14 +10,14 @@ const UserEditClub = ({ clubs }) => {
   };
 
   return (
-    <Container className="py-3 gray-background">
+    <Container id="user-edit-club" className="py-3 gray-background">
       <Container>
         <Row className="justify-content-center ps-2 pe-2">
           <Row className="pb-2">
             Choose club:
           </Row>
           <Row>
-            <Form.Select onChange={handleClubChange}>
+            <Form.Select id="user-editable-clubs" onChange={handleClubChange}>
               {clubs.map((club) => (
                 <option key={club._id} value={club._id}>
                   {club.name}

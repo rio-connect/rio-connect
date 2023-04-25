@@ -26,7 +26,7 @@ const ClubCard = ({ club }) => (
           </Row>
           <Row className="px-4">
             <h2> Contact email</h2>
-            <p>{club.ownerMail}</p>
+            <a href={`mailto:${club.ownerMail}`}>{club.ownerMail}</a>
           </Row>
         </Col>
       </Row>

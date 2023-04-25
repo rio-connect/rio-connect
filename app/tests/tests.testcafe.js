@@ -50,7 +50,7 @@ test('Test that landing page shows up', async (testController) => {
 });
 
 credentialsArray.forEach((user) => {
-  test('Test that signin and signout work', async (testController) => {
+  test(`Test that signin and signout work for ${user.name}`, async (testController) => {
     await navBar.gotoSignInPage(testController);
     await signinPage.signin(testController, user.username, user.password);
     await navBar.isLoggedIn(testController, user.username);
@@ -74,6 +74,9 @@ test('Test that add and edit clubs work', async (testController) => {
   await navBar.isLoggedIn(testController, clubOwner.username);
   await navBar.gotoAddClubsPage(testController);
   await addPage.add(testController);
+  /** Add the clubs' information to the clubOwner's profile. This is necessary for testing the UserPage.
+   * Note that meteor reset must be run after every test, since the added club remains in the Mongo database. The UserPage tests check to see that the correct number of clubs is visible. */
+  clubOwner.joinedClubs.push('Test Club');
   await navBar.gotoBrowseClubsPage(testController);
   await browsePage.isAdded(testController, 'Club1');
   await browsePage.edit(testController);

@@ -44,7 +44,7 @@ const UserContactInfo = ({ profile }) => {
         <Col xs={4}>
           <AutoForm schema={bridge} onSubmit={data => submit(data)} model={profile}>
             <TextField name="name" id="user-name" />
-            <TextField name="email" id="user-email" />
+            <TextField name="email" id="user-email" disabled />
             <TextField name="phoneNo" id="user-phone" />
             <SubmitField value="Update Profile" />
             <ErrorsField />

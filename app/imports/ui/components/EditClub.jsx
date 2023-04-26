@@ -54,15 +54,13 @@ const EditClub = () => {
                   <Col><TextField id="edit-form-name" name="name" /></Col>
                   <Col><TextField id="edit-form-image" name="image" /></Col>
                 </Row>
-                <Row>
-                  <Col><TextField id="edit-form-owner" name="owner" /></Col>
-                  <Col><TextField id="edit-form-mail" name="ownerMail" /></Col>
-                </Row>
                 <LongTextField id="edit-form-description" name="description" />
                 <Row><TextField id="edit-form-type" name="type" /></Row>
                 <SubmitField id="edit-form-submit" value="Submit" />
                 <ErrorsField />
                 <HiddenField name="members" />
+                <HiddenField name="owner" />
+                <HiddenField name="ownerMail" />
               </Card.Body>
             </Card>
           </AutoForm>

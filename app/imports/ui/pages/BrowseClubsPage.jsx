@@ -42,6 +42,9 @@ const BrowseClubsPage = () => {
   const clubs = Clubs.collection.find({ type: { $in: interests } }).fetch();
   const clubsCount = Clubs.collection.find({ type: { $in: interests } }).count();
   const transform = (label) => ` ${label}`;
+  const { currentUser } = useTracker(() => ({
+    currentUser: Meteor.user() ? Meteor.user().username : '',
+  }), []);
   return (ready ? (
     <Container id="browse-clubs-page" fluid className="mx-auto px-0 ">
       <Container fluid id="browseSection">

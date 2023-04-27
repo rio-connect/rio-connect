@@ -94,7 +94,7 @@ const AddClubComponent = () => {
                       id="add-form-type"
                       name="type"
                       showInlineError
-                      checkboxes
+                      multiple
                       placeholder="Club Type"
                       transform={transform}
                     />

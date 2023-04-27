@@ -19,6 +19,9 @@ class AddPage {
     await testController.typeText('#add-form-mail', 'john@foo.com');
     await testController.typeText('#add-form-description', 'Test');
     // check a club type
+    // const typeSelector = Selector(Selector('label').withText('Political'));
+    // await testController.click(typeSelector);
+    await testController.click('#add-form-type');
     const typeSelector = Selector(Selector('label').withText('Political'));
     await testController.click(typeSelector);
     // submit the form

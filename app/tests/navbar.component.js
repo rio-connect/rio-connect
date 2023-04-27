@@ -53,8 +53,12 @@ class NavBar {
     await testController.click('#login-dropdown-sign-up');
   }
 
-  /** */
+  /** Pull down yser menu, go to user page. */
   async gotoUserPage(testController) {
+    const visible = await Selector('#basic-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
     const loggedInUser = await Selector('#navbar-current-user').exists;
     if (loggedInUser) {
       await testController.click('#navbar-current-user');

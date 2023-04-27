@@ -46,7 +46,7 @@ const UserContactInfo = ({ profile }) => {
             <TextField name="name" id="user-name" />
             <TextField name="email" id="user-email" disabled />
             <TextField name="phoneNo" id="user-phone" />
-            <SubmitField value="Update Profile" />
+            <SubmitField value="Update Profile" id="user-update-profile" />
             <ErrorsField />
           </AutoForm>
         </Col>

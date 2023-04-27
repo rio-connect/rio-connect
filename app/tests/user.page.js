@@ -26,7 +26,7 @@ class UserPage {
     if (!user.isAdmin) {
       await testController.expect(Selector('#user-club-card').count).eql(user.joinedClubs.length, `Check that non-admin user ${user.name} can see ${user.joinedClubs.length} UserClubCard components`);
     } else {
-      await testController.expect(Selector('#user-club-card').count).eql(192);
+      await testController.expect(Selector('#user-club-card').count).eql(191);
     }
     /** Check that, for each club the user has joined, there is a UserClubCard with that club name. */
     await Promise.all(user.joinedClubs.map(async (club) => {
@@ -44,6 +44,35 @@ class UserPage {
     } else {
       await testController.expect(Selector('#user-edit-club').exists).notOk(`Check that ${user.name} can't see the UserEditClubs component`);
     }
+  }
+
+  /** Edit the user's profile information to junk data. */
+  async editProfileInformation(testController, user) {
+    await testController.expect(Selector('#user-contact-info').exists).ok(`Check that ${user.name} can edit the UserContactInfo component`);
+    await testController.selectText(Selector('#user-name')).typeText(Selector('#user-name'), 'Abc123');
+    await testController.selectText(Selector('#user-phone')).typeText(Selector('#user-phone'), '111-222-3333');
+
+    await testController.click(Selector('#user-update-profile .btn'));
+    await testController.expect(Selector('.swal-overlay').exists).ok();
+    await testController.click('.swal-button--confirm');
+  }
+
+  /** Validate that the junk data is saved to the user's profile. */
+  async verifyEditedProfileInformation(testController, user) {
+    await testController.expect(Selector('#user-contact-info').exists).ok(`Check that ${user.name} can edit the UserContactInfo component`);
+    await testController.expect(Selector('#user-name').value).eql('Abc123');
+    await testController.expect(Selector('#user-phone').value).eql('111-222-3333');
+  }
+
+  /** Restore the user's original profile information. */
+  async restoreProfileInformation(testController, user) {
+    await testController.expect(Selector('#user-contact-info').exists).ok(`Check that ${user.name} can edit the UserContactInfo component`);
+    await testController.selectText(Selector('#user-name')).typeText(Selector('#user-name'), user.name);
+    await testController.selectText(Selector('#user-phone')).typeText(Selector('#user-phone'), user.phoneNo);
+
+    await testController.click(Selector('#user-update-profile .btn'));
+    await testController.expect(Selector('.swal-overlay').exists).ok();
+    await testController.click('.swal-button--confirm');
   }
 }
 

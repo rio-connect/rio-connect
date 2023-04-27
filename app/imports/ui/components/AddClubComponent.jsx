@@ -77,7 +77,6 @@ const AddClubComponent = () => {
               <Card.Body>
                 <Row>
                   <Col>
-
                     <TextField id="add-form-name" showInlineError name="name" />
                   </Col>
                   <Col>
@@ -94,8 +93,6 @@ const AddClubComponent = () => {
                       id="add-form-type"
                       name="type"
                       showInlineError
-                      checkboxes
-                      placeholder="Club Type"
                       transform={transform}
                     />
                   </Col>

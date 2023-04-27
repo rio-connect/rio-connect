@@ -5,7 +5,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField, HiddenField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField, HiddenField, SelectField } from 'uniforms-bootstrap5';
 import { useParams } from 'react-router';
 import LoadingSpinner from './LoadingSpinner';
 import { Clubs } from '../../api/club/Club';
@@ -55,7 +55,7 @@ const EditClub = () => {
                   <Col><TextField id="edit-form-image" name="image" /></Col>
                 </Row>
                 <LongTextField id="edit-form-description" name="description" />
-                <Row><TextField id="edit-form-type" name="type" /></Row>
+                <Row><TextField id="edit-form-type" name="edit-form-type" /></Row>
                 <SubmitField id="edit-form-submit" value="Submit" />
                 <ErrorsField />
                 <HiddenField name="members" />

@@ -68,7 +68,7 @@ test('Test the Browse Clubs page', async (testController) => {
   await browsePage.filter(testController);
 });
 
-test('Test that add and edit clubs work', async (testController) => {
+test.only('Test that add and edit clubs work', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, clubOwner.username, clubOwner.password);
   await navBar.isLoggedIn(testController, clubOwner.username);

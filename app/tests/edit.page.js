@@ -13,6 +13,9 @@ class EditPage {
   async edit(testController) {
     await this.isDisplayed(testController);
     await testController.typeText('#edit-form-name', 'Club3');
+    await testController.click('#edit-form-type');
+    const typeSelector = Selector(Selector('option').withText('Political'));
+    await testController.click(typeSelector);
     await testController.click('#edit-form-submit');
   }
 }

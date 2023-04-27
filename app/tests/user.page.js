@@ -1,4 +1,5 @@
 import { Selector } from 'testcafe';
+import { navBar } from './navbar.component';
 
 class UserPage {
   constructor() {
@@ -38,9 +39,16 @@ class UserPage {
   async correctClubEditingInformation(testController, user) {
     if (user.canEditClubs) {
       await testController.expect(Selector('#user-edit-club').exists).ok();
-      await Promise.all(user.editableClubs.map(async (club) => {
-        await testController.expect(Selector('#user-editable-clubs').find('option').withText(club).exists).ok(`Check that ${user.name} can edit ${club}`);
-      }));
+      await user.editableClubs.reduce(async (previousPromise, club) => {
+        await previousPromise;
+        const editClubsDropdown = Selector('#user-editable-clubs');
+        await testController.expect(editClubsDropdown.find('option').withText(club).exists).ok(`Check that ${user.name} can edit ${club}`);
+        const option = Selector('#user-editable-clubs').find('option').withText(club);
+        await testController.click(editClubsDropdown).click(option);
+        await testController.click(Selector('#user-edit-club-button'));
+        await testController.expect(Selector('#edit-form-name')().value).eql(club, `Ensure the EditClub form is pre-filled with ${club}'s information`);
+        await navBar.gotoUserPage(testController);
+      }, Promise.resolve());
     } else {
       await testController.expect(Selector('#user-edit-club').exists).notOk(`Check that ${user.name} can't see the UserEditClubs component`);
     }

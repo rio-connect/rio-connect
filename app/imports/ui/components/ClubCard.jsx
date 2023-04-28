@@ -11,12 +11,6 @@ const ClubCard = ({ club, onLeaveClub, onJoinClub, currentUser }) => {
 
   const isAdmin = Meteor.userId() && (Roles.userIsInRole(Meteor.userId(), 'admin'));
   const canEdit = currentUser && (isAdmin || currentUser === club.ownerMail);
-
-  if(canEdit) {
-    console.log(`user can edit ${club.name}`);
-  }
-
-
   const [isMember, setIsMember] = useState(club.members.includes(currentUser));
 
   useEffect(() => {

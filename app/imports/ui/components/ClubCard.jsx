@@ -10,7 +10,12 @@ import PropTypes from 'prop-types';
 const ClubCard = ({ club, onLeaveClub, onJoinClub, currentUser }) => {
 
   const isAdmin = Meteor.userId() && (Roles.userIsInRole(Meteor.userId(), 'admin'));
-  const canEdit = currentUser && (isAdmin || currentUser.username === club.ownerMail);
+  const canEdit = currentUser && (isAdmin || currentUser === club.ownerMail);
+
+  if(canEdit) {
+    console.log(`user can edit ${club.name}`);
+  }
+
 
   const [isMember, setIsMember] = useState(club.members.includes(currentUser));
 
@@ -58,8 +63,8 @@ const ClubCard = ({ club, onLeaveClub, onJoinClub, currentUser }) => {
                 )}
               <Col className="d-flex justify-content-end">
                 {(canEdit) ? (
-                  <Link id="edit-club-link" to={`/edit/${club._id}`}>
-                    <Button>Edit Club</Button>
+                  <Link to={`/edit/${club._id}`}>
+                    <Button id="edit-club-link">Edit Club</Button>
                   </Link>
                 ) : ''}
               </Col>

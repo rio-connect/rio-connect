@@ -30,7 +30,7 @@ const BrowseClubsPage = () => {
       currentUser: Meteor.user(),
       clubs: fetchedClubs,
     };
-  }, []);
+  }, [interests]);
 
   const [updateClubs, setUpdateClubs] = useState(false);
 

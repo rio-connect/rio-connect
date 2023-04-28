@@ -38,7 +38,7 @@ class BrowsePage {
   }
 
   async edit(testController) {
-    await testController.click('#edit-club-link');
+    await testController.click(Selector('#edit-club-link'));
   }
 }
 export const browsePage = new BrowsePage();

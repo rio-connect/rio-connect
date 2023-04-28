@@ -31,9 +31,8 @@ const makeSchema = () => new SimpleSchema({
 const AddClubComponent = () => {
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { name, type, description, ownerMail, image } = data;
-    const owner = Meteor.user().username;
-    const members = Meteor.user().username;
+    const { name, type, description, owner, ownerMail, image } = data;
+    const members = ownerMail;
     Clubs.collection.insert(
       { name, type: type, description, owner, ownerMail, image, members: members },
       (error) => {

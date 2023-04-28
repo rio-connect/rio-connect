@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema from 'simpl-schema';
@@ -6,6 +6,7 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, SelectField, SubmitField } from 'uniforms-bootstrap5';
 import { Container, Button, Row, Col } from 'react-bootstrap';
 import { PlusLg } from 'react-bootstrap-icons';
+import swal from 'sweetalert';
 import { Clubs } from '../../api/club/Club';
 import ClubCard from '../components/ClubCard';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -21,12 +22,17 @@ const formSchema = new SimpleSchema({
 const BrowseClubsPage = () => {
   const [interests, setInterests] = useStickyState('interests', allInterests);
   let selectedInterests = [];
-  const { ready } = useTracker(() => {
+  const { ready, currentUser, clubs } = useTracker(() => {
     const subscription = Meteor.subscribe(Clubs.publicPublicationName);
+    const fetchedClubs = Clubs.collection.find({ type: { $in: interests } }).fetch();
     return {
       ready: subscription.ready(),
+      currentUser: Meteor.user(),
+      clubs: fetchedClubs,
     };
   }, []);
+
+  const [updateClubs, setUpdateClubs] = useState(false);
 
   const submit = (data) => {
     if (data.interests.length === 0) {
@@ -38,13 +44,49 @@ const BrowseClubsPage = () => {
     }
   };
 
+  const handleLeaveClub = (clubToBeLeft) => {
+    swal({
+      title: `Really leave club ${clubToBeLeft.name}?`,
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willLeave) => {
+        if (willLeave) {
+          Clubs.collection.update(
+            { _id: clubToBeLeft._id },
+            { $pull: { members: currentUser.username } },
+            (error) => {
+              if (error) {
+                swal('Error', error.message, 'error');
+              } else {
+                swal('Success', 'You have left the club.', 'success');
+                setUpdateClubs(!updateClubs);
+              }
+            },
+          );
+        }
+      });
+  };
+
+  const handleJoinClub = (clubToBeJoined) => {
+    Clubs.collection.update(
+      { _id: clubToBeJoined._id },
+      { $push: { members: currentUser.username } },
+      (error) => {
+        if (error) {
+          console.log('Error', error.message, 'error');
+        } else {
+          console.log(`You have joined the club ${clubToBeJoined.name}`);
+          setUpdateClubs(!updateClubs);
+        }
+      },
+    );
+  };
+
   const bridge = new SimpleSchema2Bridge(formSchema);
-  const clubs = Clubs.collection.find({ type: { $in: interests } }).fetch();
   const clubsCount = Clubs.collection.find({ type: { $in: interests } }).count();
   const transform = (label) => ` ${label}`;
-  const { currentUser } = useTracker(() => ({
-    currentUser: Meteor.user() ? Meteor.user().username : '',
-  }), []);
   return (ready ? (
     <Container id="browse-clubs-page" fluid className="mx-auto px-0 ">
       <Container fluid id="browseSection">
@@ -88,6 +130,9 @@ const BrowseClubsPage = () => {
             <Col className="pb-3 browseClubCards" xs={12} key={club._id}>
               <ClubCard
                 club={club}
+                onLeaveClub={handleLeaveClub}
+                onJoinClub={handleJoinClub}
+                currentUser={currentUser?.username}
               />
             </Col>
           ))}

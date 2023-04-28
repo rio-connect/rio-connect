@@ -53,18 +53,30 @@ const BrowseClubsPage = () => {
     })
       .then((willLeave) => {
         if (willLeave) {
-          Clubs.collection.update(
-            { _id: clubToBeLeft._id },
-            { $pull: { members: currentUser.username } },
-            (error) => {
-              if (error) {
-                swal('Error', error.message, 'error');
-              } else {
-                swal('Success', 'You have left the club.', 'success');
-                setUpdateClubs(!updateClubs);
-              }
-            },
-          );
+          if (clubToBeLeft.ownerMail === currentUser.username) {
+            swal({
+              title: 'Error',
+              text: 'You cannot leave the club because you are the owner. Please transfer ownership to another user before leaving the club.',
+              icon: 'error',
+              buttons: {
+                cancel: 'Close',
+              },
+              dangerMode: true,
+            });
+          } else {
+            Clubs.collection.update(
+              { _id: clubToBeLeft._id },
+              { $pull: { members: currentUser.username } },
+              (error) => {
+                if (error) {
+                  swal('Error', error.message, 'error');
+                } else {
+                  swal('Success', 'You have left the club.', 'success');
+                  setUpdateClubs(!updateClubs);
+                }
+              },
+            );
+          }
         }
       });
   };

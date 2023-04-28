@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
@@ -29,10 +30,15 @@ const makeSchema = () => new SimpleSchema({
 });
 
 const AddClubComponent = () => {
+  const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
+
   // On submit, insert the data.
   const submit = (data, formRef) => {
     const { name, type, description, owner, ownerMail, image } = data;
-    const members = ownerMail;
+    let members = [];
+    if (!isAdmin) {
+      members = ownerMail;
+    }
     Clubs.collection.insert(
       { name, type: type, description, owner, ownerMail, image, members: members },
       (error) => {

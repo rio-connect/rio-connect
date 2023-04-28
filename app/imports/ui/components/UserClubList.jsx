@@ -2,24 +2,37 @@ import React from 'react';
 /* import PropTypes from 'prop-types'; */
 import { Row, Container, ListGroup, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert';
 import UserClubCard from './UserClubCard';
 import { Clubs } from '../../api/club/Club';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const UserClubList = ({ clubs, profile }) => {
-  const handleLeaveClub = (clubId) => {
+
+  const handleLeaveClub = (clubToBeLeft) => {
     const userEmail = profile.email;
-    Clubs.collection.update(
-      { _id: clubId },
-      { $pull: { members: userEmail } },
-      (error) => {
-        if (error) {
-          console.log('Error:', error.message);
-        } else {
-          console.log(`User ${profile.email} removed from club ${clubId}`);
+
+    swal({
+      title: `Really leave club ${clubToBeLeft.name}?`,
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willLeave) => {
+        if (willLeave) {
+          Clubs.collection.update(
+            { _id: clubToBeLeft._id },
+            { $pull: { members: userEmail } },
+            (error) => {
+              if (error) {
+                swal('Error', error.message, 'error');
+              } else {
+                swal('Success', 'You have left the club.', 'success');
+              }
+            },
+          );
         }
-      },
-    );
+      });
   };
 
   return (

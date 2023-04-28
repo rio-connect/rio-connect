@@ -22,7 +22,7 @@ const UserClubCard = ({ club, onLeaveClub }) => (
               </Col>
               <Col>
                 <div className="d-flex justify-content-end">
-                  <Button className="btn-danger" onClick={() => onLeaveClub(club._id)}>Leave Club</Button>
+                  <Button className="btn-danger" onClick={() => onLeaveClub(club)}>Leave Club</Button>
                 </div>
               </Col>
             </Row>

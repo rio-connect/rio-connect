@@ -7,7 +7,7 @@ import UserClubCard from './UserClubCard';
 import { Clubs } from '../../api/club/Club';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const UserClubList = ({ clubs, profile }) => {
+const UserClubList = ({ clubs, profile, isAdmin }) => {
 
   const handleLeaveClub = (clubToBeLeft) => {
     const userEmail = profile.email;
@@ -39,7 +39,7 @@ const UserClubList = ({ clubs, profile }) => {
     <Container id="user-club-list" className="py-3 gray-background">
       <Row className="justify-content-center">
         <ListGroup className="ps-3 pe-3">
-          {clubs.map((club) => <UserClubCard key={club._id} club={club} onLeaveClub={handleLeaveClub} />)}
+          {clubs.map((club) => <UserClubCard key={club._id} club={club} onLeaveClub={handleLeaveClub} isAdmin={isAdmin} />)}
         </ListGroup>
       </Row>
       <Row className="ps-3 pe-3 pt-3">
@@ -61,6 +61,9 @@ UserClubList.propTypes = {
   })).isRequired,
   profile: PropTypes.shape({
     email: PropTypes.string,
+  }).isRequired,
+  isAdmin: PropTypes.shape({
+    isAdmin: PropTypes.bool,
   }).isRequired,
 };
 

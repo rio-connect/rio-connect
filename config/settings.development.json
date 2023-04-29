@@ -62,6 +62,24 @@
       "ownerMail": "kai@foo.com",
       "members": ["kai@foo.com", "john@foo.com"],
       "image": "images/generic-club.png"
+    },
+    {
+      "name": "Academy of Creative Media Student Association",
+      "type": "Academic/Professional",
+      "description": "The purpose of our organization is to foster pride, unity and professionalism among students enrolled in the Academy of Creative Media program in UH Manoa.",
+      "owner": "Hwang Hao Marcus Goh",
+      "ownerMail": "hwang@foo.com",
+      "members": [],
+      "image": "images/generic-club.png"
+    },
+    {
+      "name": "Accounting Club",
+      "type": "Academic/Professional",
+      "description": "In cooperation with the School of Accountancy, we provide additional perspectives and supplemental information concerning public, private, and governmental accounting. Our main goal is to promote the professional and personal development of our members through socials, community service, professional interactions, workshops, and office tours. We continue to rank high among the largest student organizations within the Shidler College of Business and welcome students from all academic disciplines.",
+      "owner": "Rana Mejes",
+      "ownerMail": "rana@foo.com",
+      "members": [],
+      "image": "images/generic-club.png"
     }
   ],
 

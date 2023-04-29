@@ -87,7 +87,7 @@ const LandingPage = () => {
           ) : [
             <p>Log in or register to create a club!</p>,
             <Container id="get-started" className="text-center mt-4 py-5 px-0">
-              <a href="/SignUpPage" className="gap-2 text-decoration-none text-white">
+              <a href="/signup" className="gap-2 text-decoration-none text-white">
                 <Button variant="primary" size="lg">Register</Button>
               </a>
             </Container>,

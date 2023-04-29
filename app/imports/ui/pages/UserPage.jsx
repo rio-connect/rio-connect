@@ -51,7 +51,7 @@ const UserPage = () => {
         Clubs
       </Row>
       <Row>
-        <UserClubList clubs={clubs} />
+        <UserClubList clubs={clubs} profile={profiles} isAdmin={isAdmin} />
       </Row>
       {
         canEdit && (

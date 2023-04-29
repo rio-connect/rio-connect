@@ -79,7 +79,7 @@ const LandingPage = () => {
               </p>,
               <Container fluid id="get-started" className="text-center mt-4 py-5 px-0">
                 <a href="/signup" className=" gap-2 text-decoration-none text-white">
-                  <Button variant="primary" size="lg">Get Started</Button>
+                  <Button variant="primary" size="lg">Register</Button>
                 </a>
               </Container>,
             ]

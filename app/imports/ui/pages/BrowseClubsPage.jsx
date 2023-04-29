@@ -32,12 +32,12 @@ const BrowseClubsPage = () => {
       currentUser: Meteor.user(),
       clubs: fetchedClubs,
     };
-  }, [interests]);
+  }, [interests, name]);
 
   const [updateClubs, setUpdateClubs] = useState(false);
 
   const submit = (data) => {
-    document.getElementById('browseResultsTop').scrollIntoView();
+    // document.getElementById('browseResultsTop').scrollIntoView();
     if (data.name === undefined) {
       setName('' || '');
     } else {

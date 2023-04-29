@@ -34,7 +34,9 @@ const NavBar = () => {
                     <Nav.Link id="browse-clubs-nav-link" className="pe-5 text-white" href="/browseclubs">BROWSE CLUBS</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link id="addclub-page" className="pe-5 text-white" href="/addclub">ADD CLUB</Nav.Link>
+                    {currentUser ? (
+                      [<Nav.Link id="addclub-page" className="pe-5 text-white" href="/addclub">ADD CLUB</Nav.Link>]
+                    ) : ''}
                   </Nav.Item>
                   {currentUser === '' ? (
                     <NavDropdown id="login-dropdown" title="LOGIN">

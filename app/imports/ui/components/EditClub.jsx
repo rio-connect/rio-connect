@@ -5,7 +5,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField, HiddenField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField, HiddenField, SelectField } from 'uniforms-bootstrap5';
 import { useParams } from 'react-router';
 import LoadingSpinner from './LoadingSpinner';
 import { Clubs } from '../../api/club/Club';
@@ -36,17 +36,20 @@ const EditClub = () => {
   }, [_id]);
   // console.log('EditStuff', doc, ready);
   // On successful submit, insert the data.
+  const allTypes = ['Academic/Professional', 'Ethic/Cultural', 'Fraternity/Sorority', 'Honorary Society', 'Leisure/Recreational', 'Political', 'Religious/Spiritual', 'Service', 'Sports/Leisure', 'Student Affairs'];
+
   const submit = (data) => {
     const { name, type, description, owner, ownerMail, members, image } = data;
     Clubs.collection.update(_id, { $set: { name, type, description, owner, ownerMail, members, image } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Club updated successfully', 'success')));
   };
+  const allInterests = ['Academic/Professional', 'Ethic/Cultural', 'Fraternity/Sorority', 'Honorary Society', 'Leisure/Recreational', 'Political', 'Religious/Spiritual', 'Service', 'Sports/Leisure', 'Student Affairs'];
   return ready ? (
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col xs={10}>
-          <Col className="text-center"><h2>Edit Contact</h2></Col>
+          <Col className="text-center"><h2>Edit Club</h2></Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
             <Card>
               <Card.Body>
@@ -54,15 +57,13 @@ const EditClub = () => {
                   <Col><TextField id="edit-form-name" name="name" /></Col>
                   <Col><TextField id="edit-form-image" name="image" /></Col>
                 </Row>
-                <Row>
-                  <Col><TextField id="edit-form-owner" name="owner" /></Col>
-                  <Col><TextField id="edit-form-mail" name="ownerMail" /></Col>
-                </Row>
                 <LongTextField id="edit-form-description" name="description" />
-                <Row><TextField id="edit-form-type" name="type" /></Row>
+                <Row><SelectField id="edit-form-type" name="type" allowedValues={allTypes} /></Row>
                 <SubmitField id="edit-form-submit" value="Submit" />
                 <ErrorsField />
                 <HiddenField name="members" />
+                <HiddenField name="owner" />
+                <HiddenField name="ownerMail" />
               </Card.Body>
             </Card>
           </AutoForm>

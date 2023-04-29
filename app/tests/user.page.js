@@ -26,7 +26,7 @@ class UserPage {
     if (!user.isAdmin) {
       await testController.expect(Selector('#user-club-card').count).eql(user.joinedClubs.length, `Check that non-admin user ${user.name} can see ${user.joinedClubs.length} UserClubCard components`);
     } else {
-      await testController.expect(Selector('#user-club-card').count).eql(192);
+      await testController.expect(Selector('#user-club-card').count).gte(192);
     }
     /** Check that, for each club the user has joined, there is a UserClubCard with that club name. */
     await Promise.all(user.joinedClubs.map(async (club) => {

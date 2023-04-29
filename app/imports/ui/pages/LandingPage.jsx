@@ -1,15 +1,14 @@
 import React from 'react';
-import { Container, Button } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
+import { Container, Button } from 'react-bootstrap';
 
 /* A simple static component to render some text for the landing page. */
 const LandingPage = () => {
-
-  const { currentUser } = useTracker(() => ({
-    currentUser: Meteor.user() ? Meteor.user().username : '',
+  const { loggedIn, loggedOut } = useTracker(() => ({
+    loggedIn: !!Meteor.user(),
+    loggedOut: !Meteor.user(),
   }), []);
-
   return (
     <Container id="landing-page" fluid className="px-0">
       <Container fluid className="white-color-block">
@@ -36,12 +35,11 @@ const LandingPage = () => {
           </a>
         </Container>
       </Container>
-
       <Container fluid className="image-color-block">
         <Container className="pt-5 px-5">
           <h1 className="text-center pb-5">Browse clubs and get connected!</h1>
           <p>
-            Search from hundreds of Registered Independent Organizations (RIOs) that are recognized by the University of Hawaiʻi Board of Regents, as well as unregistered clubs created by the University of Hawaiʻi  community members.
+            Search from hundreds of Registered Independent Organizations (RIOs) that are recognized by the University of Hawaiʻi Board of Regents, as well as unregistered clubs created by the University of Hawaiʻi community members.
           </p>
           <br />
           <p>
@@ -52,13 +50,12 @@ const LandingPage = () => {
             Click the button below to start browsing now!
           </p>
           <Container id="get-started" className="text-center mt-4 py-5 px-0">
-            <a href="browseclubs" className="gap-2 text-decoration-none text-white">
+            <a href="/browseclubs" className="gap-2 text-decoration-none text-white">
               <Button variant="primary" size="lg">Browse Clubs</Button>
             </a>
           </Container>
         </Container>
       </Container>
-
       <Container fluid className="gray-color-block">
         <Container className="pt-5 px-5">
           <h1 className="text-center pb-5">Start your own club!</h1>
@@ -74,28 +71,34 @@ const LandingPage = () => {
             <a className="text-black" href="https://manoa.hawaii.edu/studentlife/involvement/registered-independent-organizations/forming-an-rio/">Learn more
             </a>.
           </p>
-          <br />
-          {currentUser ? (
+          {(loggedOut) ? (
             [
-              <p>Click the button below to create a club!</p>,
+              <br />,
+              <p>
+                Click the button below to sign up and create a club now!
+              </p>,
+              <Container fluid id="get-started" className="text-center mt-4 py-5 px-0">
+                <a href="/signup" className=" gap-2 text-decoration-none text-white">
+                  <Button variant="primary" size="lg">Register</Button>
+                </a>
+              </Container>,
+            ]
+          ) : ''}
+          {(loggedIn) ? (
+            [
+              <br />,
+              <p>
+                Click the button below to create a club now!
+              </p>,
               <Container id="get-started" className="text-center mt-4 py-5 px-0">
-                <a href="/addclub" className="gap-2 text-decoration-none text-white">,
+                <a href="/addclub" className="gap-2 text-decoration-none text-white">
                   <Button variant="primary" size="lg">Create a Club</Button>
                 </a>
               </Container>,
             ]
-          ) : [
-            <p>Log in or register to create a club!</p>,
-            <Container id="get-started" className="text-center mt-4 py-5 px-0">
-              <a href="/signup" className="gap-2 text-decoration-none text-white">
-                <Button variant="primary" size="lg">Register</Button>
-              </a>
-            </Container>,
-          ]}
-
+          ) : ''}
         </Container>
       </Container>
-
     </Container>
   );
 };

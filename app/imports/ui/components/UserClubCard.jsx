@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Image, Row, Card } from 'react-bootstrap';
+import { Col, Image, Row, Card, Button } from 'react-bootstrap';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const UserClubCard = ({ club }) => (
+const UserClubCard = ({ club, onLeaveClub, isAdmin }) => (
   <Card id="user-club-card" className="h-100">
     <Card.Body>
       <Row>
@@ -16,7 +16,21 @@ const UserClubCard = ({ club }) => (
             {club.description}
             <br />
             <br />
-            <a href={`mailto:${club.ownerMail}`}>Contact Club Leadership</a>
+            <Row>
+              <Col>
+                <a href={`mailto:${club.ownerMail}`}>Contact Club Leadership</a>
+              </Col>
+              <Col>
+                <div className="d-flex justify-content-end">
+                  {
+                    !isAdmin && (
+                      <Button className="btn-danger" onClick={() => onLeaveClub(club)}>Leave Club</Button>
+                    )
+                  }
+                </div>
+              </Col>
+            </Row>
+
           </Card.Text>
         </Col>
       </Row>
@@ -33,6 +47,8 @@ UserClubCard.propTypes = {
     ownerMail: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
+  onLeaveClub: PropTypes.func.isRequired,
+  isAdmin: PropTypes.bool.isRequired,
 };
 
 export default UserClubCard;

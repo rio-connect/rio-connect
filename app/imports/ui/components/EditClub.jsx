@@ -4,7 +4,8 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import Table from 'react-bootstrap/Table';
 import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField, HiddenField } from 'uniforms-bootstrap5';
 import { useParams } from 'react-router';
 import LoadingSpinner from './LoadingSpinner';
@@ -42,6 +43,12 @@ const EditClub = () => {
       swal('Error', error.message, 'error') :
       swal('Success', 'Club updated successfully', 'success')));
   };
+  const kickMember = (member) => {
+    const remainMembers = doc.members.filter(function (members) {
+      return members !== member;
+    });
+    doc.members = remainMembers;
+  };
   return ready ? (
     <Container className="py-3">
       <Row className="justify-content-center">
@@ -56,6 +63,24 @@ const EditClub = () => {
                 </Row>
                 <LongTextField id="edit-form-description" name="description" />
                 <Row><TextField id="edit-form-type" name="type" /></Row>
+                <Row>
+                  <Table striped bordered hover size="sm">
+                    <thead>
+                      <tr>
+                        <th>Email</th>
+                        <th>Kick</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {doc.members.map(member => (
+                        <tr>
+                          <td>{member}</td>
+                          <td><Button onClick={() => kickMember(member)} variant="danger">Kick Member</Button></td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </Table>
+                </Row>
                 <SubmitField id="edit-form-submit" value="Submit" />
                 <ErrorsField />
                 <HiddenField name="members" />

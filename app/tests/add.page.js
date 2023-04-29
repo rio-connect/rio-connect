@@ -21,9 +21,17 @@ class AddPage {
     // check a club type
     // const typeSelector = Selector(Selector('label').withText('Political'));
     // await testController.click(typeSelector);
-    await testController.click('#add-form-type');
-    const typeSelector = Selector(Selector('label').withText('Political'));
-    await testController.click(typeSelector);
+    // await testController.click('#add-form-type');
+    // const typeSelector = Selector(Selector('select').withText('Political'));
+    // await testController.click(typeSelector);
+    const typeSelector = Selector('#add-form-type');
+    const selectOption = typeSelector().find('option');
+    await testController.click(typeSelector());
+    await testController.click(selectOption.withText('Political'));
+    // const typeSelector2 = Selector('Political');
+    // const selectOption=selectStates.find('option');
+    // await testController.click(typeSelector2);
+
     // submit the form
     await testController.click('#add-form-submit');
     await testController.click(Selector('.swal-button--confirm'));

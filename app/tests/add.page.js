@@ -22,7 +22,7 @@ class AddPage {
     // const typeSelector = Selector(Selector('label').withText('Political'));
     // await testController.click(typeSelector);
     await testController.click('#add-form-type');
-    const typeSelector = Selector(Selector('option').withText('Political'));
+    const typeSelector = Selector(Selector('label').withText('Political'));
     await testController.click(typeSelector);
     // submit the form
     await testController.click('#add-form-submit');

@@ -95,7 +95,7 @@ const AddClubComponent = () => {
                       name="type"
                       showInlineError
                       // multiple
-                      placeholder="Club Type"
+                      placeholder="Choose one..."
                       transform={transform}
                     />
                   </Col>

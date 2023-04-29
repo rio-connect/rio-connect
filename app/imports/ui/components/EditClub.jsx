@@ -56,7 +56,7 @@ const EditClub = () => {
                   <Col><TextField id="edit-form-image" name="image" /></Col>
                 </Row>
                 <LongTextField id="edit-form-description" name="description" />
-                <Row><SelectField id="edit-form-type" name="type" allowedValues={allInterests} /></Row>
+                <Row><TextField id="edit-form-type" name="type" allowedValues={allInterests} /></Row>
                 <SubmitField id="edit-form-submit" value="Submit" />
                 <ErrorsField />
                 <HiddenField name="members" />

@@ -218,9 +218,9 @@ body {
   --bs-btn-hover-border-color: #4D7FDC !important;
 }
 
-/****************************** Sign-In Sign-Up Pages ****************************/
+/************************ Sign-In Sign-Up Sign-Out Pages **********************/
 
-#signin-page h2, #signup-page h2 {
+#signin-page h2, #signup-page h2, #signout-page h2 {
   font-family: "Open Sans", sans-serif;
   font-weight: bold;
 }

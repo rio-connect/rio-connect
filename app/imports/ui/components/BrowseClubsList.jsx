@@ -72,15 +72,15 @@ const BrowseClubsList = ({ interests, name }) => {
     );
   };
   return (ready ? (
-    <Container fluid className="mx-auto p-0 ">
-      <Container id="browseResultsTop" className="mt-4 py-2 px-0">
+    <Container id="browseResultsTop" fluid className="mx-auto p-0 ">
+      <Container className="pt-4 py-2 px-0">
         {currentUser ? ([
-          <a id="createClubLink" href="/addclub" className="d-grid rounded-pill text-decoration-none mx-auto">
+          <a id="createClubLink" href="/addclub" className="d-grid rounded-pill text-decoration-none mt-2 mx-auto">
             <Button id="createClubBtn" className="border border-3 rounded-pill" variant="outline-dark" size="lg"><h4 className="pt-3"><PlusLg className="h1" />&nbsp;&nbsp;Create a Club!</h4></Button>
           </a>,
         ]
         ) : ''}
-        <h4 id="numClubs" className="mt-4 ms-0">{clubsCount} club(s) found:</h4>
+        <h4 id="numClubs" className="mt-3 ms-0">{clubsCount} club(s) found:</h4>
       </Container>
       <Container id="browseResultsOuter" className="mx-auto px-0 ">
         <Row className="justify-content-left">

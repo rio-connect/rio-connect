@@ -38,7 +38,7 @@ const EditClubDelete = ({ club }) => {
     <Card className="text-center" style={{ width: '35rem' }}>
       <Card.Body>
         <Row>
-          <Button onClick={() => deleteClub()} variant="danger" size="lg">Delete</Button>
+          <Button onClick={() => deleteClub()} variant="danger" size="lg" id="delete-club-btn">Delete</Button>
         </Row>
       </Card.Body>
     </Card>

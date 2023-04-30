@@ -33,7 +33,7 @@ const UserClubCard = ({ club, onLeaveClub, isAdmin, canEdit }) => (
               <div className="d-flex justify-content-end">
                 {
                   !isAdmin && (
-                    <Button className="btn-danger" onClick={() => onLeaveClub(club)}>Leave Club</Button>
+                    <Button className="btn-danger" onClick={() => onLeaveClub(club)} id="leave-club-btn">Leave Club</Button>
                   )
                 }
               </div>

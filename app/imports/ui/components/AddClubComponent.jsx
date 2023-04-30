@@ -6,15 +6,11 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
 // import { _ } from 'meteor/underscore';
 import { useTracker } from 'meteor/react-meteor-data';
-import { AutoForm, ErrorsField, HiddenField, LongTextField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, LongTextField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import LoadingSpinner from './LoadingSpinner';
 import { Clubs } from '../../api/club/Club';
-import { ProfileClubs } from '../../api/profile/ProfileClubs';
-import { ProfilesInterests } from '../../api/profile/ProfileInterests';
-import { Profiles } from '../../api/profile/Profile';
-import { Interests } from '../../api/interests/Interests';
 
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+// Define the schema for the form.
 const makeSchema = () => new SimpleSchema({
   name: String,
   type: { label: 'Club Type', type: String, optional: true,
@@ -28,10 +24,12 @@ const makeSchema = () => new SimpleSchema({
   image: String,
 });
 
+// Callback function to add the club to the ClubsCollection.
 const AddClubComponent = () => {
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { name, type, description, owner, ownerMail, image } = data;
+    const { name, type, description, ownerMail, image } = data;
+    const owner = Meteor.user().username;
     const members = Meteor.user().username;
     Clubs.collection.insert(
       { name, type: type, description, owner, ownerMail, image, members: members },
@@ -47,21 +45,18 @@ const AddClubComponent = () => {
   };
 
   const { ready } = useTracker(() => {
-    // Ensure that minimongo is populated with all collections prior to running render().
-    const sub1 = Meteor.subscribe(Interests.userPublicationName);
-    const sub2 = Meteor.subscribe(Profiles.userPublicationName);
-    const sub3 = Meteor.subscribe(ProfilesInterests.userPublicationName);
-    const sub4 = Meteor.subscribe(ProfileClubs.userPublicationName);
-    const sub5 = Meteor.subscribe(Clubs.userPublicationName);
+    // Subscribe to the ClubsCollection to add the club.
+    const clubSubscription = Meteor.subscribe(Clubs.userPublicationName);
     return {
-      ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
-      interests: Interests.collection.find().fetch(),
+      ready: clubSubscription.ready(),
     };
   }, []);
-  const profile = Profiles.collection.findOne();
+
+  // Define the interests for the form dropdown.
   const allInterests = ['Academic/Professional', 'Ethic/Cultural', 'Fraternity/Sorority', 'Honorary Society', 'Leisure/Recreational', 'Political', 'Religious/Spiritual', 'Service', 'Sports/Leisure', 'Student Affairs'];
   const formSchema = makeSchema(allInterests);
   const bridge = new SimpleSchema2Bridge(formSchema);
+
   const transform = (label) => ` ${label}`;
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
@@ -77,6 +72,7 @@ const AddClubComponent = () => {
               <Card.Body>
                 <Row>
                   <Col>
+
                     <TextField id="add-form-name" showInlineError name="name" />
                   </Col>
                   <Col>
@@ -84,8 +80,8 @@ const AddClubComponent = () => {
                   </Col>
                 </Row>
                 <Row>
-                  <HiddenField showInlineError id="add-form-owner" name="owner" value={profile.name} />
-                  <HiddenField showInlineError id="add-form-mail" name="ownerMail" value={Meteor.user().username} />
+                  <Col><TextField showInlineError id="add-form-owner" name="owner" /></Col>
+                  <Col><TextField showInlineError id="add-form-mail" name="ownerMail" /></Col>
                 </Row>
                 <Row>
                   <Col>

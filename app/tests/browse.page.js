@@ -16,7 +16,6 @@ class BrowsePage {
     await this.isDisplayed(testController);
     // Select visualization
     const interestsSelector = Selector('#selectInterests div.form-check input');
-    console.log(await interestsSelector.count);
     // Show number of Clubs
     await testController.click('#numClubs');
     // Select the fourth checkbox (Honorary Society)
@@ -32,13 +31,22 @@ class BrowsePage {
     await testController.click('#numClubs');
   }
 
-  async isAdded(testController, name) {
-    await this.isDisplayed(testController);
-    await Selector('#club-card-name').withText(name);
+  async verifyClub(testController, user, name) {
+    // Select the club's ClubCard in the ClubCardList component.
+    const browseClubCard = Selector('#browse-club-card').withText(name);
+    // It should exist.
+    await testController.expect(browseClubCard.exists).ok(`Check that ${user.name} can see ${name} ClubCard`);
+    // And there should only be one of it.
+    await testController.expect(browseClubCard.count).eql(1, `Check that ${user.name} can see only one ${name} ClubCard`);
   }
 
-  async edit(testController) {
-    await testController.click(Selector('#edit-club-link'));
+  async selectClubForEditing(testController, name) {
+    // Select the club's ClubCard in the ClubCardList component.
+    const browseClubCard = Selector('#browse-club-card').withText(name).parent();
+    // Find the Edit Club Button on that club's ClubCard.
+    const editClubButton = browseClubCard.find('#edit-club-link');
+    await testController.click(editClubButton);
   }
+
 }
 export const browsePage = new BrowsePage();

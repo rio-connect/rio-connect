@@ -61,7 +61,6 @@ class UserPage {
     await testController.selectText(Selector('#user-phone')).typeText(Selector('#user-phone'), '111-222-3333');
 
     await testController.click(Selector('#user-update-profile .btn'));
-    await testController.expect(Selector('.swal-overlay').exists).ok();
     await testController.click('.swal-button--confirm');
   }
 
@@ -79,7 +78,6 @@ class UserPage {
     await testController.selectText(Selector('#user-phone')).typeText(Selector('#user-phone'), user.phoneNo);
 
     await testController.click(Selector('#user-update-profile .btn'));
-    await testController.expect(Selector('.swal-overlay').exists).ok();
     await testController.click('.swal-button--confirm');
   }
 

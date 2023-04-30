@@ -17,15 +17,16 @@ const EditClubDelete = ({ club }) => {
       buttons: true,
       dangerMode: true,
     })
-      .then(() => {
-        // remove this club from ClubsCollection
-        const name = club.name;
-        Clubs.collection.remove(
-          { _id: club._id },
-          swal('Success', `${name} deleted successfully`, 'success'),
-        );
-      }).then(() => {
-        setRedirect(true);
+      .then((willDelete) => {
+        if (willDelete) {
+          // remove this club from ClubsCollection
+          const name = club.name;
+          Clubs.collection.remove(
+            { _id: club._id },
+            swal('Success', `${name} deleted successfully`, 'success'),
+          );
+          setRedirect(true);
+        }
       });
   };
 

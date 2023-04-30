@@ -87,7 +87,7 @@ test('Test that add and edit clubs work', async (testController) => {
 
 /** UserPage tests */
 credentialsArray.forEach(user => {
-  test(`Test the UserPage for ${user.username}`, async (testController) => {
+  test(`Test that the UserPage displays correct information for ${user.username}`, async (testController) => {
     /** Sign in */
     await navBar.gotoSignInPage(testController);
     await signinPage.signin(testController, user.username, user.password);

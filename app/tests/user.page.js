@@ -23,11 +23,11 @@ class UserPage {
   /** Checks that the user has access to all the clubs they are a member of. */
   async correctClubMembershipInformation(testController, user) {
     await testController.expect(Selector('#user-club-list').exists).ok(`Check that ${user.name} can see the UserClubList component`);
-    /** Ensure that the number of UserClubCards match the number of clubs the user has joined. Admins have access to all 191 clubs, plus the additional club made in the add clubs test. */
+    /** Ensure that the number of UserClubCards match the number of clubs the user has joined. Admins have access to all 191 clubs. */
     if (!user.isAdmin) {
       await testController.expect(Selector('#user-club-card').count).eql(user.joinedClubs.length, `Check that non-admin user ${user.name} can see ${user.joinedClubs.length} UserClubCard components`);
     } else {
-      await testController.expect(Selector('#user-club-card').count).gte(192);
+      await testController.expect(Selector('#user-club-card').count).eql(191);
     }
     /** Check that, for each club the user has joined, there is a UserClubCard with that club name. */
     await Promise.all(user.joinedClubs.map(async (club) => {

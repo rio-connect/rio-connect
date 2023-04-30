@@ -30,7 +30,7 @@ const UserContactInfo = ({ profile }) => {
       { $set: { name, email, phoneNo } },
       (error) => (error ?
         swal('Error', error.message, 'error') :
-        swal('Success', 'Club updated successfully', 'success')),
+        swal('Success', 'User profile updated successfully', 'success')),
     );
   };
 

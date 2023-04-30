@@ -87,7 +87,7 @@ test('Test that add and edit clubs work', async (testController) => {
 
 /** UserPage tests */
 credentialsArray.forEach(user => {
-  test.only(`Test the UserPage for ${user.username}`, async (testController) => {
+  test(`Test the UserPage for ${user.username}`, async (testController) => {
     /** Sign in */
     await navBar.gotoSignInPage(testController);
     await signinPage.signin(testController, user.username, user.password);
@@ -106,6 +106,11 @@ credentialsArray.forEach(user => {
     await userPage.verifyEditedProfileInformation(testController, user);
     await userPage.restoreProfileInformation(testController, user);
     await userPage.correctProfileInformation(testController, user);
+    /** Verify that the user can leave a club */
+    await userPage.verifyLeaveClub(testController, user);
+    /** Verify that the user can join a club */
+    await userPage.verifyJoinClub(testController, user);
+    await userPage.correctClubMembershipInformation(testController, user);
     /** Log out */
     await navBar.logout(testController);
     await signoutPage.isDisplayed(testController);

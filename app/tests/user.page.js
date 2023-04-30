@@ -31,26 +31,26 @@ class UserPage {
     }
     /** Check that, for each club the user has joined, there is a UserClubCard with that club name. */
     await Promise.all(user.joinedClubs.map(async (club) => {
-      await testController.expect(Selector('#user-club-card-name').withText(club).exists).ok();
+      await testController.expect(Selector('#user-club-card-name').withText(club).exists).ok(`Check that ${user.name} can see ${club} UserClubCard`);
     }));
   }
 
   /** Checks that the user can edit all the clubs that they have permission to edit. */
   async correctClubEditingInformation(testController, user) {
     if (user.canEditClubs) {
-      await testController.expect(Selector('#user-edit-club').exists).ok();
+      // For each club the user can edit:
       await user.editableClubs.reduce(async (previousPromise, club) => {
         await previousPromise;
-        const editClubsDropdown = Selector('#user-editable-clubs');
-        await testController.expect(editClubsDropdown.find('option').withText(club).exists).ok(`Check that ${user.name} can edit ${club}`);
-        const option = Selector('#user-editable-clubs').find('option').withText(club);
-        await testController.click(editClubsDropdown).click(option);
-        await testController.click(Selector('#user-edit-club-button'));
+        // Select the club's ClubCard in the ClubCardList component.
+        const userClubCard = Selector('#user-club-card').withText(club);
+        await testController.expect(userClubCard.exists).ok(`Check that ${user.name} can see ${club} UserClubCard`);
+        // Find the Edit Club Button on that club's ClubCard.
+        const editClubButton = userClubCard.find('#edit-club-link');
+        await testController.click(editClubButton);
+        // Verify that the EditClub component on EditClubPage is prefilled with the correct information.
         await testController.expect(Selector('#edit-form-name')().value).eql(club, `Ensure the EditClub form is pre-filled with ${club}'s information`);
         await navBar.gotoUserPage(testController);
       }, Promise.resolve());
-    } else {
-      await testController.expect(Selector('#user-edit-club').exists).notOk(`Check that ${user.name} can't see the UserEditClubs component`);
     }
   }
 
@@ -81,6 +81,61 @@ class UserPage {
     await testController.click(Selector('#user-update-profile .btn'));
     await testController.expect(Selector('.swal-overlay').exists).ok();
     await testController.click('.swal-button--confirm');
+  }
+
+  /** Leave a club. */
+  async verifyLeaveClub(testController, user) {
+    if (user.isAdmin) {
+      // An Admin user is not a member of any club, and thus should not be able to leave any club.
+      await testController.expect(Selector('#leave-club-btn').exists).notOk('Ensure that Admin user cannot leave any club');
+    } else {
+      // Check that there is a Leave Club button for each club the user has joined.
+      await testController.expect(Selector('#leave-club-btn').count).eql(user.joinedClubs.length, `Check that non-admin user ${user.name} can see ${user.joinedClubs.length} Leave Club buttons`);
+      // For each club the user is a member of:
+      await user.joinedClubs.reduce(async (previousPromise, club) => {
+        await previousPromise;
+        // Select the club's ClubCard in the ClubCardList component.
+        const userClubCard = Selector('#user-club-card').withText(club);
+        await testController.expect(userClubCard.exists).ok(`Check that ${user.name} can see ${club} UserClubCard`);
+        // Find the Leave Club Button on that club's ClubCard.
+        const leaveClubButton = userClubCard.find('#leave-club-btn');
+        // Try to leave that club.
+        await testController.click(leaveClubButton);
+        await testController.click(Selector('.swal-button--confirm'));
+        if (user.editableClubs.includes(club)) {
+          // A user should not be able to leave a club they own.
+          await testController.click(Selector('.swal-button--cancel'));
+          await testController.expect(userClubCard.exists).ok(`Check that ${user.name} can still see ${club} UserClubCard`);
+        } else {
+          await testController.click(Selector('.swal-button--confirm'));
+          // Verify that the ClubCard for that club is no longer visible.
+          await testController.expect(userClubCard.exists).notOk(`Check that ${user.name} can no longer see ${club} UserClubCard`);
+        }
+      }, Promise.resolve());
+      // Verify that the only clubs the user can see now are those that they own.
+      await testController.expect(Selector('#user-club-card').count).eql(user.editableClubs.length, `Check that non-admin user ${user.name} can see ${user.editableClubs.length} UserClubCard components`);
+    }
+  }
+
+  /** Rejoin all clubs that were left in the previous test. */
+  async verifyJoinClub(testController, user) {
+    // Admins cannot join clubs.
+    if (!user.isAdmin) {
+      await navBar.gotoBrowseClubsPage(testController);
+      // Determine an array of the clubs to rejoin.
+      const rejoinList = user.joinedClubs.filter(club => !user.editableClubs.includes(club));
+      // For each club the user must rejoin:
+      await rejoinList.reduce(async (previousPromise, club) => {
+        await previousPromise;
+        // Select the club's ClubCard in the ClubCardList component.
+        const browseClubCard = Selector('#browse-club-card').withText(club).parent();
+        await testController.expect(browseClubCard.exists).ok(`Check that ${user.name} can see ${club} ClubCard`);
+        // Find the Join Club Button on that club's ClubCard.
+        const joinClubButton = browseClubCard.find('#join-club-btn');
+        await testController.click(joinClubButton);
+      }, Promise.resolve());
+      await navBar.gotoUserPage(testController);
+    }
   }
 }
 

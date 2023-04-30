@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Clubs } from '../../api/club/Club';
 import { Profiles } from '../../api/profile/Profile';
- // import { Interests } from '../../api/interests/Interests';
+// import { Interests } from '../../api/interests/Interests';
 // import { ProfilesInterests } from '../../api/profile/ProfileInterests';
 // import { ClubInterests } from '../../api/club/ClubInterests';
 // import { ProfileClubs } from '../../api/profile/ProfileClubs';

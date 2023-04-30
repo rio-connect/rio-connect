@@ -37,7 +37,7 @@ const App = () => (
         <Route path="/signin" element={<SignInPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/signout" element={<SignOutPage />} />
-        <Route path="/addclub" element={<AddClubPage />} />
+        <Route path="/addclub" element={<ProtectedRoute><AddClubPage /></ProtectedRoute>} />
         <Route path="/:_id" element={<ProtectedRoute><EditClubPage /></ProtectedRoute>} />
         <Route path="/browseclubs" element={<BrowseClubsPage />} />
         <Route path="/clubcardtest" element={<ClubCardTestPage />} />

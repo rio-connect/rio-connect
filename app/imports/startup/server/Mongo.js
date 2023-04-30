@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Clubs } from '../../api/club/Club';
 import { Profiles } from '../../api/profile/Profile';
+
 // import { Interests } from '../../api/interests/Interests';
 
 /* eslint-disable no-console */
@@ -43,4 +44,11 @@ if (Profiles.collection.find().count() === 0) {
     console.log('Creating default profiles.');
     Meteor.settings.defaultProfiles.forEach(profile => addProfiles(profile));
   }
+}
+
+if ((Meteor.settings.loadDefaultClubs) && (Meteor.users.find().count() < 7)) {
+  const assetsFileName = 'defaultClubs.json';
+  console.log(`Loading data from private/${assetsFileName}`);
+  const jsonData = JSON.parse(Assets.getText(assetsFileName));
+  jsonData.profiles.map(club => addClubs(club));
 }

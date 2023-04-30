@@ -46,11 +46,3 @@ if (Profiles.collection.find().count() === 0) {
   }
 }
 
-if ((Meteor.settings.loadDefaultClubs) && (Meteor.users.find().count() < 7)) {
-  const assetsFileName = 'defaultClubs.json';
-  console.log(`Loading data from private/${assetsFileName}`);
-  const jsonData = JSON.parse(Assets.getText(assetsFileName));
-  jsonData.profiles.map(club => addClubs(club));
-}
-
-

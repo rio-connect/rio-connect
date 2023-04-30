@@ -16,10 +16,9 @@ class AddPage {
     // Fill in the club information
     await testController.typeText('#add-form-name', 'Test Club');
     // await testController.typeText('#add-form-owner', 'John Smith');
-    // await testController.typeText('#add-form-image', 'images/generic-club.png');
+    await testController.typeText('#add-form-image', 'images/generic-club.png');
     // await testController.typeText('#add-form-mail', 'john@foo.com');
     await testController.typeText('#add-form-description', 'Test');
-    await testController.typeText('#add-form-image', 'images/doctor.jpg');
     // Select a club type
     const typeSelector = Selector('#add-form-type');
     const selectOption = typeSelector().find('option');

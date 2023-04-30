@@ -6,7 +6,7 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
 // import { _ } from 'meteor/underscore';
 import { useTracker } from 'meteor/react-meteor-data';
-import { AutoForm, ErrorsField, LongTextField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, HiddenField, LongTextField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import LoadingSpinner from './LoadingSpinner';
 import { Clubs } from '../../api/club/Club';
 import { ProfileClubs } from '../../api/profile/ProfileClubs';
@@ -31,8 +31,7 @@ const makeSchema = () => new SimpleSchema({
 const AddClubComponent = () => {
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { name, type, description, ownerMail, image } = data;
-    const owner = Meteor.user().username;
+    const { name, type, description, owner, ownerMail, image } = data;
     const members = Meteor.user().username;
     Clubs.collection.insert(
       { name, type: type, description, owner, ownerMail, image, members: members },
@@ -59,6 +58,7 @@ const AddClubComponent = () => {
       interests: Interests.collection.find().fetch(),
     };
   }, []);
+  const profile = Profiles.collection.findOne();
   const allInterests = ['Academic/Professional', 'Ethic/Cultural', 'Fraternity/Sorority', 'Honorary Society', 'Leisure/Recreational', 'Political', 'Religious/Spiritual', 'Service', 'Sports/Leisure', 'Student Affairs'];
   const formSchema = makeSchema(allInterests);
   const bridge = new SimpleSchema2Bridge(formSchema);
@@ -77,7 +77,6 @@ const AddClubComponent = () => {
               <Card.Body>
                 <Row>
                   <Col>
-
                     <TextField id="add-form-name" showInlineError name="name" />
                   </Col>
                   <Col>
@@ -85,8 +84,8 @@ const AddClubComponent = () => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col><TextField showInlineError id="add-form-owner" name="owner" /></Col>
-                  <Col><TextField showInlineError id="add-form-mail" name="ownerMail" /></Col>
+                  <HiddenField showInlineError id="add-form-owner" name="owner" value={profile.name} />
+                  <HiddenField showInlineError id="add-form-mail" name="ownerMail" value={Meteor.user().username} />
                 </Row>
                 <Row>
                   <Col>

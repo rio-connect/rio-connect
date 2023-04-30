@@ -69,20 +69,27 @@ test('Test the Browse Clubs page', async (testController) => {
 });
 
 test('Test that add and edit clubs work', async (testController) => {
+  /** Sign in as the club owner user */
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, clubOwner.username, clubOwner.password);
   await navBar.isLoggedIn(testController, clubOwner.username);
+  /** Add a new club called 'TestClub'. */
   await navBar.gotoAddClubsPage(testController);
-  await addPage.add(testController);
-  /** Add the clubs' information to the clubOwner's profile. This is necessary for testing the UserPage.
-   * Note that meteor reset must be run after every test, since the added club remains in the Mongo database. The UserPage tests check to see that the correct number of clubs is visible. */
-  clubOwner.joinedClubs.push('Test Club');
+  await addPage.addClub(testController);
   await navBar.gotoBrowseClubsPage(testController);
-  await browsePage.isAdded(testController, 'Club1');
-  await browsePage.edit(testController);
-  await editPage.edit(testController);
+  await browsePage.verifyClub(testController, clubOwner, 'Test Club');
+  /** Edit the newly added Test Club to have a new name, Club3. */
+  await browsePage.selectClubForEditing(testController, 'Test Club');
+  await editPage.editClub(testController, 'Club3');
+  /** Verify that the club's name is now 'Club3' and not 'Test Club'. */
   await navBar.gotoBrowseClubsPage(testController);
-  await browsePage.isAdded(testController, 'Club3');
+  await browsePage.verifyClub(testController, clubOwner, 'Club3');
+  /** Delete 'Club3' to ensure invariance between tests. */
+  await browsePage.selectClubForEditing(testController, 'Club3');
+  await editPage.deleteClub(testController, 'Club3');
+  /** Log out */
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
 });
 
 /** UserPage tests */

@@ -10,9 +10,10 @@ class AddPage {
     await testController.expect(this.pageSelector.exists).ok();
   }
 
-  async add(testController) {
+  /** Add a new club to the ClubsCollection. */
+  async addClub(testController) {
     await this.isDisplayed(testController);
-    // type in the text fields
+    // Fill in the club information
     await testController.typeText('#add-form-name', 'Test Club');
     await testController.typeText('#add-form-owner', 'John Smith');
     await testController.typeText('#add-form-image', 'images/generic-club.png');
@@ -23,7 +24,7 @@ class AddPage {
     const selectOption = typeSelector().find('option');
     await testController.click(typeSelector());
     await testController.click(selectOption.withText('Political'));
-    // submit the form
+    // Submit the form
     await testController.click('#add-form-submit');
     await testController.click(Selector('.swal-button--confirm'));
   }

@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Image, Row, Card, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const UserClubCard = ({ club, onLeaveClub, isAdmin }) => (
+// Defines the appearance of a single ClubCard in the UserClubList.
+const UserClubCard = ({ club, onLeaveClub, isAdmin, canEdit }) => (
   <Card id="user-club-card" className="h-100">
     <Card.Body>
       <Row>
@@ -14,24 +15,30 @@ const UserClubCard = ({ club, onLeaveClub, isAdmin }) => (
           <Card.Title id="user-club-card-name">{club.name}</Card.Title>
           <Card.Text>
             {club.description}
-            <br />
-            <br />
-            <Row>
-              <Col>
-                <a href={`mailto:${club.ownerMail}`}>Contact Club Leadership</a>
-              </Col>
-              <Col>
-                <div className="d-flex justify-content-end">
-                  {
-                    !isAdmin && (
-                      <Button className="btn-danger" onClick={() => onLeaveClub(club)}>Leave Club</Button>
-                    )
-                  }
-                </div>
-              </Col>
-            </Row>
-
           </Card.Text>
+          <Row>
+            <a href={`mailto:${club.ownerMail}`}>Contact Club Leadership</a>
+          </Row>
+          <Row className="pt-3">
+            <Col>
+              {
+                canEdit && (
+                  <Link to={`/${club._id}`}>
+                    <Button id="edit-club-link">Edit Club</Button>
+                  </Link>
+                )
+              }
+            </Col>
+            <Col>
+              <div className="d-flex justify-content-end">
+                {
+                  !isAdmin && (
+                    <Button className="btn-danger" onClick={() => onLeaveClub(club)}>Leave Club</Button>
+                  )
+                }
+              </div>
+            </Col>
+          </Row>
         </Col>
       </Row>
     </Card.Body>
@@ -49,6 +56,7 @@ UserClubCard.propTypes = {
   }).isRequired,
   onLeaveClub: PropTypes.func.isRequired,
   isAdmin: PropTypes.bool.isRequired,
+  canEdit: PropTypes.bool.isRequired,
 };
 
 export default UserClubCard;

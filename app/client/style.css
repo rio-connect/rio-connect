@@ -76,9 +76,6 @@ body {
   border-color: rgb(255, 255, 255);
 }
 
-/*******************************************************************************/
-
-
 /********************************* LandingPage page ********************************/
 
 /* Gray color block for the landing page */
@@ -106,17 +103,6 @@ body {
   font-size: 18px;
   min-height: 500px;
 }
-
-/* Customize the primary color for the buttons in the landing page */
-#get-started .btn-primary, #selectInterestsApply .btn-primary {
-  --bs-btn-bg: #5F9AEB !important;
-  --bs-btn-border-color: #5F9AEB !important;
-  --bs-btn-hover-bg: #4D7FDC !important;
-  --bs-btn-hover-border-color: #4D7FDC !important;
-}
-
-/*******************************************************************************/
-
 
 /****************************** Browse Clubs page ******************************/
 
@@ -210,12 +196,40 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-/*******************************************************************************/
-
 /********************************** Clubs card *********************************/
 
 .img-thumbnail {
   width: 250px;
+}
+
+/******************************** Loading Spinner ******************************/
+
+#loadingSpinner {
+  min-height: 100vh;
+}
+
+/********************************* Primary Button *******************************/
+
+/* Customize the primary color for the buttons in the landing page */
+#get-started .btn-primary, #selectInterestsApply .btn-primary, #signin-form-submit .btn-primary, #signup-form-submit .btn-primary {
+  --bs-btn-bg: #5F9AEB !important;
+  --bs-btn-border-color: #5F9AEB !important;
+  --bs-btn-hover-bg: #4D7FDC !important;
+  --bs-btn-hover-border-color: #4D7FDC !important;
+}
+
+/************************ Sign-In Sign-Up Sign-Out Pages **********************/
+
+#signin-page h2, #signup-page h2, #signout-page h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+}
+
+/********************************** User Page *********************************/
+
+.user-club-list-scrollable {
+  max-height: 500px;
+  overflow-y: scroll;
 }
 
 /*******************************************************************************/

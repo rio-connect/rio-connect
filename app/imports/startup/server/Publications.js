@@ -2,22 +2,22 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Clubs } from '../../api/club/Club';
 import { Profiles } from '../../api/profile/Profile';
-import { Interests } from '../../api/interests/Interests';
-import { ProfilesInterests } from '../../api/profile/ProfileInterests';
-import { ClubInterests } from '../../api/club/ClubInterests';
-import { ProfileClubs } from '../../api/profile/ProfileClubs';
+// import { Interests } from '../../api/interests/Interests';
+// import { ProfilesInterests } from '../../api/profile/ProfileInterests';
+// import { ClubInterests } from '../../api/club/ClubInterests';
+// import { ProfileClubs } from '../../api/profile/ProfileClubs';
 
 // Define a publication to publish all interests
-Meteor.publish(Interests.userPublicationName, () => Interests.collection.find());
-
-// Define a publication to publish profile interests
-Meteor.publish(ProfilesInterests.userPublicationName, () => ProfilesInterests.collection.find());
-
-// Define a publication to publish Club Interests/type
-Meteor.publish(ClubInterests.userPublicationName, () => ClubInterests.collection.find());
-
-// Define a publication to publish profiles/clubs
-Meteor.publish(ProfileClubs.userPublicationName, () => ProfileClubs.collection.find());
+// Meteor.publish(Interests.userPublicationName, () => Interests.collection.find());
+//
+// // Define a publication to publish profile interests
+// Meteor.publish(ProfilesInterests.userPublicationName, () => ProfilesInterests.collection.find());
+//
+// // Define a publication to publish Club Interests/type
+// Meteor.publish(ClubInterests.userPublicationName, () => ClubInterests.collection.find());
+//
+// // Define a publication to publish profiles/clubs
+Meteor.publish(Clubs.userPublicationName, () => Clubs.collection.find());
 
 // Public publication.
 // If not logged in, then only publish info about clubs that is publicly available (no members list).

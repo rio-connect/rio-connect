@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import { Button, Card, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Clubs } from '../../api/club/Club';
 
 const EditClubDelete = ({ club }) => {
+  const [redirect, setRedirect] = useState(false);
   // Callback function to remove a member.
   const deleteClub = () => {
     // Prompt the user for verification.
@@ -23,11 +25,14 @@ const EditClubDelete = ({ club }) => {
           swal('Success', `${name} deleted successfully`, 'success'),
         );
       }).then(() => {
-        console.log('redirect here');
+        setRedirect(true);
       });
   };
 
   // Define the appearance of the component.
+  if (redirect) {
+    return (<Navigate to="/browseclubs" />);
+  }
   return (
     <Card className="text-center" style={{ width: '35rem' }}>
       <Card.Body>

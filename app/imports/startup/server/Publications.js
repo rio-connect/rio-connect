@@ -17,7 +17,7 @@ import { Profiles } from '../../api/profile/Profile';
 // Meteor.publish(ClubInterests.userPublicationName, () => ClubInterests.collection.find());
 //
 // // Define a publication to publish profiles/clubs
-Meteor.publish(Clubs.userPublicationName, () => Clubs.collection.find());
+// Meteor.publish(Clubs.userPublicationName, () => Clubs.collection.find());
 
 // Public publication.
 // If not logged in, then only publish info about clubs that is publicly available (no members list).

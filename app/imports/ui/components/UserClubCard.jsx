@@ -8,8 +8,8 @@ const UserClubCard = ({ club, onLeaveClub, isAdmin, canEdit }) => (
   <Card id="user-club-card" className="h-100">
     <Card.Body>
       <Row>
-        <Col xs="auto">
-          <Image src="/images/generic-club.png" width="100" />
+        <Col xs="auto" className="d-flex">
+          <Image className="align-self-center" src={club.image} width="100" />
         </Col>
         <Col id="club-card-name">
           <Card.Title id="user-club-card-name">{club.name}</Card.Title>

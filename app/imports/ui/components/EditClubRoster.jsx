@@ -11,7 +11,7 @@ const EditClubRoster = ({ club }) => {
     // Prompt the user for verification.
     swal({
       title: 'Are you sure?',
-      text: `Do you want to remove user ${member} from ${club.name}?`,
+      text: `Do you want to remove ${member} from ${club.name}?`,
       icon: 'warning',
       buttons: true,
       dangerMode: true,
@@ -22,7 +22,7 @@ const EditClubRoster = ({ club }) => {
           if (club.ownerMail === member) {
             swal({
               title: 'Error',
-              text: 'You cannot kick yourself because you are the owner. Please transfer ownership to another user before leaving the club.',
+              text: 'You cannot kick the club owner.',
               icon: 'error',
               buttons: {
                 cancel: 'Close',

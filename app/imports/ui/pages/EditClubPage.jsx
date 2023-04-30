@@ -8,6 +8,7 @@ import { Clubs } from '../../api/club/Club';
 import LoadingSpinner from '../components/LoadingSpinner';
 import EditClubInformation from '../components/EditClubInformation';
 import EditClubRoster from '../components/EditClubRoster';
+import EditClubDelete from '../components/EditClubDelete';
 
 const EditClubPage = () => {
   // Get the club ID from the URL.
@@ -46,6 +47,12 @@ const EditClubPage = () => {
           </Row>
           <Row className="justify-content-center">
             <EditClubRoster club={club} />
+          </Row>
+          <Row className="text-center">
+            <h2>Delete Club</h2>
+          </Row>
+          <Row xs={5} className="justify-content-center">
+            <EditClubDelete club={club} />
           </Row>
         </Col>
       </Row>

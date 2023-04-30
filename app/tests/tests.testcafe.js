@@ -69,33 +69,56 @@ test('Test the Browse Clubs page', async (testController) => {
 });
 
 test('Test that add and edit clubs work', async (testController) => {
+  /** Sign in as the club owner user */
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, clubOwner.username, clubOwner.password);
   await navBar.isLoggedIn(testController, clubOwner.username);
+  /** Add a new club called 'TestClub'. */
   await navBar.gotoAddClubsPage(testController);
-  await addPage.add(testController);
-  /** Add the clubs' information to the clubOwner's profile. This is necessary for testing the UserPage.
-   * Note that meteor reset must be run after every test, since the added club remains in the Mongo database. The UserPage tests check to see that the correct number of clubs is visible. */
-  clubOwner.joinedClubs.push('Test Club');
+  await addPage.addClub(testController);
   await navBar.gotoBrowseClubsPage(testController);
-  await browsePage.isAdded(testController, 'Club1');
-  await browsePage.edit(testController);
-  await editPage.edit(testController);
+  await browsePage.verifyClub(testController, clubOwner, 'Test Club');
+  /** Edit the newly added Test Club to have a new name, Club3. */
+  await browsePage.selectClubForEditing(testController, 'Test Club');
+  await editPage.editClub(testController, 'Club3');
+  /** Verify that the club's name is now 'Club3' and not 'Test Club'. */
   await navBar.gotoBrowseClubsPage(testController);
-  await browsePage.isAdded(testController, 'Club3');
+  await browsePage.verifyClub(testController, clubOwner, 'Club3');
+  /** Delete 'Club3' to ensure invariance between tests. */
+  await browsePage.selectClubForEditing(testController, 'Club3');
+  await editPage.deleteClub(testController, 'Club3');
+  /** Log out */
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
 });
 
 /** UserPage tests */
 credentialsArray.forEach(user => {
   test(`Test that the UserPage displays correct information for ${user.username}`, async (testController) => {
+    /** Sign in */
     await navBar.gotoSignInPage(testController);
     await signinPage.signin(testController, user.username, user.password);
     await navBar.isLoggedIn(testController, user.username);
+    /** Go to the UserPage */
     await navBar.gotoUserPage(testController);
+    /** Verify that the UserPage is correct */
     await userPage.isDisplayed(testController, user);
     await userPage.correctProfileInformation(testController, user);
     await userPage.correctClubMembershipInformation(testController, user);
     await userPage.correctClubEditingInformation(testController, user);
+    /** Verify that the user can edit their profile information */
+    await userPage.editProfileInformation(testController, user);
+    await navBar.gotoBrowseClubsPage(testController);
+    await navBar.gotoUserPage(testController);
+    await userPage.verifyEditedProfileInformation(testController, user);
+    await userPage.restoreProfileInformation(testController, user);
+    await userPage.correctProfileInformation(testController, user);
+    /** Verify that the user can leave a club */
+    await userPage.verifyLeaveClub(testController, user);
+    /** Verify that the user can join a club */
+    await userPage.verifyJoinClub(testController, user);
+    await userPage.correctClubMembershipInformation(testController, user);
+    /** Log out */
     await navBar.logout(testController);
     await signoutPage.isDisplayed(testController);
   });

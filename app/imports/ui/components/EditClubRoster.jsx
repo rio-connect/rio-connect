@@ -45,6 +45,15 @@ const EditClubRoster = ({ club }) => {
       });
   };
 
+  // Return something in case the club is undefined. This occurs right after a club is deleted.
+  if (!club) {
+    return (
+      <div>
+        <p>Club not found</p>
+      </div>
+    );
+  }
+
   // Define the appearance of the component.
   return (
     <Card className="text-center" style={{ width: '35rem' }}>

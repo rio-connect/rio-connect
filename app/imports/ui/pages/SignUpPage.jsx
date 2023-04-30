@@ -52,14 +52,14 @@ const SignUpPage = ({ location }) => {
                 <TextField name="email" placeholder="E-mail address" />
                 <TextField name="password" placeholder="Password" type="password" />
                 <ErrorsField />
-                <SubmitField />
+                <SubmitField id="signup-form-submit" />
               </Card.Body>
             </Card>
           </AutoForm>
           <Alert variant="light">
             Already have an account? Login
             {' '}
-            <Link to="/signin">here</Link>
+            <Link className="text-white" to="/signin">here</Link>
           </Alert>
           {error === '' ? (
             ''

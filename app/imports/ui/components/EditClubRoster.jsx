@@ -1,5 +1,4 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
 import { Button, Card, Row } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
@@ -20,7 +19,7 @@ const EditClubRoster = ({ club }) => {
       .then((willLeave) => {
         if (willLeave) {
           // A club owner cannot kick themselves.
-          if (club.ownerMail === Meteor.user().username) {
+          if (club.ownerMail === member) {
             swal({
               title: 'Error',
               text: 'You cannot kick yourself because you are the owner. Please transfer ownership to another user before leaving the club.',
@@ -48,7 +47,7 @@ const EditClubRoster = ({ club }) => {
 
   // Define the appearance of the component.
   return (
-    <Card>
+    <Card className="text-center" style={{ width: '35rem' }}>
       <Card.Body>
         <Row>
           <Table striped bordered hover size="sm">

@@ -37,14 +37,16 @@ const EditClubPage = () => {
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col xs={10}>
-          <Col className="text-center">
+          <Row className="text-center">
             <h2>Edit Club</h2>
-          </Col>
+          </Row>
           <EditClubInformation club={club} />
-          <Col className="text-center">
+          <Row className="text-center">
             <h2>Club Roster</h2>
-          </Col>
-          <EditClubRoster club={club} />
+          </Row>
+          <Row className="justify-content-center">
+            <EditClubRoster club={club} />
+          </Row>
         </Col>
       </Row>
     </Container>

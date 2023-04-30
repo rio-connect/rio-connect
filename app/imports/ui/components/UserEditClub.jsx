@@ -28,7 +28,7 @@ const UserEditClub = ({ clubs }) => {
         </Row>
         <Row className="justify-content-center pt-3">
           <a
-            href={`edit/${selectedClubId}`}
+            href={`${selectedClubId}`}
             className="text-center gap-2 text-decoration-none text-white"
           >
             <Button variant="primary" size="lg">

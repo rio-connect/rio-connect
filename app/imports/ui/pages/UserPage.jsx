@@ -5,66 +5,50 @@ import { Container, Row } from 'react-bootstrap';
 import { Roles } from 'meteor/alanning:roles';
 import UserContactInfo from '../components/UserContactInfo';
 import UserClubList from '../components/UserClubList';
-import UserEditClub from '../components/UserEditClub';
 import { Profiles } from '../../api/profile/Profile';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Clubs } from '../../api/club/Club';
 
-// Create a schema to specify the structure of the data to appear in the form.
-/* Renders the AddStuff page for adding a document. */
 const UserPage = () => {
+  // Determine if the current user is an Admin.
   const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
 
-  const { profiles, clubs, ready, editableClubs } = useTracker(() => {
+  // Subscribe to the ClubsCollection and ProfilesCollection.
+  const { profile, clubs, ready } = useTracker(() => {
+    // Subscribe only to our own profile.
     const profileSubscription = Meteor.subscribe(Profiles.userPublicationName);
+    // Subscribe to all clubs if we are an Admin. Otherwise, just the ones we are a member of.
     const clubSubscription = isAdmin
       ? Meteor.subscribe(Clubs.adminPublicationName)
       : Meteor.subscribe(Clubs.userPublicationName);
-
     const rdy = profileSubscription.ready() && clubSubscription.ready();
 
-    const profile = Profiles.collection.find({}).fetch();
+    // The only profile in the ProfilesCollection should be our own profile.
+    const myProfile = Profiles.collection.findOne({});
+    // Fetch all the clubs in the ClubsCollection that we have access to.
     const club = Clubs.collection.find({}).fetch();
-    const editableClub = isAdmin
-      ? Clubs.collection.find({}).fetch()
-      : Clubs.collection.find({ ownerMail: profile[0]?.email }).fetch();
-
     return {
-      profiles: profile[0],
+      profile: myProfile,
       clubs: club,
-      editableClubs: editableClub,
       ready: rdy,
     };
   }, []);
 
-  const canEdit = isAdmin || (editableClubs && editableClubs.length > 0);
-
+  // Define the appearance of the page.
   return (ready ? (
     <Container id="user-page">
       <Row className="profile-heading justify-content-center pt-4 pb-2">
         User Profile
       </Row>
       <Row>
-        <UserContactInfo profile={profiles} />
+        <UserContactInfo profile={profile} />
       </Row>
       <Row className="profile-heading justify-content-center pt-4 pb-2">
         Clubs
       </Row>
-      <Row>
-        <UserClubList clubs={clubs} profile={profiles} isAdmin={isAdmin} />
+      <Row className="pb-4">
+        <UserClubList clubs={clubs} profile={profile} isAdmin={isAdmin} />
       </Row>
-      {
-        canEdit && (
-          <>
-            <Row className="profile-heading justify-content-center pt-4 pb-2">
-              Edit Club
-            </Row>
-            <Row>
-              <UserEditClub clubs={editableClubs} />
-            </Row>
-          </>
-        )
-      }
     </Container>
   ) : <LoadingSpinner />);
 };

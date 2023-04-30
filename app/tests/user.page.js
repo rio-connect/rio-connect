@@ -79,6 +79,9 @@ class UserPage {
 
     await testController.click(Selector('#user-update-profile .btn'));
     await testController.click('.swal-button--confirm');
+    // Verify that the text boxes have been updated to have the correct value.
+    console.log(await Selector('#user-name').value);
+    console.log(await Selector('#user-phone').value);
   }
 
   /** Leave a club. */

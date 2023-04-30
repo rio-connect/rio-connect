@@ -61,8 +61,9 @@ body {
 
 /* Change the toggle button's border and highlight color to white */
 #toggle-button {
-  border: 2px solid white;
+  border: 1px solid white;
   color: white;
+  width: 390px;
 }
 
 /* Customize the toggle (hamburger) svg icon */
@@ -74,9 +75,6 @@ body {
 #toggle-button.navbar-toggler {
   border-color: rgb(255, 255, 255);
 }
-
-/*******************************************************************************/
-
 
 /********************************* LandingPage page ********************************/
 
@@ -106,17 +104,6 @@ body {
   min-height: 500px;
 }
 
-/* Customize the primary color for the buttons in the landing page */
-#get-started .btn-primary {
-  --bs-btn-bg: #5F9AEB !important;
-  --bs-btn-border-color: #5F9AEB !important;
-  --bs-btn-hover-bg: #4D7FDC !important;
-  --bs-btn-hover-border-color: #4D7FDC !important;
-}
-
-/*******************************************************************************/
-
-
 /****************************** Browse Clubs page ******************************/
 
 /* Background image for the Browse Clubs page */
@@ -124,7 +111,7 @@ body {
   background: url('images/manoa-students-dark.jpeg') no-repeat center center;
   background-size: cover;
   padding-top: 40px;
-  min-height: calc(100vh * 0.79);
+  min-height: 670px;
   width: 100vw;
   font-family: "Open Sans", sans-serif;
   color: white;
@@ -143,6 +130,9 @@ body {
 }
 
 @media(max-width: 991px){
+  #browseSection {
+    min-height: 690px;
+  }
   #filterContainer {
     max-width: 510px;
   }
@@ -153,7 +143,7 @@ body {
 
 @media(max-width: 767px){
   #browseSection {
-    min-height: 100vh;
+    min-height: 830px;
   }
   .selectField {
     padding-left: 0px;
@@ -189,18 +179,57 @@ body {
   }
 }
 
+#searchField .form-control.is-valid, #searchField .was-validated .form-control:valid {
+  border-color: #ced4da !important;
+  background-image: none !important;
+}
+
+#searchField .form-control:focus {
+  outline: none !important;
+  border: 1px solid #ced4da;
+  box-shadow: 0 0 0px transparent;
+}
+
 .list-group{
   min-width: 2000;
   overflow:scroll;
   -webkit-overflow-scrolling: touch;
 }
 
-/*******************************************************************************/
-
 /********************************** Clubs card *********************************/
 
 .img-thumbnail {
   width: 250px;
+}
+
+/******************************** Loading Spinner ******************************/
+
+#loadingSpinner {
+  min-height: 100vh;
+}
+
+/********************************* Primary Button *******************************/
+
+/* Customize the primary color for the buttons in the landing page */
+#get-started .btn-primary, #selectInterestsApply .btn-primary, #signin-form-submit .btn-primary, #signup-form-submit .btn-primary {
+  --bs-btn-bg: #5F9AEB !important;
+  --bs-btn-border-color: #5F9AEB !important;
+  --bs-btn-hover-bg: #4D7FDC !important;
+  --bs-btn-hover-border-color: #4D7FDC !important;
+}
+
+/************************ Sign-In Sign-Up Sign-Out Pages **********************/
+
+#signin-page h2, #signup-page h2, #signout-page h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+}
+
+/********************************** User Page *********************************/
+
+.user-club-list-scrollable {
+  max-height: 500px;
+  overflow-y: scroll;
 }
 
 /*******************************************************************************/

@@ -45,12 +45,12 @@ const credentialsArray = [regularUser, clubOwner, admin];
 fixture('rio-connect localhost test with default db')
   .page('http://localhost:3000');
 
-test.skip('Test that landing page shows up', async (testController) => {
+test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
 });
 
 credentialsArray.forEach((user) => {
-  test.skip(`Test that signin and signout work for ${user.name}`, async (testController) => {
+  test(`Test that signin and signout work for ${user.name}`, async (testController) => {
     await navBar.gotoSignInPage(testController);
     await signinPage.signin(testController, user.username, user.password);
     await navBar.isLoggedIn(testController, user.username);
@@ -59,7 +59,7 @@ credentialsArray.forEach((user) => {
   });
 });
 
-test.skip('Test the Browse Clubs page', async (testController) => {
+test('Test the Browse Clubs page', async (testController) => {
   // await navBar.ensureLogout(testController);
   // await navBar.gotoSignInPage(testController);
   // await signinPage.signin(testController, regularUser.username, regularUser.password);
@@ -68,7 +68,7 @@ test.skip('Test the Browse Clubs page', async (testController) => {
   await browsePage.filter(testController);
 });
 
-test.skip('Test that add and edit clubs work', async (testController) => {
+test('Test that add and edit clubs work', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, clubOwner.username, clubOwner.password);
   await navBar.isLoggedIn(testController, clubOwner.username);
@@ -87,7 +87,7 @@ test.skip('Test that add and edit clubs work', async (testController) => {
 
 /** UserPage tests */
 credentialsArray.forEach(user => {
-  test(`Test the UserPage for ${user.username}`, async (testController) => {
+  test.only(`Test the UserPage for ${user.username}`, async (testController) => {
     /** Sign in */
     await navBar.gotoSignInPage(testController);
     await signinPage.signin(testController, user.username, user.password);

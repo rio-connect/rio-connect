@@ -18,11 +18,11 @@ const formSchema = new SimpleSchema({
   },
 });
 
+// Build a bridge from that schema.
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-/* Renders the AddStuff page for adding a document. */
 const UserContactInfo = ({ profile }) => {
-  // On submit, insert the data.
+  // Callback function that updates the ProfilesCollection with the user's data.
   const submit = (data) => {
     const { name, email, phoneNo } = data;
     Profiles.collection.update(
@@ -34,7 +34,7 @@ const UserContactInfo = ({ profile }) => {
     );
   };
 
-  // Render the form. Use Uniforms: https://github.com/vazco/uniforms
+  // Define the appearance of the component.
   return (
     <Container id="user-contact-info" className="py-3 gray-background">
       <Row className="justify-content-center">

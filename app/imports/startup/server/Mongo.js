@@ -45,4 +45,3 @@ if (Profiles.collection.find().count() === 0) {
     Meteor.settings.defaultProfiles.forEach(profile => addProfiles(profile));
   }
 }
-

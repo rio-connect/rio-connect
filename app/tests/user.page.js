@@ -15,6 +15,7 @@ class UserPage {
   /** Checks that the user's profile information is correct. */
   async correctProfileInformation(testController, user) {
     await testController.expect(Selector('#user-contact-info').exists).ok(`Check that ${user.name} can see the UserContactInfo component`);
+    console.log('In correctProfileInformation:');
     console.log(await Selector('#user-name').value);
     console.log(await Selector('#user-phone').value);
     await testController.expect(Selector('#user-name').value).eql(user.name);
@@ -59,16 +60,25 @@ class UserPage {
   /** Edit the user's profile information to junk data. */
   async editProfileInformation(testController, user) {
     await testController.expect(Selector('#user-contact-info').exists).ok(`Check that ${user.name} can edit the UserContactInfo component`);
+    console.log('In editProfileInformation:');
+    console.log(await Selector('#user-name').value);
+    console.log(await Selector('#user-phone').value);
     await testController.selectText(Selector('#user-name')).typeText(Selector('#user-name'), 'Abc123');
     await testController.selectText(Selector('#user-phone')).typeText(Selector('#user-phone'), '111-222-3333');
 
     await testController.click(Selector('#user-update-profile .btn'));
     await testController.click('.swal-button--confirm');
+    console.log('In editProfileInformation:');
+    console.log(await Selector('#user-name').value);
+    console.log(await Selector('#user-phone').value);
   }
 
   /** Validate that the junk data is saved to the user's profile. */
   async verifyEditedProfileInformation(testController, user) {
     await testController.expect(Selector('#user-contact-info').exists).ok(`Check that ${user.name} can edit the UserContactInfo component`);
+    console.log('In verifyEditedProfileInformation:');
+    console.log(await Selector('#user-name').value);
+    console.log(await Selector('#user-phone').value);
     await testController.expect(Selector('#user-name').value).eql('Abc123');
     await testController.expect(Selector('#user-phone').value).eql('111-222-3333');
   }
@@ -76,12 +86,16 @@ class UserPage {
   /** Restore the user's original profile information. */
   async restoreProfileInformation(testController, user) {
     await testController.expect(Selector('#user-contact-info').exists).ok(`Check that ${user.name} can edit the UserContactInfo component`);
+    console.log('In restoreProfileInformation:');
+    console.log(await Selector('#user-name').value);
+    console.log(await Selector('#user-phone').value);
     await testController.selectText(Selector('#user-name')).typeText(Selector('#user-name'), user.name);
     await testController.selectText(Selector('#user-phone')).typeText(Selector('#user-phone'), user.phoneNo);
 
     await testController.click(Selector('#user-update-profile .btn'));
     await testController.click('.swal-button--confirm');
     // Verify that the text boxes have been updated to have the correct value.
+    console.log('In restoreProfileInformation:');
     console.log(await Selector('#user-name').value);
     console.log(await Selector('#user-phone').value);
   }

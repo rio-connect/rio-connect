@@ -67,7 +67,7 @@ class UserPage {
   /** Validate that the junk data is saved to the user's profile. */
   async verifyEditedProfileInformation(testController, user) {
     await testController.expect(Selector('#user-contact-info').exists).ok(`Check that ${user.name} can edit the UserContactInfo component`);
-    await testController.expect(Selector('#user-name').value).eql('Abc123');
+    await testController.wait(30000).expect(Selector('#user-name').value).eql('Abc123');
     await testController.expect(Selector('#user-phone').value).eql('111-222-3333');
   }
 

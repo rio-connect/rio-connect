@@ -15,6 +15,8 @@ class UserPage {
   /** Checks that the user's profile information is correct. */
   async correctProfileInformation(testController, user) {
     await testController.expect(Selector('#user-contact-info').exists).ok(`Check that ${user.name} can see the UserContactInfo component`);
+    console.log(await Selector('#user-name').value);
+    console.log(await Selector('#user-phone').value);
     await testController.expect(Selector('#user-name').value).eql(user.name);
     await testController.expect(Selector('#user-email').value).eql(user.username);
     await testController.expect(Selector('#user-phone').value).eql(user.phoneNo);

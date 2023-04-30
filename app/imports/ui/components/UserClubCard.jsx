@@ -52,6 +52,7 @@ UserClubCard.propTypes = {
     type: PropTypes.string,
     description: PropTypes.string,
     ownerMail: PropTypes.string,
+    image: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
   onLeaveClub: PropTypes.func.isRequired,

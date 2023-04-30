@@ -57,7 +57,7 @@ const ClubCard = ({ club, onLeaveClub, onJoinClub, currentUser }) => {
                 )}
               <Col className="d-flex justify-content-end">
                 {(canEdit) ? (
-                  <Link to={`/edit/${club._id}`}>
+                  <Link to={`/${club._id}`}>
                     <Button id="edit-club-link">Edit Club</Button>
                   </Link>
                 ) : ''}

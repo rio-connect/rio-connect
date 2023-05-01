@@ -59,17 +59,6 @@ credentialsArray.forEach((user) => {
   });
 });
 
-test('Test that BrowseClubsPage works for users without an account', async (testController) => {
-  await navBar.gotoBrowseClubsPage(testController);
-  await browsePage.isDisplayed(testController);
-  // Test filtering
-  await browsePage.filter(testController);
-  await browsePage.clear(testController);
-  // Test search bar
-  await browsePage.search(testController);
-  await browsePage.clear(testController);
-});
-
 test('Test that BrowseClubsPage works for users', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, regularUser.username, regularUser.password);

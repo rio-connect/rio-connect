@@ -14,7 +14,7 @@ import { Profiles } from '../../api/profile/Profile';
 const makeSchema = () => new SimpleSchema({
   name: String,
   type: { label: 'Club Type', type: String, optional: true,
-    allowedValues: ['Academic/Professional', 'Ethic/Cultural', 'Fraternity/Sorority', 'Honorary Society', 'Leisure/Recreational', 'Political', 'Religious/Spiritual', 'Service', 'Sports/Leisure', 'Student Affairs'],
+    allowedValues: ['Academic/Professional', 'Ethnic/Cultural', 'Fraternity/Sorority', 'Honorary Society', 'Leisure/Recreational', 'Political', 'Religious/Spiritual', 'Service', 'Sports/Leisure', 'Student Affairs'],
   },
   description: String,
   owner: String,

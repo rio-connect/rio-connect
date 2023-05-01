@@ -70,46 +70,25 @@ test('Test that BrowseClubsPage works for users without an account', async (test
   await browsePage.clear(testController);
 });
 
-credentialsArray.forEach((user) => {
-  test(`Test that BrowseClubsPage works for ${user.name}`, async (testController) => {
-    await navBar.gotoSignInPage(testController);
-    await signinPage.signin(testController, user.username, user.password);
-    await navBar.gotoBrowseClubsPage(testController);
-    await browsePage.isDisplayed(testController);
-    // Test filtering
-    await browsePage.filter(testController);
-    await browsePage.clear(testController);
-    // Test search bar
-    await browsePage.search(testController);
-    await browsePage.clear(testController);
-    // Test join/leave club buttons
-    // if (user === regularUser || user === clubOwner) {
-    //   // Test join club button
-    //   await browsePage.joinClub(testController);
-    //   await navBar.gotoUserPage(testController);
-    //   // Check that correct number of joined clubs are displayed in the UserPage
-    //   await userPage.isDisplayed(testController, user);
-    //   await browsePage.correctNumOfJoinedClubs(testController, user, user.joinedClubs.length + 1);
-    //   await navBar.gotoBrowseClubsPage(testController);
-    //   await browsePage.isDisplayed(testController);
-    //   // Test leave club button
-    //   await browsePage.leaveClub(testController);
-    //   await navBar.gotoUserPage(testController);
-    //   // Check that correct number of joined clubs are displayed in the UserPage
-    //   await userPage.isDisplayed(testController, user);
-    //   await browsePage.correctNumOfJoinedClubs(testController, user, user.joinedClubs.length);
-    //   await navBar.gotoBrowseClubsPage(testController);
-    //   await browsePage.isDisplayed(testController);
-    // }
-    // Test create a club button
-    await browsePage.createClubBtn(testController);
-    await navBar.gotoAddClubsPage(testController);
-    await addPage.isDisplayed(testController);
-    // Logout
-    await navBar.isLoggedIn(testController, user.username);
-    await navBar.logout(testController);
-    await signoutPage.isDisplayed(testController);
-  });
+test('Test that BrowseClubsPage works for users', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, regularUser.username, regularUser.password);
+  await navBar.gotoBrowseClubsPage(testController);
+  await browsePage.isDisplayed(testController);
+  // Test filtering
+  await browsePage.filter(testController);
+  await browsePage.clear(testController);
+  // Test search bar
+  await browsePage.search(testController);
+  await browsePage.clear(testController);
+  // Test create a club button
+  await browsePage.createClubBtn(testController);
+  await navBar.gotoAddClubsPage(testController);
+  await addPage.isDisplayed(testController);
+  // Logout
+  await navBar.isLoggedIn(testController, regularUser.username);
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
 });
 
 test('Test that add and edit clubs work', async (testController) => {

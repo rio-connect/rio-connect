@@ -9,14 +9,10 @@ class UserPage {
 
   async validateUserPage(testController, user) {
     /** Checks that this page is currently displayed. */
-    console.log('performing test: this.isDisplayed');
     await testController.expect(this.pageSelector.exists).ok(`Check that ${user.name} can see their UserPage`);
-    console.log('performing test: this.correctProfileInformation');
     await this.correctProfileInformation(testController, user);
-    console.log('performing test: this.correctClubMembershipInformation');
     await this.correctClubMembershipInformation(testController, user);
     /** Checks that the user can edit all the clubs that they have permission to edit. */
-    console.log('performing test: this.correctClubEditingInformation');
     if (user.canEditClubs) {
       // For each club the user can edit:
       await user.editableClubs.reduce(async (previousPromise, club) => {
@@ -35,49 +31,25 @@ class UserPage {
   }
 
   async canEditProfileInformation(testController, user) {
-    console.log('performing test: this.editProfileInformation');
     /** Edit the user's profile information to junk data. */
-    console.log('In editProfileInformation:');
-    console.log(await Selector('#user-name').value);
-    console.log(await Selector('#user-phone').value);
     await testController.selectText(Selector('#user-name')).typeText(Selector('#user-name'), 'Abc123');
     await testController.selectText(Selector('#user-phone')).typeText(Selector('#user-phone'), '111-222-3333');
     await testController.click(Selector('#user-update-profile .btn'));
     await testController.click('.swal-button--confirm');
-    console.log('In editProfileInformation:');
-    console.log(await Selector('#user-name').value);
-    console.log(await Selector('#user-phone').value);
-    console.log('performing test: navBar.gotoBrowseClubsPage');
-
     /** Validate that the junk data is saved to the user's profile. */
-    console.log('performing test: this.verifyEditedProfileInformation');
-    console.log('In verifyEditedProfileInformation:');
-    console.log(await Selector('#user-name').value);
-    console.log(await Selector('#user-phone').value);
     await testController.expect(Selector('#user-name').value).eql('Abc123');
     await testController.expect(Selector('#user-phone').value).eql('111-222-3333');
-
     /** Restore the user's original profile information. */
-    console.log('performing test: this.restoreProfileInformation');
-    console.log('In restoreProfileInformation:');
-    console.log(await Selector('#user-name').value);
-    console.log(await Selector('#user-phone').value);
     await testController.selectText(Selector('#user-name')).typeText(Selector('#user-name'), user.name);
     await testController.selectText(Selector('#user-phone')).typeText(Selector('#user-phone'), user.phoneNo);
     await testController.click(Selector('#user-update-profile .btn'));
     await testController.click('.swal-button--confirm');
-    // Verify that the text boxes have been updated to have the correct value.
-    console.log('In restoreProfileInformation:');
-    console.log(await Selector('#user-name').value);
-    console.log(await Selector('#user-phone').value);
-
-    console.log('performing test: this.correctProfileInformation');
+    /** Verify the user's information. */
     await this.correctProfileInformation(testController, user);
   }
 
   async canJoinLeaveClub(testController, user) {
     /** Leave a club. */
-    console.log('performing test: this.verifyLeaveClub');
     if (user.isAdmin) {
       // An Admin user is not a member of any club, and thus should not be able to leave any club.
       await testController.expect(Selector('#leave-club-btn').exists).notOk('Ensure that Admin user cannot leave any club');
@@ -109,7 +81,6 @@ class UserPage {
       await testController.expect(Selector('#user-club-card').count).eql(user.editableClubs.length, `Check that non-admin user ${user.name} can see ${user.editableClubs.length} UserClubCard components`);
     }
     /** Rejoin all clubs that were left in the previous test. */
-    console.log('performing test: this.verifyJoinClub');
     // Admins cannot join clubs.
     if (!user.isAdmin) {
       await navBar.gotoBrowseClubsPage(testController);
@@ -127,16 +98,12 @@ class UserPage {
       }, Promise.resolve());
       await navBar.gotoUserPage(testController);
     }
-    console.log('performing test: this.correctClubMembershipInformation');
     await this.correctClubMembershipInformation(testController, user);
   }
 
   /** Checks that the user's profile information is correct. */
   async correctProfileInformation(testController, user) {
     await testController.expect(Selector('#user-contact-info').exists).ok(`Check that ${user.name} can see the UserContactInfo component`);
-    console.log('In correctProfileInformation:');
-    console.log(await Selector('#user-name').value);
-    console.log(await Selector('#user-phone').value);
     await testController.expect(Selector('#user-name').value).eql(user.name);
     await testController.expect(Selector('#user-email').value).eql(user.username);
     await testController.expect(Selector('#user-phone').value).eql(user.phoneNo);

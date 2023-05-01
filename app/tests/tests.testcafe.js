@@ -96,17 +96,12 @@ test('Test that add and edit clubs work', async (testController) => {
 credentialsArray.forEach(user => {
   test(`Test that the UserPage displays correct information for ${user.username}`, async (testController) => {
     /** Sign in */
-    console.log('performing test: navBar.gotoSignInPage');
     await navBar.gotoSignInPage(testController);
-    console.log('performing test: signinPage.signin');
     await signinPage.signin(testController, user.username, user.password);
-    console.log('performing test: navBar.isLoggedIn');
     await navBar.isLoggedIn(testController, user.username);
     /** Go to the UserPage */
-    console.log('performing test: navBar.gotoUserPage');
     await navBar.gotoUserPage(testController);
     /** Verify that the UserPage is correct */
-    console.log('performing test: userPage.validateUserPage');
     await userPage.validateUserPage(testController, user);
     /** Verify that the user can edit their profile information */
     await userPage.canEditProfileInformation(testController, user);

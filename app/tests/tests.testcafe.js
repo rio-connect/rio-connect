@@ -96,27 +96,44 @@ test('Test that add and edit clubs work', async (testController) => {
 credentialsArray.forEach(user => {
   test(`Test that the UserPage displays correct information for ${user.username}`, async (testController) => {
     /** Sign in */
+    console.log('performing test: navBar.gotoSignInPage');
     await navBar.gotoSignInPage(testController);
+    console.log('performing test: signinPage.signin');
     await signinPage.signin(testController, user.username, user.password);
+    console.log('performing test: navBar.isLoggedIn');
     await navBar.isLoggedIn(testController, user.username);
     /** Go to the UserPage */
+    console.log('performing test: navBar.gotoUserPage');
     await navBar.gotoUserPage(testController);
     /** Verify that the UserPage is correct */
+    console.log('performing test: userPage.isDisplayed');
     await userPage.isDisplayed(testController, user);
+    console.log('performing test: userPage.correctProfileInformation');
     await userPage.correctProfileInformation(testController, user);
+    console.log('performing test: userPage.correctClubMembershipInformation');
     await userPage.correctClubMembershipInformation(testController, user);
+    console.log('performing test: userPage.correctClubEditingInformation');
     await userPage.correctClubEditingInformation(testController, user);
     /** Verify that the user can edit their profile information */
+    console.log('performing test: userPage.editProfileInformation');
     await userPage.editProfileInformation(testController, user);
+    console.log('performing test: navBar.gotoBrowseClubsPage');
     await navBar.gotoBrowseClubsPage(testController);
+    console.log('performing test: navBar.gotoUserPage');
     await navBar.gotoUserPage(testController);
+    console.log('performing test: userPage.verifyEditedProfileInformation');
     await userPage.verifyEditedProfileInformation(testController, user);
+    console.log('performing test: userPage.restoreProfileInformation');
     await userPage.restoreProfileInformation(testController, user);
+    console.log('performing test: userPage.correctProfileInformation');
     await userPage.correctProfileInformation(testController, user);
     /** Verify that the user can leave a club */
+    console.log('performing test: userPage.verifyLeaveClub');
     await userPage.verifyLeaveClub(testController, user);
     /** Verify that the user can join a club */
+    console.log('performing test: userPage.verifyJoinClub');
     await userPage.verifyJoinClub(testController, user);
+    console.log('performing test: userPage.correctClubMembershipInformation');
     await userPage.correctClubMembershipInformation(testController, user);
     /** Log out */
     await navBar.logout(testController);

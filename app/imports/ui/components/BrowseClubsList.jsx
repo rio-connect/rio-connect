@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
+import { Roles } from 'meteor/alanning:roles';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { PlusLg } from 'react-bootstrap-icons';
 import swal from 'sweetalert';
@@ -10,11 +11,20 @@ import { Clubs } from '../../api/club/Club';
 import LoadingSpinner from './LoadingSpinner';
 
 const BrowseClubsList = ({ interests, name }) => {
+  const isLoggedIn = !!Meteor.user();
+  const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
+  // Render the page when subscriptionPublic stops so that the its cache is cleared before going to another page with a different subscription. Please see issue-130 (https://github.com/orgs/rio-connect/projects/3/views/1?pane=issue&itemId=26996304)
+  const renderPage = () => {
+    // Only render if it is a user
+    if (isLoggedIn && !isAdmin) {
+      document.location.reload();
+    }
+  };
   const { ready, currentUser, clubs } = useTracker(() => {
-    const subscription = Meteor.subscribe(Clubs.publicPublicationName);
+    const subscriptionPublic = Meteor.subscribe(Clubs.publicPublicationName, { onStop: function () { renderPage(); } });
     const fetchedClubs = Clubs.collection.find({ type: { $in: interests }, name: { $regex: name, $options: 'i' } }).fetch();
     return {
-      ready: subscription.ready(),
+      ready: subscriptionPublic.ready(),
       currentUser: Meteor.user(),
       clubs: fetchedClubs,
     };

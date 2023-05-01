@@ -7,6 +7,41 @@ class UserPage {
     this.pageSelector = Selector(this.pageId);
   }
 
+  async canJoinLeaveClub(testController, user) {
+    console.log('performing test: this.verifyLeaveClub');
+    await this.verifyLeaveClub(testController, user);
+    console.log('performing test: this.verifyJoinClub');
+    await this.verifyJoinClub(testController, user);
+    console.log('performing test: this.correctClubMembershipInformation');
+    await this.correctClubMembershipInformation(testController, user);
+  }
+
+  async canEditProfileInformation(testController, user) {
+    console.log('performing test: this.editProfileInformation');
+    await this.editProfileInformation(testController, user);
+    console.log('performing test: navBar.gotoBrowseClubsPage');
+    await navBar.gotoBrowseClubsPage(testController);
+    console.log('performing test: navBar.gotoUserPage');
+    await navBar.gotoUserPage(testController);
+    console.log('performing test: this.verifyEditedProfileInformation');
+    await this.verifyEditedProfileInformation(testController, user);
+    console.log('performing test: this.restoreProfileInformation');
+    await this.restoreProfileInformation(testController, user);
+    console.log('performing test: this.correctProfileInformation');
+    await this.correctProfileInformation(testController, user);
+  }
+
+  async validateUserPage(testController, user) {
+    console.log('performing test: this.isDisplayed');
+    await this.isDisplayed(testController, user);
+    console.log('performing test: this.correctProfileInformation');
+    await this.correctProfileInformation(testController, user);
+    console.log('performing test: this.correctClubMembershipInformation');
+    await this.correctClubMembershipInformation(testController, user);
+    console.log('performing test: this.correctClubEditingInformation');
+    await this.correctClubEditingInformation(testController, user);
+  }
+
   /** Checks that this page is currently displayed. */
   async isDisplayed(testController, user) {
     await testController.expect(this.pageSelector.exists).ok(`Check that ${user.name} can see their UserPage`);

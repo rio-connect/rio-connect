@@ -79,7 +79,7 @@ class UserPage {
     console.log('In verifyEditedProfileInformation:');
     console.log(await Selector('#user-name').value);
     console.log(await Selector('#user-phone').value);
-    await testController.wait(30000).expect(Selector('#user-name').value).eql('Abc123');
+    await testController.expect(Selector('#user-name').value).eql('Abc123');
     await testController.expect(Selector('#user-phone').value).eql('111-222-3333');
   }
 

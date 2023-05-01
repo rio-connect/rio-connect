@@ -68,6 +68,10 @@ class NavBar {
 
   /** Navigate to addClubPage */
   async gotoAddClubsPage(testController) {
+    const visible = await Selector('#basic-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
     await testController.click('#addclub-page');
   }
 

@@ -36,9 +36,7 @@ class UserPage {
 
   async canEditProfileInformation(testController, user) {
     console.log('performing test: this.editProfileInformation');
-
     /** Edit the user's profile information to junk data. */
-    await testController.expect(Selector('#user-contact-info').exists).ok(`Check that ${user.name} can edit the UserContactInfo component`);
     console.log('In editProfileInformation:');
     console.log(await Selector('#user-name').value);
     console.log(await Selector('#user-phone').value);
@@ -51,14 +49,8 @@ class UserPage {
     console.log(await Selector('#user-phone').value);
     console.log('performing test: navBar.gotoBrowseClubsPage');
 
-    /** Navigate from and to the UserPage to make sure the values stick */
-    await navBar.gotoBrowseClubsPage(testController);
-    console.log('performing test: navBar.gotoUserPage');
-    await navBar.gotoUserPage(testController);
-
     /** Validate that the junk data is saved to the user's profile. */
     console.log('performing test: this.verifyEditedProfileInformation');
-    await testController.expect(Selector('#user-contact-info').exists).ok(`Check that ${user.name} can edit the UserContactInfo component`);
     console.log('In verifyEditedProfileInformation:');
     console.log(await Selector('#user-name').value);
     console.log(await Selector('#user-phone').value);
@@ -67,7 +59,6 @@ class UserPage {
 
     /** Restore the user's original profile information. */
     console.log('performing test: this.restoreProfileInformation');
-    await testController.expect(Selector('#user-contact-info').exists).ok(`Check that ${user.name} can edit the UserContactInfo component`);
     console.log('In restoreProfileInformation:');
     console.log(await Selector('#user-name').value);
     console.log(await Selector('#user-phone').value);

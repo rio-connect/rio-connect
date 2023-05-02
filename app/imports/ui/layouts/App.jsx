@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-// import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Footer from '../components/Footer';
@@ -14,21 +13,12 @@ import SignInPage from '../pages/SignInPage';
 import NotAuthorizedPage from '../pages/NotAuthorizedPage';
 import LoadingSpinner from '../components/LoadingSpinner';
 import AddClubPage from '../pages/AddClubPage';
-import ClubCardTestPage from '../pages/ClubCardTestPage';
 import UserPage from '../pages/UserPage';
 import EditClubPage from '../pages/EditClubPage';
 import BrowseClubsPage from '../pages/BrowseClubsPage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
-  /*  ready is used for the subscription, which might be useful later.
-  const { ready } = useTracker(() => {
-    const rdy = Roles.subscription.ready();
-    return {
-      ready: rdy,
-    };
-  });
-  */
   <Router>
     <div className="d-flex flex-column min-vh-100">
       <NavBar />
@@ -40,7 +30,6 @@ const App = () => (
         <Route path="/addclub" element={<ProtectedRoute><AddClubPage /></ProtectedRoute>} />
         <Route path="/:_id" element={<ProtectedRoute><EditClubPage /></ProtectedRoute>} />
         <Route path="/browseclubs" element={<BrowseClubsPage />} />
-        <Route path="/clubcardtest" element={<ClubCardTestPage />} />
         <Route path="/user" element={<UserPage />} />
         <Route path="/home" element={<ProtectedRoute><LandingPage /></ProtectedRoute>} />
         <Route path="/notauthorized" element={<NotAuthorizedPage />} />

@@ -19,8 +19,8 @@ const ClubCard = ({ club, onLeaveClub, onJoinClub, currentUser }) => {
 
   return (
     <Container className="py-3">
-      <Card>
-        <CardHeader className="d-flex justify-content-center"><h1>{club.name}</h1></CardHeader>
+      <Card id="browse-club-card">
+        <CardHeader className="d-flex justify-content-center" id="browse-club-card-name"><h1>{club.name}</h1></CardHeader>
         <Row>
           <Col>
             <Image src={club.image} className="img-thumbnail m-4 p-4" />
@@ -51,13 +51,13 @@ const ClubCard = ({ club, onLeaveClub, onJoinClub, currentUser }) => {
                 : (
                   <Col>
                     {(isMember) ? (
-                      <Button className="btn-danger" onClick={() => onLeaveClub(club)}>Leave Club</Button>
-                    ) : <Button className="btn-success" onClick={() => onJoinClub(club)}>Join Club</Button>}
+                      <Button className="btn-danger" onClick={() => onLeaveClub(club)} id="leave-club-btn">Leave Club</Button>
+                    ) : <Button className="btn-success" onClick={() => onJoinClub(club)} id="join-club-btn">Join Club</Button>}
                   </Col>
                 )}
               <Col className="d-flex justify-content-end">
                 {(canEdit) ? (
-                  <Link to={`/edit/${club._id}`}>
+                  <Link to={`/${club._id}`}>
                     <Button id="edit-club-link">Edit Club</Button>
                   </Link>
                 ) : ''}

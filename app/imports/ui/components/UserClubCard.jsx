@@ -8,8 +8,8 @@ const UserClubCard = ({ club, onLeaveClub, isAdmin, canEdit }) => (
   <Card id="user-club-card" className="h-100">
     <Card.Body>
       <Row>
-        <Col xs="auto">
-          <Image src="/images/generic-club.png" width="100" />
+        <Col xs="auto" className="d-flex">
+          <Image className="align-self-center" src={club.image} width="100" />
         </Col>
         <Col id="club-card-name">
           <Card.Title id="user-club-card-name">{club.name}</Card.Title>
@@ -23,7 +23,7 @@ const UserClubCard = ({ club, onLeaveClub, isAdmin, canEdit }) => (
             <Col>
               {
                 canEdit && (
-                  <Link to={`/edit/${club._id}`}>
+                  <Link to={`/${club._id}`}>
                     <Button id="edit-club-link">Edit Club</Button>
                   </Link>
                 )
@@ -33,7 +33,7 @@ const UserClubCard = ({ club, onLeaveClub, isAdmin, canEdit }) => (
               <div className="d-flex justify-content-end">
                 {
                   !isAdmin && (
-                    <Button className="btn-danger" onClick={() => onLeaveClub(club)}>Leave Club</Button>
+                    <Button className="btn-danger" onClick={() => onLeaveClub(club)} id="leave-club-btn">Leave Club</Button>
                   )
                 }
               </div>
@@ -52,6 +52,7 @@ UserClubCard.propTypes = {
     type: PropTypes.string,
     description: PropTypes.string,
     ownerMail: PropTypes.string,
+    image: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
   onLeaveClub: PropTypes.func.isRequired,

@@ -2,7 +2,7 @@ import React from 'react';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Card, Col, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField, HiddenField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField, HiddenField, SelectField } from 'uniforms-bootstrap5';
 import PropTypes from 'prop-types';
 import { Clubs } from '../../api/club/Club';
 
@@ -10,6 +10,7 @@ import { Clubs } from '../../api/club/Club';
 const bridge = new SimpleSchema2Bridge(Clubs.schema);
 
 const EditClubInformation = ({ club }) => {
+  const allTypes = ['Academic/Professional', 'Ethnic/Cultural', 'Fraternity/Sorority', 'Honorary Society', 'Leisure/Recreational', 'Political', 'Religious/Spiritual', 'Service', 'Sports/Leisure', 'Student Affairs'];
   // Callback function to submit a change to a club's information.
   const submit = (data) => {
     const { name, type, description, owner, ownerMail, members, image } = data;
@@ -37,7 +38,7 @@ const EditClubInformation = ({ club }) => {
           </Row>
           <LongTextField id="edit-form-description" name="description" />
           <Row>
-            <TextField id="edit-form-type" name="type" />
+            <SelectField id="edit-form-type" name="type" allowedValues={allTypes} />
           </Row>
           <SubmitField id="edit-form-submit" value="Submit" />
           <ErrorsField />

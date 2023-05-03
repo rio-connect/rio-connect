@@ -7,7 +7,7 @@ import { Clubs } from '../../api/club/Club';
 
 const EditClubDelete = ({ club }) => {
   const [redirect, setRedirect] = useState(false);
-  // Callback function to remove a member.
+  // Callback function to remove a member from a club.
   const deleteClub = () => {
     // Prompt the user for verification.
     swal({

@@ -17,10 +17,13 @@ class BrowsePage {
     const interestsSelector = Selector('#selectInterests div.form-check input');
     // Select the fourth checkbox (Honorary Society)
     await testController.click(interestsSelector.nth(3));
+    await testController.wait(500);
     // Select the tenth checkbox (Student Affairs)
     await testController.click(interestsSelector.nth(9));
+    await testController.wait(500);
     // Click "Apply" button
     await testController.click('#selectInterestsApply input.btn.btn-primary');
+    await testController.wait(500);
     // Check that 15 cards are displayed.
     const cardCount = Selector('.card').count;
     await testController.expect(cardCount).eql(15);
